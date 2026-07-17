@@ -1,12 +1,21 @@
 const experiences = [
   {
+    period: "May 2026 - Present",
+    role: "Computer Vision Engineer - Sports AI",
+    company: "Priori Sports (Remote)",
+    description:
+      "Developing football computer vision workflows from tracking and homography data. Built tools for ball trajectory reconstruction and airborne-versus-ground classification, with a focus on reliable spatial analytics and production-ready video outputs.",
+    technologies: ["Python", "Computer Vision", "OpenCV", "Homography", "Tracking Data", "Sports Analytics"],
+    current: true,
+  },
+  {
     period: "April 2025 — October 2025",
     role: "R&D Engineer Intern - Computer Vision & AI",
     company: "SPORTSCORE - Football Analytics (Paris, France - Remote)",
     description:
       "Enhanced and optimized an automated video analysis pipeline for futsal matches. Achieved 88% system accuracy, reduced inference time by 50% through CUDA optimization, and supervised 4 interns. Delivered comprehensive performance reports with heatmaps, pass maps, and advanced statistics.",
     technologies: ["YOLOv11", "DeepSORT", "OpenCV", "CUDA", "TensorRT", "PyTorch"],
-    current: true,
+    current: false,
   },
   {
     period: "October 2024 — January 2025",
