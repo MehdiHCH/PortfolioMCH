@@ -181,4 +181,93 @@
         color-mix(in srgb, var(--color-primary) 35%, transparent),
       0 0 80px color-mix(in srgb, var(--color-primary) 25%, transparent);
   }
+
+  @keyframes pipeline-flow {
+    to {
+      stroke-dashoffset: -36;
+    }
+  }
+
+  @keyframes pipeline-stage-pulse {
+    0%,
+    100% {
+      opacity: 0.9;
+    }
+    50% {
+      opacity: 1;
+      filter: drop-shadow(0 0 5px color-mix(in srgb, var(--color-primary) 55%, transparent));
+    }
+  }
+
+  @keyframes pipeline-node-pulse {
+    0%,
+    100% {
+      opacity: 0.72;
+      transform: scale(0.85);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  .pipeline-canvas {
+    box-shadow: inset 0 0 50px rgb(0 0 0 / 35%);
+  }
+
+  .pipeline-flow {
+    stroke-dasharray: 8 10;
+    animation: pipeline-flow 1.15s linear infinite;
+  }
+
+  .pipeline-runtime-flow {
+    animation: pipeline-flow 1.5s linear infinite;
+  }
+
+  .pipeline-stage {
+    animation: pipeline-stage-pulse 4s ease-in-out infinite;
+  }
+
+  .pipeline-stage-delay-1 {
+    animation-delay: 300ms;
+  }
+
+  .pipeline-stage-delay-2 {
+    animation-delay: 600ms;
+  }
+
+  .pipeline-stage-delay-3 {
+    animation-delay: 900ms;
+  }
+
+  .pipeline-stage-delay-4 {
+    animation-delay: 1200ms;
+  }
+
+  .pipeline-stage-delay-5 {
+    animation-delay: 1500ms;
+  }
+
+  .pipeline-node-pulse {
+    animation: pipeline-node-pulse 2s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .pipeline-packet {
+    filter: drop-shadow(0 0 5px currentColor);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pipeline-flow,
+    .pipeline-runtime-flow,
+    .pipeline-stage,
+    .pipeline-node-pulse {
+      animation: none;
+    }
+
+    .pipeline-packet {
+      display: none;
+    }
+  }
 }

@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Github, Users } from "lucide-react";
 import { getProjectBySlug } from "@/data/projectsData";
 import { DemosSection } from "@/components/DemosSection";
+import { TactiVisionPipeline } from "@/components/TactiVisionPipeline";
 
 // Overview section: handles both old string format and new object format
 const OverviewSection = ({ overview }) => {
@@ -18,10 +19,26 @@ const OverviewSection = ({ overview }) => {
     );
   }
 
-  // New format: overview is { architectureImage, keyContributions }
+  // New format: overview can include architecture media, a live pipeline, and contributions.
   return (
     <section className="space-y-8">
       <h2 className="text-3xl font-bold">Overview</h2>
+
+      {overview.animatedPipeline && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-primary uppercase tracking-wider">
+              {overview.animatedPipeline.title}
+            </h3>
+            {overview.animatedPipeline.description && (
+              <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                {overview.animatedPipeline.description}
+              </p>
+            )}
+          </div>
+          <TactiVisionPipeline />
+        </div>
+      )}
 
       {/* System Architecture Image */}
       {overview.architectureImage && (
