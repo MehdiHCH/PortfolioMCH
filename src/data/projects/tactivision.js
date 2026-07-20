@@ -13,6 +13,7 @@ export const tactiVisionProject = {
   location: "Morocco",
   role: "Founder & Lead Engineer",
   overview: {
+    architectureImage: "assets/img/projects/architecture/tactivision_architecture.svg",
     animatedPipeline: {
       title: "How TactiVision Works",
       description:
