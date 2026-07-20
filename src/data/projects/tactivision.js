@@ -16,7 +16,7 @@ export const tactiVisionProject = {
     animatedPipeline: {
       title: "How TactiVision Works",
       description:
-        "Six TensorRT perception engines fire on every frame — player, ball, pose, pitch keypoints, goal-net segmentation, and jersey OCR — feeding a tracking and identity layer, a homography projection onto a 105 × 68 m metric pitch, and a temporal event engine. The same match state drives the live web dashboard and a frame-accurate Full HD video export.",
+        "Six TensorRT perception engines fire on every frame — player, ball, pose, pitch keypoints, goal-net segmentation, and jersey OCR — feeding a tracking and identity layer, a homography projection onto a 105 × 68 m metric pitch, and a temporal event engine. The animated graph below is driven by real output from a processed Bayern Munich vs Paris Saint-Germain sequence: the engine lanes, tracked identities, event feed, and KPI ticker all show data the pipeline actually produced for that clip.",
     },
     keyContributions: [
       "Architected a 7-model GPU perception stack — player/GK/referee detection, a dedicated small-ball detector at 1280 px, a 58-channel pitch-keypoint network, pose estimation, goal-net segmentation, jersey OCR, and ReID — all compiled to TensorRT FP16 engines running on a single RTX 4060 (8 GB).",
@@ -165,6 +165,14 @@ export const tactiVisionProject = {
       video: "assets/videos/tactivision-demo.mp4",
       description:
         "Tactical-camera processing with player and ball tracking, pitch projection, match events, and the live analytics dashboard.",
+      category: "Sports Analytics",
+    },
+    {
+      id: 2,
+      title: "AI Match Report — Dashboard V2",
+      video: "assets/videos/tactivision-dashboard-v2.mp4",
+      description:
+        "Auto-generated broadcast-style match report of a Paris Saint-Germain attacking sequence: executive KPI summary, match momentum, tactical shape, and cinematic key-event replays — rendered frame-accurately by the pipeline from the live dashboard state.",
       category: "Sports Analytics",
     },
   ],
