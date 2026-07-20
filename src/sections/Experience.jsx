@@ -1,47 +1,56 @@
 const experiences = [
   {
-    period: "May 2026 - Present",
-    role: "Computer Vision Engineer - Sports AI",
-    company: "Priori Sports (Remote)",
+    period: "May 2026 — June 2026",
+    role: "Computer Vision Engineer (Contract)",
+    company: "Priori Sports, Inc. — San Francisco, USA (Remote)",
     description:
-      "Developing football computer vision workflows from tracking and homography data. Built tools for ball trajectory reconstruction and airborne-versus-ground classification, with a focus on reliable spatial analytics and production-ready video outputs.",
-    technologies: ["Python", "Computer Vision", "OpenCV", "Homography", "Tracking Data", "Sports Analytics"],
+      "Developed AI and computer vision solutions for football spatial tracking, including homography-based projection systems and tracking pipeline optimization. Built ball trajectory modeling and airborne ball localization using tracking data and spatial correction techniques, contributing to real-time sports analytics workflows and visualization tools.",
+    technologies: ["Python", "PyTorch", "OpenCV", "Homography", "CUDA", "TensorRT", "Docker"],
+    current: false,
+  },
+  {
+    period: "2025 — Present",
+    role: "Founder & Lead Engineer — TactiVision",
+    company: "Independent Product — Real-time Football Analytics Platform",
+    description:
+      "Built and deployed an end-to-end CV pipeline running 7 TensorRT engines in parallel via CUDA streams on a single RTX 4060: player/GK/referee detection, ball detection, pitch keypoint homography, 17-point pose estimation, field segmentation, jersey OCR, and OSNet re-identification. Trained on 140,000+ annotated images across 7 competitions, reaching 93.9–98.2% precision and ~96% accuracy on unseen footage. Live match-centre dashboard generates possession, xThreat, pass networks, pitch control, and pressing intensity from a single broadcast feed — no stadium infrastructure required.",
+    technologies: ["TensorRT", "ONNX", "CUDA Streams", "Ultralytics YOLO", "ByteTrack", "OSNet", "OpenCV", "PyTorch"],
     current: true,
   },
   {
     period: "April 2025 — October 2025",
-    role: "R&D Engineer Intern - Computer Vision & AI",
-    company: "SPORTSCORE - Football Analytics (Paris, France - Remote)",
+    role: "R&D Intern — Applied AI & Computer Vision",
+    company: "SportScore — Football Analytics (Paris, France - Remote)",
     description:
-      "Enhanced and optimized an automated video analysis pipeline for futsal matches. Achieved 88% system accuracy, reduced inference time by 50% through CUDA optimization, and supervised 4 interns. Delivered comprehensive performance reports with heatmaps, pass maps, and advanced statistics.",
-    technologies: ["YOLOv11", "DeepSORT", "OpenCV", "CUDA", "TensorRT", "PyTorch"],
+      "Built an automatic frame classification module (YOLOv11m-cls) achieving 99.95% accuracy, and implemented complex action detection: pass classification, shots, dribbles, interceptions, goals. Optimized the vision pipeline end-to-end — 50% latency reduction via 5 parallel CUDA streams and TensorRT FP16 across 7 models, reaching 13 FPS (+117%). Delivered automated performance analytics and AI-powered microservices integrated into production, and mentored 4 interns.",
+    technologies: ["Python", "PyTorch", "TensorFlow", "OpenCV", "CUDA", "TensorRT", "Docker", "FastAPI"],
     current: false,
   },
   {
     period: "October 2024 — January 2025",
-    role: "Engineering Intern - End-to-End Event Spotting",
-    company: "Université Ibn Tofail - Laboratoire SETIME (Kenitra, Morocco)",
+    role: "Machine Learning Intern — Research & Experimental Evaluation",
+    company: "SETIME Lab, Ibn Tofail University (Kenitra, Morocco)",
     description:
-      "Developed a full temporal event detection pipeline for futsal videos using RegNet-Y and Bi-GRU. Achieved 0.93 recall on DRIVE class detection, working with 40GB dataset from 2024 Futsal World Cup matches.",
-    technologies: ["PyTorch", "RegNet-Y", "ResNet-50", "Bi-GRU", "OpenCV"],
+      "Designed reproducible ML pipelines on a 40GB dataset (2024 Futsal World Cup, 7 matches), conducting controlled experiments with benchmarking and ablation studies. Achieved 0.93 recall using RegNet-Y + Bi-GRU through hyperparameter tuning and architecture exploration.",
+    technologies: ["Python", "PyTorch", "RegNet-Y", "ResNet-50", "Bi-GRU", "OpenCV", "NumPy", "Pandas"],
     current: false,
   },
   {
-    period: "September 2023 — November 2023",
-    role: "Internship - Content Delivery Network (CDN)",
-    company: "Orange Business (Sale Al Jadida, Morocco)",
-    description:
-      "Developed Shell scripts for secure URL generation with token-based authentication. Enhanced security by studying CORS headers, XSS, and CSRF attacks.",
-    technologies: ["Shell Scripting", "JWT", "Security", "Linux"],
-    current: false,
-  },
-  {
-    period: "November 2023 — September 2025",
+    period: "2023 — 2025",
     role: "Master's Degree in Artificial Intelligence",
     company: "Ibn Tofail University (Kenitra, Morocco)",
     description:
-      "Specialized in Machine Learning, Deep Learning, Computer Vision, NLP, and Generative AI. Key projects: Autonomous Vehicle with ROS2 & TD3 RL, OCR for Tifinagh Characters, Diabetic Retinopathy Detection.",
+      "Specialized in Machine Learning, Deep Learning, Computer Vision, NLP, and Generative AI. Key projects: Autonomous Driving with ROS2 & TD3 deep reinforcement learning, hybrid CRNN OCR for handwritten Tifinagh, Diabetic Retinopathy Detection.",
     technologies: ["ML/DL", "Computer Vision", "NLP", "ROS2", "PyTorch"],
+    current: false,
+  },
+  {
+    period: "2020 — 2023",
+    role: "Bachelor's Degree in Physics (Theoretical & Mathematical)",
+    company: "Ibn Tofail University (Kenitra, Morocco)",
+    description:
+      "Strong mathematical foundations powering my AI work: linear algebra, geometry, statistical analysis, signal processing, and numerical methods.",
+    technologies: ["Mathematics", "Linear Algebra", "Signal Processing", "Numerical Methods"],
     current: false,
   },
 ];

@@ -49,19 +49,27 @@ export const About = () => {
 
             <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
               <p>
-                I'm an AI Engineer with expertise in Computer Vision and Deep Learning, 
-                specializing in building intelligent systems that analyze complex visual data. 
-                My passion lies in developing end-to-end solutions that combine cutting-edge AI 
-                with real-world applications.
+                I'm a Computer Vision Engineer specialized in real-time sports
+                analytics and multi-object tracking. As Founder and Lead Engineer
+                of TactiVision, I build an end-to-end football intelligence
+                platform that leverages TensorRT, CUDA streams, homography, pose
+                estimation, OCR, and re-identification to transform broadcast
+                video into tactical insights.
               </p>
               <p>
-                I work extensively with object detection (YOLOv8/11), multi-object tracking (DeepSORT), 
-                pose estimation, and action recognition. My recent focus has been on sports analytics, 
-                where I've built automated pipelines for performance analysis and tactical insights.
+                I work extensively with object detection (YOLOv8/11),
+                multi-object tracking (ByteTrack, DeepSORT, OSNet ReID), pose
+                estimation, and temporal action recognition — deployed as
+                TensorRT FP16 engines for real-time inference. Previously, I
+                contributed to production AI systems at SportScore and Priori
+                Sports, with a strong focus on scalable, production-ready
+                computer vision pipelines.
               </p>
               <p>
-                Beyond code, I'm driven by mentoring others, contributing to research projects, 
-                and exploring emerging technologies in generative AI and reinforcement learning.
+                Beyond code, I'm driven by mentoring others — including
+                supervising 4 interns at SportScore — contributing to research,
+                and exploring emerging technologies in generative AI and
+                reinforcement learning.
               </p>
             </div>
 

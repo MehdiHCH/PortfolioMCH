@@ -11,7 +11,7 @@ export const futsalProject = {
   company: "SPORTSCORE - Football Analytics",
   period: "April 2025 — October 2025",
   location: "Paris, France - Remote",
-  role: "R&D Engineer Intern",
+  role: "R&D Intern — Applied AI & Computer Vision",
   overview: {
     architectureImage: "assets/img/projects/architecture/futsal_architecture.png",
     keyContributions: [

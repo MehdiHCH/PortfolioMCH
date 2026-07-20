@@ -11,7 +11,7 @@ export const e2eProject = {
   company: "Université Ibn Tofail - Laboratoire SETIME",
   period: "October 2024 — January 2025",
   location: "Kenitra, Morocco",
-  role: "Engineering Intern",
+  role: "Machine Learning Intern — Research & Experimental Evaluation",
   overview: {
     architectureImage: "assets/img/projects/architecture/e2e_architecture.png",
     keyContributions: [

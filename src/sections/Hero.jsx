@@ -11,28 +11,28 @@ import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
 const skills = [
   "Python",
+  "C/C++",
   "PyTorch",
   "TensorFlow",
-  "YOLOv8/v11",
+  "YOLOv8/11",
+  "ByteTrack",
   "DeepSORT",
+  "OSNet ReID",
   "OpenCV",
-  "FastAPI",
-  "Computer Vision",
-  "Deep Learning",
-  "ROS2",
-  "Docker",
-  "CUDA",
-  "TensorRT",
-  "PaddleOCR",
-  "LangChain",
-  "Hugging Face",
-  "RAG Pipelines",
-  "AWS",
-  "Git",
-  "CVAT",
-  "Faster R-CNN",
   "Pose Estimation",
+  "Segmentation",
+  "Homography",
+  "Camera Calibration",
+  "CUDA Streams",
+  "TensorRT",
+  "ONNX",
+  "Docker",
   "MLOps",
+  "AWS",
+  "FastAPI",
+  "PaddleOCR",
+  "ROS2",
+  "Git",
 ];
 
 export const Hero = () => {
@@ -75,7 +75,7 @@ export const Hero = () => {
             <div className="animate-fade-in">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                AI Engineer & Data Scientist • Computer Vision Specialist
+                Computer Vision Engineer • AI Engineer • Sports Analytics
               </span>
             </div>
 
@@ -91,11 +91,12 @@ export const Hero = () => {
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi, I'm EL MEHDI HICHAM — a junior AI Engineer & Data Scientist
-                with a Master's in Artificial Intelligence from Ibn Tofail
-                University. I specialize in Computer Vision, Deep Learning, and
-                real-time video analytics, building end-to-end systems from
-                detection and tracking to automated reporting.
+                Hi, I'm EL MEHDI HICHAM — a Computer Vision Engineer
+                specialized in real-time sports analytics and multi-object
+                tracking. Founder and Lead Engineer of TactiVision, an
+                end-to-end football intelligence platform that turns broadcast
+                video into tactical insights. Previously at SportScore and
+                Priori Sports, building production-ready vision pipelines.
               </p>
             </div>
 

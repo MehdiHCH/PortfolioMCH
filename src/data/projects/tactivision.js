@@ -9,9 +9,9 @@ export const tactiVisionProject = {
   link: "/projects/tactivision-football-analytics",
   github: null,
   company: "Independent Product Project",
-  period: "May 2026 - Present",
+  period: "2025 — Present",
   location: "Morocco",
-  role: "Creator & Computer Vision Engineer",
+  role: "Founder & Lead Engineer",
   overview: {
     animatedPipeline: {
       title: "How TactiVision Works",
@@ -19,7 +19,8 @@ export const tactiVisionProject = {
         "Six TensorRT perception engines fire on every frame — player, ball, pose, pitch keypoints, goal-net segmentation, and jersey OCR — feeding a tracking and identity layer, a homography projection onto a 105 × 68 m metric pitch, and a temporal event engine. The animated graph below is driven by real output from a processed Bayern Munich vs Paris Saint-Germain sequence: the engine lanes, tracked identities, event feed, and KPI ticker all show data the pipeline actually produced for that clip.",
     },
     keyContributions: [
-      "Architected a 7-model GPU perception stack — player/GK/referee detection, a dedicated small-ball detector at 1280 px, a 58-channel pitch-keypoint network, pose estimation, goal-net segmentation, jersey OCR, and ReID — all compiled to TensorRT FP16 engines running on a single RTX 4060 (8 GB).",
+      "Architected a 7-model GPU perception stack — player/GK/referee detection, a dedicated small-ball detector at 1280 px, a 58-channel pitch-keypoint network, pose estimation, goal-net segmentation, jersey OCR, and OSNet ReID — all compiled to TensorRT FP16 engines running on a single RTX 4060 (8 GB).",
+      "Trained the detection stack on 140,000+ annotated images spanning 7 competitions (LaLiga, Premier League, Ligue 1, Bundesliga, UCL, Botola Pro, FIFA World Cup 2026), reaching 93.9–98.2% precision and ~96% accuracy on unseen footage.",
       "Engineered parallel GPU inference by unifying PyTorch/TensorRT and pycuda under one shared primary CUDA context, dispatching four engines to a thread pool while the keypoint engine runs on the main thread — cutting per-frame latency from the sum of all models toward the slowest single model, with a sequential mode kept as a guaranteed fallback.",
       "Built the goal-detection model end to end: bootstrapped a segmentation dataset by prompting SAM 3 with the text concept \"goal net\" refined against existing boxes, then trained a YOLO-seg model with a leakage-free clip-wise split to ~0.97 mask mAP50. Goals are confirmed by a 12-frame majority vote of the ball inside the net polygon, automatically promoting the last key pass to an assist.",
       "Maintained player identity across occlusions and camera motion with Deep-EIoU tracking, appearance ReID, team-color classification, throttled jersey OCR, goalkeeper handling, and guarded jersey-based re-linking that never merges simultaneous detections.",
@@ -43,7 +44,9 @@ export const tactiVisionProject = {
   solution:
     "TactiVision compiles its entire perception stack to TensorRT FP16 and schedules it in parallel under a single shared CUDA context. Detections flow through ReID-backed tracking, keypoint homography onto a metric pitch, and a temporal event engine that confirms goals against a learned goal-net mask. The output is structured match data — events, tracking CSVs, per-player stats — plus a live dashboard and a Full HD match-report video that stay frame-accurate to the source.",
   keyAchievements: [
-    "Unified 7 neural models — detection, dedicated ball detection, pose, 58-channel pitch keypoints, goal-net segmentation, jersey OCR, and ReID — into one real-time TensorRT pipeline on a single RTX 4060",
+    "Unified 7 neural models — detection, dedicated ball detection, pose, 58-channel pitch keypoints, goal-net segmentation, jersey OCR, and OSNet ReID — into one real-time TensorRT pipeline on a single RTX 4060",
+    "Trained on 140,000+ annotated images across 7 competitions (LaLiga, Premier League, Ligue 1, Bundesliga, UCL, Botola Pro, FIFA World Cup 2026) — 93.9–98.2% precision and ~96% accuracy on unseen footage",
+    "Built a dedicated goalkeeper model outputting GK position in real-world metres, speed, skeleton pose, and spatial goal coverage on every frame",
     "Solved the multi-threaded CUDA-context problem (PyTorch + TensorRT + pycuda in one process), enabling parallel model execution with per-frame result caching for slow-changing models",
     "Trained the goal-net segmentation model to ~0.97 mask mAP50 on a SAM 3-bootstrapped dataset with a clip-wise split that eliminates near-duplicate-frame leakage",
     "Implemented goal confirmation from ball trajectory, pitch geometry, and the segmented net polygon with a 12-frame majority vote, plus automatic assist attribution",
@@ -53,9 +56,9 @@ export const tactiVisionProject = {
     "Generated a clean broadcast-style dashboard MP4 frame by frame at the exact timing of the source video",
   ],
   techStack: [
-    "Python", "PyTorch", "Ultralytics YOLO", "SAM 3", "TensorRT", "CUDA",
-    "OpenCV", "Deep-EIoU", "TorchReID", "OCR", "Homography", "Flask",
-    "JavaScript", "FFmpeg",
+    "Python", "PyTorch", "Ultralytics YOLO", "SAM 3", "TensorRT", "ONNX",
+    "CUDA", "OpenCV", "Deep-EIoU", "OSNet ReID", "OCR", "Homography",
+    "Flask", "JavaScript", "FFmpeg",
   ],
   modules: [
     {
@@ -83,7 +86,7 @@ export const tactiVisionProject = {
         "Jersey OCR is throttled to every 6 frames and used as a guarded re-linking signal — it can restore a lost identity but never merges two players detected simultaneously. Goalkeepers are handled explicitly and manual tags can pin known players.",
       metrics: {
         tracker: "Deep-EIoU",
-        reid: "Appearance embeddings",
+        reid: "OSNet embeddings",
         jerseyOcr: "Guarded re-linking",
         teams: "Color classification",
         goalkeeper: "Dedicated handling",
@@ -136,11 +139,13 @@ export const tactiVisionProject = {
     },
   ],
   results: {
+    detectionPrecision: "93.9–98.2%",
+    trainingImages: "140K+",
+    competitionsCovered: "7",
     neuralModels: "7",
     passTypesClassified: "12",
     kpisTracked: "60+",
     goalSegMap50: "~0.97",
-    pitchProjection: "105×68 m",
     videoExport: "Full HD",
   },
   visualizations: [
