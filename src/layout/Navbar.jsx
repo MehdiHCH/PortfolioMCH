@@ -63,9 +63,10 @@ export const Navbar = () => {
         {/* Left - Logo */}
         <Link
           to="/"
-          className="text-xl font-bold tracking-tight hover:text-primary"
+          aria-label="EL MEHDI HICHAM home"
+          className="whitespace-nowrap text-base font-bold tracking-tight hover:text-primary sm:text-lg lg:text-xl"
         >
-          EL<span className="text-primary">.</span>MEHDI
+          EL MEHDI <span className="text-primary">HICHAM</span>
         </Link>
 
         {/* Center - Nav Links + Theme Toggle */}

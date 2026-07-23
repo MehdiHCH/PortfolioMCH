@@ -87,9 +87,10 @@ export const Footer = () => {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
+              aria-label="Back to the top"
               className="text-xl font-bold tracking-tight hover:text-primary transition-colors"
             >
-              EL<span className="text-primary">.</span>MEHDI
+              EL MEHDI <span className="text-primary">HICHAM</span>
             </button>
             <p className="text-sm text-muted-foreground mt-2">
               © {currentYear} EL MEHDI Hicham. All rights reserved.
