@@ -223,9 +223,9 @@ export const ProjectDetail = () => {
                 href={project.youtubePlaylist}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg glass hover:bg-primary/20 hover:text-primary transition-all"
+                className="inline-flex items-center gap-2 rounded-lg border border-red-500 bg-red-600 px-6 py-3 font-semibold text-white shadow-lg shadow-red-950/25 transition-colors hover:bg-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                <Youtube className="w-5 h-5" />
+                <Youtube className="h-6 w-6 fill-current" aria-hidden="true" />
                 Watch project playlist
               </a>
             )}

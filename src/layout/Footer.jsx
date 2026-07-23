@@ -2,13 +2,30 @@ import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/MehdiHCH", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/elmehdihicham", label: "LinkedIn" },
-  { icon: Twitter, href: "https://x.com/Mehdi_Hch_____", label: "Twitter / X" },
+  {
+    icon: Github,
+    href: "https://github.com/MehdiHCH",
+    label: "GitHub",
+    color: "border-slate-400/40 bg-slate-700 text-white hover:bg-slate-600",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/elmehdihicham",
+    label: "LinkedIn",
+    color: "border-[#0A66C2] bg-[#0A66C2] text-white hover:bg-[#0958a8]",
+  },
+  {
+    icon: Twitter,
+    href: "https://x.com/Mehdi_Hch_____",
+    label: "Twitter / X",
+    color: "border-slate-500 bg-black text-white hover:bg-slate-900",
+  },
   {
     icon: Youtube,
     href: "https://www.youtube.com/@ElMehdi_Vision",
     label: "YouTube",
+    color: "border-[#FF0000] bg-[#FF0000] text-white hover:bg-[#d90000]",
+    fillIcon: true,
   },
 ];
 
@@ -93,9 +110,13 @@ export const Footer = () => {
                 aria-label={social.label}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
+                title={social.label}
+                className={`border p-2.5 rounded-full shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md ${social.color}`}
               >
-                <social.icon className="w-5 h-5" />
+                <social.icon
+                  className={`h-5 w-5 ${social.fillIcon ? "fill-current" : ""}`}
+                  strokeWidth={2.2}
+                />
               </a>
             ))}
           </div>
