@@ -38,17 +38,17 @@ export const tactiVisionProject = {
       {
         number: 1,
         kind: "perception",
-        shortTitle: "Detect & estimate pose",
-        title: "Detection and Pose Estimation",
+        shortTitle: "Detect match objects",
+        title: "Multi-Class Match Detection",
         subtitle: "140K+ images across 7 competitions | 93.9-98.2% precision",
         video: "assets/videos/tactivision/tactivision-step-1.mp4",
         poster: "assets/img/projects/tactivision/tactivision-step-1.jpg",
         description:
-          "Step 1 establishes the full visual understanding layer for every frame. The trained YOLO stack detects players from both teams, goalkeepers, the ball, referees, staff and non-playing objects, while a pose model estimates a complete 17-point skeleton for each visible player.",
+          "Step 1 establishes the detection layer for every frame. The trained YOLO stack detects players from both teams, goalkeepers, the ball, referees, staff and non-playing objects before passing those observations to the tracking and pose stage.",
         outcomes: [
           "Players, goalkeepers, ball, referees and staff",
-          "Full 17-point player pose estimation",
           "Pitch keypoints and segmentation masks",
+          "Multi-class understanding of each match frame",
           "About 96% accuracy on unseen match video",
         ],
         sourceUrl:
@@ -58,14 +58,15 @@ export const tactiVisionProject = {
       {
         number: 2,
         kind: "projection",
-        shortTitle: "Project & understand",
-        title: "Metric Pitch Projection",
-        subtitle: "Homography, positions and spatial context",
+        shortTitle: "Pose, track & project",
+        title: "Pose, Tracking and Metric Projection",
+        subtitle: "17-point pose, homography, positions and spatial context",
         video: "assets/videos/tactivision/tactivision-step-2.mp4",
         poster: "assets/img/projects/tactivision/tactivision-step-2.jpg",
         description:
-          "Pitch keypoints estimate a homography for each camera view. Every tracked foot point is projected onto a 105 x 68 m pitch, allowing image-space movement to become real positions, distances, speeds, zones and team structure.",
+          "Persistent tracks preserve player identity while the pose model estimates a complete 17-point skeleton for every visible player. Pitch keypoints then estimate homography and project each tracked foot point onto a 105 x 68 m pitch, turning image-space movement into real positions, distances, speeds, zones and team structure.",
         outcomes: [
+          "Full 17-point player pose estimation",
           "Keypoint-driven camera calibration",
           "Metric x/y position for every track",
           "Live top-down tactical projection",

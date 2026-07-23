@@ -4,7 +4,7 @@ export const futsalProject = {
   title: "Automated Futsal Video Analysis for Performance Reporting",
   description:
     "Developed an end-to-end computer vision pipeline that automatically analyzes futsal matches through multi-stage processing: frame classification, player detection, multi-object tracking, and action recognition. The system extracts tactical insights from broadcast video in real-time, reducing manual annotation time by 80%.",
-  image: "assets/img/projects/SportScore.gif",
+  image: "assets/img/projects/futsal-analysis-cover.png",
   tags: ["YOLOv11", "DeepSORT", "Computer Vision", "Sports Analytics"],
   link: "/projects/1-futsal-analysis-sportscore",
   github: "https://github.com/MehdiHCH",
