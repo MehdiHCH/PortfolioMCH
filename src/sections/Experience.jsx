@@ -8,6 +8,7 @@ const experiences = [
     organizationUrl:
       "https://www.linkedin.com/company/priori-sports-performance/",
     organizationColor: "text-sky-400 hover:text-sky-300",
+    organizationLogoClass: "border-sky-400/50",
     description:
       "Developed AI and computer vision solutions for football spatial tracking, including homography-based projection systems and tracking pipeline optimization. Built ball trajectory modeling and airborne ball localization using tracking data and spatial correction techniques, contributing to real-time sports analytics workflows and visualization tools.",
     technologies: ["Python", "PyTorch", "OpenCV", "Homography", "CUDA", "TensorRT", "Docker"],
@@ -33,6 +34,7 @@ const experiences = [
     organizationLogo: "assets/img/companies/sportscore-logo.png",
     organizationUrl: "https://www.linkedin.com/company/sport-score/",
     organizationColor: "text-primary hover:text-primary/80",
+    organizationLogoClass: "border-primary/50",
     description:
       "Built an automatic frame classification module (YOLOv11m-cls) achieving 99.95% accuracy, and implemented complex action detection: pass classification, shots, dribbles, interceptions, goals. Optimized the vision pipeline end-to-end — 50% latency reduction via 5 parallel CUDA streams and TensorRT FP16 across 7 models, reaching 13 FPS (+117%). Delivered automated performance analytics and AI-powered microservices integrated into production, and mentored 4 interns.",
     technologies: ["Python", "PyTorch", "TensorFlow", "OpenCV", "CUDA", "TensorRT", "Docker", "FastAPI"],
@@ -47,6 +49,7 @@ const experiences = [
     organizationUrl:
       "https://www.linkedin.com/school/ibntofailuniversity-itu/",
     organizationColor: "text-blue-400 hover:text-blue-300",
+    organizationLogoClass: "border-blue-400/50",
     description:
       "Designed reproducible ML pipelines on a 40GB dataset (2024 Futsal World Cup, 7 matches), conducting controlled experiments with benchmarking and ablation studies. Achieved 0.93 recall using RegNet-Y + Bi-GRU through hyperparameter tuning and architecture exploration.",
     technologies: ["Python", "PyTorch", "RegNet-Y", "ResNet-50", "Bi-GRU", "OpenCV", "NumPy", "Pandas"],
@@ -61,6 +64,7 @@ const experiences = [
     organizationUrl:
       "https://www.linkedin.com/school/ibntofailuniversity-itu/",
     organizationColor: "text-blue-400 hover:text-blue-300",
+    organizationLogoClass: "border-blue-400/50",
     description:
       "Specialized in Machine Learning, Deep Learning, Computer Vision, NLP, and Generative AI. Key projects: Autonomous Driving with ROS2 & TD3 deep reinforcement learning, hybrid CRNN OCR for handwritten Tifinagh, Diabetic Retinopathy Detection.",
     technologies: ["ML/DL", "Computer Vision", "NLP", "ROS2", "PyTorch"],
@@ -75,6 +79,7 @@ const experiences = [
     organizationUrl:
       "https://www.linkedin.com/school/ibntofailuniversity-itu/",
     organizationColor: "text-blue-400 hover:text-blue-300",
+    organizationLogoClass: "border-blue-400/50",
     description:
       "Strong mathematical foundations powering my AI work: linear algebra, geometry, statistical analysis, signal processing, and numerical methods.",
     technologies: ["Mathematics", "Linear Algebra", "Signal Processing", "Numerical Methods"],
@@ -163,7 +168,7 @@ export const Experience = () => {
                         <img
                           src={`${import.meta.env.BASE_URL}${exp.organizationLogo}`}
                           alt={`${exp.organization} logo`}
-                          className="h-16 w-16 shrink-0 object-contain"
+                          className={`h-16 w-16 shrink-0 rounded-lg border bg-black/30 object-contain p-1 ${exp.organizationLogoClass}`}
                         />
                       )}
                       <div className={idx % 2 === 0 ? "md:text-right" : ""}>
