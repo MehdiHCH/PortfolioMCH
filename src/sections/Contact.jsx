@@ -10,12 +10,14 @@ import { Button } from "@/components/Button";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
+const CONTACT_EMAIL = "mehdihicham736@gmail.com";
+
 const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "mehdihicham736@gmail.com",
-    href: "mailto:mehdihicham736@gmail.com",
+    value: CONTACT_EMAIL,
+    href: `mailto:${CONTACT_EMAIL}`,
   },
   {
     icon: Phone,
@@ -38,15 +40,31 @@ export const Contact = () => {
     message: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [fallbackMailto, setFallbackMailto] = useState("");
   const [submitStatus, setSubmitStatus] = useState({
-    type: null, // 'success' or 'error'
+    type: null,
     message: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const message = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+    };
+
+    if (!message.name || !message.message) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please enter your name and message.",
+      });
+      return;
+    }
+
     setIsLoading(true);
+    setFallbackMailto("");
     setSubmitStatus({ type: null, message: "" });
     try {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -54,18 +72,33 @@ export const Contact = () => {
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       if (!serviceId || !templateId || !publicKey) {
-        throw new Error(
-          "EmailJS configuration is missing. Please check your environment variables."
+        const subject = encodeURIComponent(
+          `Portfolio inquiry from ${message.name}`
         );
+        const body = encodeURIComponent(
+          `Name: ${message.name}\nEmail: ${message.email}\n\n${message.message}`
+        );
+
+        const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+        setFallbackMailto(mailtoUrl);
+        setSubmitStatus({
+          type: "info",
+          message: "Your email app is opening with the message ready to send.",
+        });
+        window.location.href = mailtoUrl;
+        return;
       }
 
       await emailjs.send(
         serviceId,
         templateId,
         {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
+          name: message.name,
+          email: message.email,
+          from_name: message.name,
+          from_email: message.email,
+          reply_to: message.email,
+          message: message.message,
         },
         publicKey
       );
@@ -75,12 +108,12 @@ export const Contact = () => {
         message: "Message sent successfully! I'll get back to you soon.",
       });
       setFormData({ name: "", email: "", message: "" });
-    } catch (err) {
+    } catch (error) {
       console.error("EmailJS error:", error);
       setSubmitStatus({
         type: "error",
         message:
-          error.text || "Failed to send message. Please try again later.",
+          error?.text || error?.message || "Failed to send message. Please try again later.",
       });
     } finally {
       setIsLoading(false);
@@ -123,8 +156,12 @@ export const Contact = () => {
                 </label>
                 <input
                   id="name"
+                  name="name"
                   type="text"
                   required
+                  minLength={2}
+                  maxLength={80}
+                  autoComplete="name"
                   placeholder="Your name..."
                   value={formData.name}
                   onChange={(e) =>
@@ -137,13 +174,17 @@ export const Contact = () => {
               <div>
                 <label
                   htmlFor="email"
-                  type="email"
                   className="block text-sm font-medium mb-2"
                 >
                   Email
                 </label>
                 <input
+                  id="email"
+                  name="email"
+                  type="email"
                   required
+                  maxLength={160}
+                  autoComplete="email"
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={(e) =>
@@ -161,8 +202,12 @@ export const Contact = () => {
                   Message
                 </label>
                 <textarea
+                  id="message"
+                  name="message"
                   rows={5}
                   required
+                  minLength={10}
+                  maxLength={3000}
                   value={formData.message}
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
@@ -190,19 +235,35 @@ export const Contact = () => {
 
               {submitStatus.type && (
                 <div
+                  role="status"
+                  aria-live="polite"
                   className={`flex items-center gap-3
                      p-4 rounded-xl ${
                        submitStatus.type === "success"
                          ? "bg-green-500/10 border border-green-500/20 text-green-400"
+                         : submitStatus.type === "info"
+                           ? "bg-primary/10 border border-primary/20 text-primary"
                          : "bg-red-500/10 border border-red-500/20 text-red-400"
                      }`}
                 >
                   {submitStatus.type === "success" ? (
                     <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                  ) : submitStatus.type === "info" ? (
+                    <Mail className="w-5 h-5 flex-shrink-0" />
                   ) : (
                     <AlertCircle className="w-5 h-5 flex-shrink-0" />
                   )}
-                  <p className="text-sm">{submitStatus.message}</p>
+                  <p className="text-sm">
+                    {submitStatus.message}
+                    {submitStatus.type === "info" && fallbackMailto && (
+                      <a
+                        href={fallbackMailto}
+                        className="ml-1 font-semibold underline underline-offset-4"
+                      >
+                        Open email app
+                      </a>
+                    )}
+                  </p>
                 </div>
               )}
             </form>
