@@ -1,4 +1,5 @@
-import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
+import { FaInstagram, FaYoutube } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const socialLinks = [
@@ -21,11 +22,19 @@ const socialLinks = [
     color: "border-slate-500 bg-black text-white hover:bg-slate-900",
   },
   {
-    icon: Youtube,
+    icon: FaYoutube,
     href: "https://www.youtube.com/@ElMehdi_Vision",
     label: "YouTube",
     color: "border-[#FF0000] bg-[#FF0000] text-white hover:bg-[#d90000]",
-    fillIcon: true,
+    brandIcon: true,
+  },
+  {
+    icon: FaInstagram,
+    href: "https://www.instagram.com/elmehdi_ia_vision/",
+    label: "Instagram",
+    color:
+      "border-[#E1306C] bg-gradient-to-tr from-[#833AB4] via-[#E1306C] to-[#FCAF45] text-white hover:brightness-110",
+    brandIcon: true,
   },
 ];
 
@@ -114,8 +123,8 @@ export const Footer = () => {
                 className={`border p-2.5 rounded-full shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md ${social.color}`}
               >
                 <social.icon
-                  className={`h-5 w-5 ${social.fillIcon ? "fill-current" : ""}`}
-                  strokeWidth={2.2}
+                  className="h-5 w-5"
+                  strokeWidth={social.brandIcon ? undefined : 2.2}
                 />
               </a>
             ))}

@@ -5,9 +5,9 @@ import {
   Github,
   Linkedin,
   Twitter,
-  Youtube,
   Download,
 } from "lucide-react";
+import { FaInstagram, FaYoutube } from "react-icons/fa";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
 const skills = [
@@ -159,12 +159,20 @@ export const Hero = () => {
                   color: "border-slate-500 bg-black text-white hover:bg-slate-900",
                 },
                 {
-                  icon: Youtube,
+                  icon: FaYoutube,
                   href: "https://www.youtube.com/@ElMehdi_Vision",
                   label: "YouTube",
                   color:
                     "border-[#FF0000] bg-[#FF0000] text-white hover:bg-[#d90000]",
-                  fillIcon: true,
+                  brandIcon: true,
+                },
+                {
+                  icon: FaInstagram,
+                  href: "https://www.instagram.com/elmehdi_ia_vision/",
+                  label: "Instagram",
+                  color:
+                    "border-[#E1306C] bg-gradient-to-tr from-[#833AB4] via-[#E1306C] to-[#FCAF45] text-white hover:brightness-110",
+                  brandIcon: true,
                 },
               ].map((social, idx) => (
                 <a
@@ -177,8 +185,8 @@ export const Hero = () => {
                   className={`rounded-full border p-2.5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${social.color}`}
                 >
                   <social.icon
-                    className={`h-5 w-5 ${social.fillIcon ? "fill-current" : ""}`}
-                    strokeWidth={2.2}
+                    className="h-5 w-5"
+                    strokeWidth={social.brandIcon ? undefined : 2.2}
                   />
                 </a>
               ))}

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Github, Users, Youtube } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Users } from "lucide-react";
+import { FaYoutube } from "react-icons/fa";
 import { getProjectBySlug } from "@/data/projectsData";
 import { DemosSection } from "@/components/DemosSection";
 import { TactiVisionPipeline } from "@/components/TactiVisionPipeline";
@@ -225,7 +226,7 @@ export const ProjectDetail = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-red-500 bg-red-600 px-6 py-3 font-semibold text-white shadow-lg shadow-red-950/25 transition-colors hover:bg-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                <Youtube className="h-6 w-6 fill-current" aria-hidden="true" />
+                <FaYoutube className="h-6 w-6" aria-hidden="true" />
                 Watch project playlist
               </a>
             )}
