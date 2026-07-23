@@ -29,6 +29,90 @@ export const tactiVisionProject = {
       "Designed a temporal event engine classifying 12 pass types (progressive, smart, through, cross, switch, key, assist…), shots with an xG proxy, interceptions, recoveries, counter-attacks, and PPDA pressing intensity — 60+ KPIs streamed to a live dashboard and a deterministic 1080p MP4 export.",
     ],
   },
+  workflow: {
+    eyebrow: "Real match workflow",
+    title: "From broadcast pixels to explainable tactical evidence.",
+    description:
+      "Three synchronized stages show what the system sees, how it preserves identity and space, and how the resulting trajectories become coaching-ready pass and activity maps.",
+    steps: [
+      {
+        number: 1,
+        kind: "perception",
+        shortTitle: "Detect & estimate pose",
+        title: "Detection and Pose Estimation",
+        subtitle: "140K+ images across 7 competitions | 93.9-98.2% precision",
+        video: "assets/videos/tactivision/tactivision-step-1.mp4",
+        poster: "assets/img/projects/tactivision/tactivision-step-1.jpg",
+        description:
+          "Step 1 establishes the full visual understanding layer for every frame. The trained YOLO stack detects players from both teams, goalkeepers, the ball, referees, staff and non-playing objects, while a pose model estimates a complete 17-point skeleton for each visible player.",
+        outcomes: [
+          "Players, goalkeepers, ball, referees and staff",
+          "Full 17-point player pose estimation",
+          "Pitch keypoints and segmentation masks",
+          "About 96% accuracy on unseen match video",
+        ],
+        sourceUrl:
+          "https://www.linkedin.com/posts/elmehdihicham_footballai-computervision-sportstech-ugcPost-7452309333033541632-FTeX/",
+        sourceLabel: "View the original Step 1 release",
+      },
+      {
+        number: 2,
+        kind: "projection",
+        shortTitle: "Project & understand",
+        title: "Metric Pitch Projection",
+        subtitle: "Homography, positions and spatial context",
+        video: "assets/videos/tactivision/tactivision-step-2.mp4",
+        poster: "assets/img/projects/tactivision/tactivision-step-2.jpg",
+        description:
+          "Pitch keypoints estimate a homography for each camera view. Every tracked foot point is projected onto a 105 x 68 m pitch, allowing image-space movement to become real positions, distances, speeds, zones and team structure.",
+        outcomes: [
+          "Keypoint-driven camera calibration",
+          "Metric x/y position for every track",
+          "Live top-down tactical projection",
+          "Spatial context for event rules",
+        ],
+      },
+      {
+        number: 3,
+        kind: "intelligence",
+        shortTitle: "Extract & visualize",
+        title: "Pass Intelligence and Team Activity",
+        subtitle: "Morocco vs Haiti, generated from tracked trajectories",
+        video: "assets/videos/tactivision/tactivision-step-3-tracking.mp4",
+        poster: "assets/img/projects/tactivision/tactivision-step-3.jpg",
+        description:
+          "The tracking stream is converted into structured match evidence. Possession changes and player trajectories validate pass events, while the projected positions accumulate into team pass maps and activity heatmaps for immediate tactical review.",
+        outcomes: [
+          "Validated origin-to-destination passes",
+          "Per-team spatial activity density",
+          "Named player and jersey attribution",
+          "Reusable JSON, CSV and visual exports",
+        ],
+        visualizations: [
+          {
+            title: "Morocco pass map",
+            description: "Detected passing routes projected onto the metric pitch.",
+            image: "assets/img/projects/tactivision/passmap-morocco.png",
+          },
+          {
+            title: "Haiti pass map",
+            description: "Team passing distribution from the same tracked sequence.",
+            image: "assets/img/projects/tactivision/passmap-haiti.png",
+          },
+          {
+            title: "Morocco activity heatmap",
+            description: "Accumulated on-ball and player activity across pitch zones.",
+            image: "assets/img/projects/tactivision/heatmap-morocco.png",
+          },
+          {
+            title: "Haiti activity heatmap",
+            description: "Spatial concentration and occupied corridors over the clip.",
+            image: "assets/img/projects/tactivision/heatmap-haiti.png",
+          },
+        ],
+      },
+    ],
+  },
   problemStatement: {
     title: "Turning Broadcast Video into Structured Tactical Data",
     description:
@@ -171,14 +255,6 @@ export const tactiVisionProject = {
       video: "assets/videos/tactivision-demo.mp4",
       description:
         "Tactical-camera processing with player and ball tracking, pitch projection, match events, and the live analytics dashboard.",
-      category: "Sports Analytics",
-    },
-    {
-      id: 2,
-      title: "AI Match Report — Dashboard V2",
-      video: "assets/videos/tactivision-dashboard-v2.mp4",
-      description:
-        "Auto-generated broadcast-style match report of a Paris Saint-Germain attacking sequence: executive KPI summary, match momentum, tactical shape, and cinematic key-event replays — rendered frame-accurately by the pipeline from the live dashboard state.",
       category: "Sports Analytics",
     },
   ],

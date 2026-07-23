@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink, Github, Users } from "lucide-react";
 import { getProjectBySlug } from "@/data/projectsData";
 import { DemosSection } from "@/components/DemosSection";
 import { TactiVisionPipeline } from "@/components/TactiVisionPipeline";
+import { TactiVisionWorkflow } from "@/components/TactiVisionWorkflow";
 
 // Overview section: handles both old string format and new object format
 const OverviewSection = ({ overview }) => {
@@ -217,6 +218,10 @@ export const ProjectDetail = () => {
             )}
           </div>
         </div>
+
+        {project.workflow && (
+          <TactiVisionWorkflow workflow={project.workflow} />
+        )}
 
         {/* Content Grid */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
