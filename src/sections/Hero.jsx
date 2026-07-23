@@ -101,8 +101,35 @@ export const Hero = () => {
                 specialized in real-time sports analytics and multi-object
                 tracking. Founder and Lead Engineer of TactiVision, an
                 end-to-end football intelligence platform that turns broadcast
-                video into tactical insights. Previously at SportScore and
-                Priori Sports, building production-ready vision pipelines.
+                video into tactical insights. Previously at{" "}
+                <a
+                  href="https://www.linkedin.com/company/sport-score/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mx-1 inline-flex items-center gap-1.5 whitespace-nowrap align-middle text-[1.16em] font-bold text-primary transition-colors hover:text-primary/80"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}assets/img/companies/sportscore-logo.png`}
+                    alt=""
+                    className="h-7 w-7 rounded-md border border-primary/40 bg-black object-contain p-0.5"
+                  />
+                  SportScore
+                </a>
+                and{" "}
+                <a
+                  href="https://www.linkedin.com/company/priori-sports-performance/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mx-1 inline-flex items-center gap-1.5 whitespace-nowrap align-middle text-[1.16em] font-bold text-sky-400 transition-colors hover:text-sky-300"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}assets/img/companies/priori-sports-logo.png`}
+                    alt=""
+                    className="h-7 w-7 rounded-md border border-sky-400/40 bg-black object-contain p-0.5"
+                  />
+                  Priori Sports
+                </a>
+                {", "}building production-ready vision pipelines.
               </p>
             </div>
 
