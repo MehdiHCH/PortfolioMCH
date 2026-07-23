@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Github, Users } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Users, Youtube } from "lucide-react";
 import { getProjectBySlug } from "@/data/projectsData";
 import { DemosSection } from "@/components/DemosSection";
 import { TactiVisionPipeline } from "@/components/TactiVisionPipeline";
@@ -216,6 +216,17 @@ export const ProjectDetail = () => {
               >
                 <Github className="w-5 h-5" />
                 View on GitHub
+              </a>
+            )}
+            {project.youtubePlaylist && (
+              <a
+                href={project.youtubePlaylist}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg glass hover:bg-primary/20 hover:text-primary transition-all"
+              >
+                <Youtube className="w-5 h-5" />
+                Watch project playlist
               </a>
             )}
           </div>

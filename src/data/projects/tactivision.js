@@ -8,6 +8,7 @@ export const tactiVisionProject = {
   tags: ["YOLO", "TensorRT", "Multi-Object Tracking", "Football Analytics"],
   link: "/projects/tactivision-football-analytics",
   github: null,
+  youtubePlaylist: "https://www.youtube.com/playlist?list=PLG19EQjOBrQQ",
   company: "Independent Product Project",
   period: "2025 — Present",
   location: "Morocco",

@@ -1,10 +1,15 @@
-import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/MehdiHCH", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/elmehdihicham", label: "LinkedIn" },
   { icon: Twitter, href: "https://x.com/Mehdi_Hch_____", label: "Twitter / X" },
+  {
+    icon: Youtube,
+    href: "https://www.youtube.com/@ElMehdi_Vision",
+    label: "YouTube",
+  },
 ];
 
 const footerLinks = [

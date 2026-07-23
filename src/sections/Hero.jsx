@@ -5,6 +5,7 @@ import {
   Github,
   Linkedin,
   Twitter,
+  Youtube,
   Download,
 } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
@@ -35,6 +36,13 @@ const skills = [
   "Git",
 ];
 
+const greenDots = Array.from({ length: 30 }, (_, index) => ({
+  left: `${(index * 37 + 11) % 100}%`,
+  top: `${(index * 53 + 7) % 100}%`,
+  duration: 15 + ((index * 7) % 20),
+  delay: (index * 3) % 5,
+}));
+
 export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -50,18 +58,16 @@ export const Hero = () => {
 
       {/* Green Dots */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {greenDots.map((dot, i) => (
           <div
             key={i}
             className="absolute w-1.5 h-1.5 rounded-full opacity-60"
             style={{
               backgroundColor: "#20B2A6",
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `slow-drift ${
-                15 + Math.random() * 20
-              }s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`,
+              left: dot.left,
+              top: dot.top,
+              animation: `slow-drift ${dot.duration}s ease-in-out infinite`,
+              animationDelay: `${dot.delay}s`,
             }}
           />
         ))}
@@ -132,16 +138,33 @@ export const Hero = () => {
             <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
               <span className="text-sm text-muted-foreground">Follow me: </span>
               {[
-                { icon: Github, href: "https://github.com/MehdiHCH" },
+                {
+                  icon: Github,
+                  href: "https://github.com/MehdiHCH",
+                  label: "GitHub",
+                },
                 {
                   icon: Linkedin,
                   href: "https://www.linkedin.com/in/elmehdihicham",
+                  label: "LinkedIn",
                 },
-                { icon: Twitter, href: "https://x.com/Mehdi_Hch_____" },
+                {
+                  icon: Twitter,
+                  href: "https://x.com/Mehdi_Hch_____",
+                  label: "Twitter / X",
+                },
+                {
+                  icon: Youtube,
+                  href: "https://www.youtube.com/@ElMehdi_Vision",
+                  label: "YouTube",
+                },
               ].map((social, idx) => (
                 <a
                   key={idx}
                   href={social.href}
+                  aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
                 >
                   {<social.icon className="w-5 h-5" />}
