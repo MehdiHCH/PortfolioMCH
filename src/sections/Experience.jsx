@@ -2,7 +2,12 @@ const experiences = [
   {
     period: "May 2026 — June 2026",
     role: "Computer Vision Engineer (Contract)",
-    company: "Priori Sports, Inc. — San Francisco, USA (Remote)",
+    organization: "Priori Sports, Inc.",
+    organizationDetails: "San Francisco, USA (Remote)",
+    organizationLogo: "assets/img/companies/priori-sports-logo.png",
+    organizationUrl:
+      "https://www.linkedin.com/company/priori-sports-performance/",
+    organizationColor: "text-sky-400 hover:text-sky-300",
     description:
       "Developed AI and computer vision solutions for football spatial tracking, including homography-based projection systems and tracking pipeline optimization. Built ball trajectory modeling and airborne ball localization using tracking data and spatial correction techniques, contributing to real-time sports analytics workflows and visualization tools.",
     technologies: ["Python", "PyTorch", "OpenCV", "Homography", "CUDA", "TensorRT", "Docker"],
@@ -11,7 +16,10 @@ const experiences = [
   {
     period: "2025 — Present",
     role: "Founder & Lead Engineer — TactiVision",
-    company: "Independent Product — Real-time Football Analytics Platform",
+    organization: "TactiVision",
+    organizationDetails:
+      "Independent Product — Real-time Football Analytics Platform",
+    organizationColor: "text-emerald-400",
     description:
       "Built and deployed an end-to-end CV pipeline running 7 TensorRT engines in parallel via CUDA streams on a single RTX 4060: player/GK/referee detection, ball detection, pitch keypoint homography, 17-point pose estimation, field segmentation, jersey OCR, and OSNet re-identification. Trained on 140,000+ annotated images across 7 competitions, reaching 93.9–98.2% precision and ~96% accuracy on unseen footage. Live match-centre dashboard generates possession, xThreat, pass networks, pitch control, and pressing intensity from a single broadcast feed — no stadium infrastructure required.",
     technologies: ["TensorRT", "ONNX", "CUDA Streams", "Ultralytics YOLO", "ByteTrack", "OSNet", "OpenCV", "PyTorch"],
@@ -20,7 +28,11 @@ const experiences = [
   {
     period: "April 2025 — October 2025",
     role: "R&D Intern — Applied AI & Computer Vision",
-    company: "SportScore — Football Analytics (Paris, France - Remote)",
+    organization: "SportScore",
+    organizationDetails: "Football Analytics · Paris, France (Remote)",
+    organizationLogo: "assets/img/companies/sportscore-logo.png",
+    organizationUrl: "https://www.linkedin.com/company/sport-score/",
+    organizationColor: "text-primary hover:text-primary/80",
     description:
       "Built an automatic frame classification module (YOLOv11m-cls) achieving 99.95% accuracy, and implemented complex action detection: pass classification, shots, dribbles, interceptions, goals. Optimized the vision pipeline end-to-end — 50% latency reduction via 5 parallel CUDA streams and TensorRT FP16 across 7 models, reaching 13 FPS (+117%). Delivered automated performance analytics and AI-powered microservices integrated into production, and mentored 4 interns.",
     technologies: ["Python", "PyTorch", "TensorFlow", "OpenCV", "CUDA", "TensorRT", "Docker", "FastAPI"],
@@ -29,7 +41,12 @@ const experiences = [
   {
     period: "October 2024 — January 2025",
     role: "Machine Learning Intern — Research & Experimental Evaluation",
-    company: "SETIME Lab, Ibn Tofail University (Kenitra, Morocco)",
+    organization: "SETIME Lab",
+    organizationDetails: "Ibn Tofail University · Kenitra, Morocco",
+    organizationLogo: "assets/img/companies/ibn-tofail-university-logo.png",
+    organizationUrl:
+      "https://www.linkedin.com/school/ibntofailuniversity-itu/",
+    organizationColor: "text-blue-400 hover:text-blue-300",
     description:
       "Designed reproducible ML pipelines on a 40GB dataset (2024 Futsal World Cup, 7 matches), conducting controlled experiments with benchmarking and ablation studies. Achieved 0.93 recall using RegNet-Y + Bi-GRU through hyperparameter tuning and architecture exploration.",
     technologies: ["Python", "PyTorch", "RegNet-Y", "ResNet-50", "Bi-GRU", "OpenCV", "NumPy", "Pandas"],
@@ -38,7 +55,12 @@ const experiences = [
   {
     period: "2023 — 2025",
     role: "Master's Degree in Artificial Intelligence",
-    company: "Ibn Tofail University (Kenitra, Morocco)",
+    organization: "Ibn Tofail University",
+    organizationDetails: "Kenitra, Morocco",
+    organizationLogo: "assets/img/companies/ibn-tofail-university-logo.png",
+    organizationUrl:
+      "https://www.linkedin.com/school/ibntofailuniversity-itu/",
+    organizationColor: "text-blue-400 hover:text-blue-300",
     description:
       "Specialized in Machine Learning, Deep Learning, Computer Vision, NLP, and Generative AI. Key projects: Autonomous Driving with ROS2 & TD3 deep reinforcement learning, hybrid CRNN OCR for handwritten Tifinagh, Diabetic Retinopathy Detection.",
     technologies: ["ML/DL", "Computer Vision", "NLP", "ROS2", "PyTorch"],
@@ -47,7 +69,12 @@ const experiences = [
   {
     period: "2020 — 2023",
     role: "Bachelor's Degree in Physics (Theoretical & Mathematical)",
-    company: "Ibn Tofail University (Kenitra, Morocco)",
+    organization: "Ibn Tofail University",
+    organizationDetails: "Kenitra, Morocco",
+    organizationLogo: "assets/img/companies/ibn-tofail-university-logo.png",
+    organizationUrl:
+      "https://www.linkedin.com/school/ibntofailuniversity-itu/",
+    organizationColor: "text-blue-400 hover:text-blue-300",
     description:
       "Strong mathematical foundations powering my AI work: linear algebra, geometry, statistical analysis, signal processing, and numerical methods.",
     technologies: ["Mathematics", "Linear Algebra", "Signal Processing", "Numerical Methods"],
@@ -127,7 +154,40 @@ export const Experience = () => {
                       {exp.period}
                     </span>
                     <h3 className="text-xl font-semibold mt-2">{exp.role}</h3>
-                    <p className="text-muted-foreground">{exp.company}</p>
+                    <div
+                      className={`mt-3 flex items-center gap-3 ${
+                        idx % 2 === 0 ? "md:justify-end" : ""
+                      }`}
+                    >
+                      {exp.organizationLogo && (
+                        <img
+                          src={`${import.meta.env.BASE_URL}${exp.organizationLogo}`}
+                          alt={`${exp.organization} logo`}
+                          className="h-16 w-16 shrink-0 object-contain"
+                        />
+                      )}
+                      <div className={idx % 2 === 0 ? "md:text-right" : ""}>
+                        {exp.organizationUrl ? (
+                          <a
+                            href={exp.organizationUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`text-xl font-bold leading-tight transition-colors ${exp.organizationColor}`}
+                          >
+                            {exp.organization}
+                          </a>
+                        ) : (
+                          <p
+                            className={`text-xl font-bold leading-tight ${exp.organizationColor}`}
+                          >
+                            {exp.organization}
+                          </p>
+                        )}
+                        <p className="mt-0.5 text-sm text-muted-foreground">
+                          {exp.organizationDetails}
+                        </p>
+                      </div>
+                    </div>
                     <p className="text-sm text-muted-foreground mt-4">
                       {exp.description}
                     </p>
