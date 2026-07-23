@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink, Github, Users } from "lucide-react";
 import { getProjectBySlug } from "@/data/projectsData";
 import { DemosSection } from "@/components/DemosSection";
 import { TactiVisionPipeline } from "@/components/TactiVisionPipeline";
+import { TactiVisionProjectStory } from "@/components/TactiVisionProjectStory";
 import { TactiVisionWorkflow } from "@/components/TactiVisionWorkflow";
 
 // Overview section: handles both old string format and new object format
@@ -91,6 +92,7 @@ export const ProjectDetail = () => {
   const project = getProjectBySlug(slug);
   const navigate = useNavigate();
   const location = useLocation();
+  const isTactiVision = project?.slug === "tactivision-football-analytics";
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -126,7 +128,7 @@ export const ProjectDetail = () => {
   }
 
   return (
-    <div className="min-h-screen overflow-hidden pt-32 pb-20">
+    <div className="min-h-screen overflow-x-clip pt-32 pb-20">
       <div className="container mx-auto px-6 relative z-10">
         {/* Back Button */}
         <button
@@ -223,8 +225,12 @@ export const ProjectDetail = () => {
           <TactiVisionWorkflow workflow={project.workflow} />
         )}
 
-        {/* Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        {isTactiVision ? (
+          <TactiVisionProjectStory project={project} />
+        ) : (
+          <>
+            {/* Content Grid */}
+            <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-12">
 
@@ -519,10 +525,12 @@ export const ProjectDetail = () => {
               </div>
             )}
           </div>
-        </div>
+            </div>
 
-        {/* Demos Section */}
-        <DemosSection demos={project.demos} projectTitle={project.title} />
+            {/* Demos Section */}
+            <DemosSection demos={project.demos} projectTitle={project.title} />
+          </>
+        )}
 
         {/* Related Projects */}
         <div className="border-t border-border/50 pt-12">
