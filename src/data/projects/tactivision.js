@@ -71,6 +71,9 @@ export const tactiVisionProject = {
           "Live top-down tactical projection",
           "Spatial context for event rules",
         ],
+        sourceUrl:
+          "https://www.linkedin.com/posts/elmehdihicham_footballai-computervision-artificialintelligence-activity-7469802427840573440-6jPY",
+        sourceLabel: "View the original Step 2 release",
       },
       {
         number: 3,
@@ -88,6 +91,9 @@ export const tactiVisionProject = {
           "Named player and jersey attribution",
           "Reusable JSON, CSV and visual exports",
         ],
+        sourceUrl:
+          "https://www.linkedin.com/feed/update/urn:li:activity:7480638061081673729/",
+        sourceLabel: "View the original Step 3 release",
         visualizations: [
           {
             title: "Morocco pass map",
