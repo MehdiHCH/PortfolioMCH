@@ -198,39 +198,51 @@ const StageCaption = ({ cx, title, subtitle, chip, chipColor = "#8ee8df", chipFi
   </g>
 );
 
-// Utilization lane for the perception stage: label + animated activity bar.
-const EngineLane = ({ y, label, values, dur, color = "#20b2a6", textColor = "#9de9e2" }) => (
+// Profiler lane for the perception stage: engine name, live activity bar, kernel time.
+const EngineLane = ({ y, label, values, dur, ms, color = "#20b2a6", textColor = "#9de9e2" }) => (
   <g>
-    <text x="246" y={y + 1} fill={textColor} fontSize="7.5" fontWeight="700" dominantBaseline="middle">
+    <text x="244" y={y + 1} fill={textColor} fontSize="7" fontWeight="700" dominantBaseline="middle">
       {label}
     </text>
-    <rect x="298" y={y - 4} width="74" height="8" rx="2" fill="#0a1418" stroke="#1f2e35" strokeWidth="0.5" />
-    <rect x="298" y={y - 4} height="8" rx="2" fill={color} opacity="0.85">
+    <rect x="292" y={y - 4} width="52" height="8" rx="2" fill="#0a1418" stroke="#1f2e35" strokeWidth="0.5" />
+    <rect x="292" y={y - 4} height="8" rx="2" fill={color} opacity="0.85">
       <animate attributeName="width" values={values} dur={dur} repeatCount="indefinite" />
     </rect>
+    <text
+      x="378"
+      y={y + 1}
+      fill="#7f909a"
+      fontSize="6.5"
+      fontWeight="600"
+      fontFamily="monospace"
+      textAnchor="end"
+      dominantBaseline="middle"
+    >
+      {ms}
+    </text>
   </g>
 );
 
 const EventRow = ({ y, tag, tagFill, tagColor, label, begin }) => (
   <g>
-    <rect x="822" y={y - 11} width="132" height="18" rx="3" fill="#111a20" stroke="#26363e" />
-    <rect x="827" y={y - 8} width="36" height="12" rx="2" fill={tagFill} />
-    <text x="845" y={y + 1} fill={tagColor} fontSize="7" fontWeight="700" textAnchor="middle" dominantBaseline="middle">
-      {tag}
-    </text>
-    <text x="869" y={y + 1} fill="#c7d2d8" fontSize="8" dominantBaseline="middle">
-      {label}
-    </text>
-    <animate attributeName="opacity" values="0.25;1;1;0.25" keyTimes="0;0.08;0.55;1" dur="6s" begin={begin} repeatCount="indefinite" />
-    <animateTransform
-      attributeName="transform"
-      type="translate"
-      values="-12 0;0 0;0 0;-12 0"
-      keyTimes="0;0.08;0.55;1"
-      dur="6s"
-      begin={begin}
-      repeatCount="indefinite"
-    />
+    {/* Row stays legible at all times; a left accent + sheen marks it as freshly emitted. */}
+    <g opacity="0.72">
+      <animate attributeName="opacity" values="0.72;1;1;0.72" keyTimes="0;0.08;0.5;1" dur="6s" begin={begin} repeatCount="indefinite" />
+      <rect x="822" y={y - 11} width="132" height="18" rx="3" fill="#141f26" stroke="#2c3f48" />
+      <rect x="827" y={y - 8} width="36" height="12" rx="2" fill={tagFill} />
+      <text x="845" y={y + 1} fill={tagColor} fontSize="7" fontWeight="700" textAnchor="middle" dominantBaseline="middle">
+        {tag}
+      </text>
+      <text x="869" y={y + 1} fill="#d6e0e5" fontSize="8" dominantBaseline="middle">
+        {label}
+      </text>
+    </g>
+    <rect x="822" y={y - 11} width="2.5" height="18" rx="1.25" fill={tagColor} opacity="0">
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.45;0.7" dur="6s" begin={begin} repeatCount="indefinite" />
+    </rect>
+    <rect x="822" y={y - 11} width="132" height="18" rx="3" fill="none" stroke={tagColor} strokeWidth="0.8" opacity="0">
+      <animate attributeName="opacity" values="0;0.9;0" keyTimes="0;0.05;0.22" dur="6s" begin={begin} repeatCount="indefinite" />
+    </rect>
   </g>
 );
 
@@ -304,7 +316,7 @@ export const TactiVisionPipeline = () => {
             <path id="runtime-4" d="M 888 337 L 888 356" />
 
             <clipPath id="ticker-clip">
-              <rect x="168" y="444" width="986" height="34" rx="8" />
+              <rect x="212" y="444" width="942" height="34" rx="8" />
             </clipPath>
           </defs>
 
@@ -366,16 +378,6 @@ export const TactiVisionPipeline = () => {
           {[120, 312, 504, 696, 888, 1080].map((x, index) => (
             <StageNumber key={x} x={x} number={stages[index].number} />
           ))}
-          <circle r="3.5" fill="#8ee8df" filter="url(#pipeline-glow)" className="pipeline-packet">
-            <animateMotion dur="7s" repeatCount="indefinite">
-              <mpath href="#stage-rail" />
-            </animateMotion>
-          </circle>
-          <circle r="2.5" fill="#f5a623" opacity="0.8" className="pipeline-packet">
-            <animateMotion dur="7s" begin="3.5s" repeatCount="indefinite">
-              <mpath href="#stage-rail" />
-            </animateMotion>
-          </circle>
 
           {/* 01 — VIDEO INGEST: screen with pitch scene + sweeping scanline */}
           <g className="pipeline-stage">
@@ -427,16 +429,17 @@ export const TactiVisionPipeline = () => {
           <g className="pipeline-stage pipeline-stage-delay-1">
             <rect x="230" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
             <rect x="230" y="122" width="164" height="4" rx="2" fill="#20b2a6" />
-            <EngineLane y="152" label="PLAYER" values="24;66;38;58;24" dur="2.3s" />
-            <EngineLane y="168" label="BALL" values="50;20;64;30;50" dur="2.7s" />
-            <EngineLane y="184" label="POSE" values="34;56;26;60;34" dur="2.1s" />
-            <EngineLane y="200" label="PITCH KP" values="60;40;68;36;60" dur="3.1s" />
-            <EngineLane y="216" label="GOAL NET" values="18;44;24;40;18" dur="2.9s" />
+            <EngineLane y="152" label="PLAYER" values="18;50;29;44;18" dur="2.3s" ms="8.4ms" />
+            <EngineLane y="168" label="BALL" values="38;15;49;23;38" dur="2.7s" ms="9.6ms" />
+            <EngineLane y="184" label="POSE" values="26;43;20;46;26" dur="2.1s" ms="5.2ms" />
+            <EngineLane y="200" label="PITCH KP" values="46;30;52;27;46" dur="3.1s" ms="11.2ms" />
+            <EngineLane y="216" label="GOAL NET" values="14;33;18;30;14" dur="2.9s" ms="4.1ms" />
             <EngineLane
               y="232"
               label="OCR"
-              values="6;6;66;6;6"
+              values="5;5;50;5;5"
               dur="3.2s"
+              ms="3.4ms"
               color="#f5a623"
               textColor="#ffc971"
             />
@@ -718,6 +721,7 @@ export const TactiVisionPipeline = () => {
             <rect x="38" y="444" width="1124" height="34" rx="8" fill="#101a1f" stroke="#26363e" />
             <rect x="38" y="444" width="5" height="34" rx="2" fill="#f5a623" />
             <text x="58" y="465" fill="#dce5e9" fontSize="10" fontWeight="700" letterSpacing="1">MATCH STATE BUS</text>
+            <path d="M 190 452 V 470" stroke="#2b3d45" strokeWidth="1" />
             <g clipPath="url(#ticker-clip)">
               <g>
                 <animateTransform
@@ -728,8 +732,8 @@ export const TactiVisionPipeline = () => {
                   dur="33s"
                   repeatCount="indefinite"
                 />
-                <text x="178" y="465" fill="#8ee8df" fontSize="10" letterSpacing="1">{TICKER_TEXT}</text>
-                <text x="1338" y="465" fill="#8ee8df" fontSize="10" letterSpacing="1">{TICKER_TEXT}</text>
+                <text x="222" y="465" fill="#8ee8df" fontSize="10" letterSpacing="1">{TICKER_TEXT}</text>
+                <text x="1382" y="465" fill="#8ee8df" fontSize="10" letterSpacing="1">{TICKER_TEXT}</text>
               </g>
             </g>
           </g>
