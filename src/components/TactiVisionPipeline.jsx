@@ -3,37 +3,69 @@ const stages = [
     number: "01",
     title: "Video Ingest",
     detail: "Full HD tactical-camera frames on the source clock",
+    metric: "59.94 FPS",
+    tone: "teal",
   },
   {
     number: "02",
     title: "Perception",
     detail: "6 TensorRT engines in parallel under one CUDA context",
+    metric: "FP16 TRT",
+    tone: "teal",
   },
   {
     number: "03",
     title: "Identity",
     detail: "Deep-EIoU tracking, ReID and jersey-OCR locking",
+    metric: "ID LOCKED",
+    tone: "blue",
   },
   {
     number: "04",
     title: "Projection",
     detail: "Keypoint homography onto the 105 × 68 m pitch",
+    metric: "METRIC XY",
+    tone: "blue",
   },
   {
     number: "05",
     title: "Intelligence",
     detail: "Temporal events — passes, shots, goals, PPDA",
+    metric: "LIVE EVENTS",
+    tone: "amber",
   },
   {
     number: "06",
     title: "Presentation",
     detail: "Live dashboard + AI match-report video",
+    metric: "1080P MP4",
+    tone: "amber",
   },
 ];
 
+const stageToneStyles = {
+  teal: {
+    border: "border-primary/35 hover:border-primary/65",
+    number: "border-primary/40 bg-primary/10 text-primary",
+    metric: "bg-primary/10 text-primary",
+  },
+  blue: {
+    border: "border-blue-400/30 hover:border-blue-400/60",
+    number: "border-blue-400/40 bg-blue-400/10 text-blue-300",
+    metric: "bg-blue-400/10 text-blue-300",
+  },
+  amber: {
+    border: "border-amber-400/30 hover:border-amber-400/60",
+    number: "border-amber-400/40 bg-amber-400/10 text-amber-300",
+    metric: "bg-amber-400/10 text-amber-300",
+  },
+};
+
 const StageNumber = ({ x, number }) => (
   <g>
-    <circle cx={x} cy="92" r="18" fill="#101a1f" stroke="#20b2a6" strokeWidth="1.5" />
+    <circle cx={x} cy="92" r="23" fill="none" stroke="#20b2a6" strokeWidth="0.8" opacity="0.22" />
+    <circle cx={x} cy="92" r="18" fill="#0c171b" stroke="#20b2a6" strokeWidth="1.5" />
+    <circle cx={x} cy="92" r="3" fill="#20b2a6" opacity="0.18" className="pipeline-node-pulse" />
     <text
       x={x}
       y="93"
@@ -44,6 +76,48 @@ const StageNumber = ({ x, number }) => (
       dominantBaseline="middle"
     >
       {number}
+    </text>
+  </g>
+);
+
+const HudPill = ({ x, label, value, color = "#20b2a6", width = 88 }) => (
+  <g>
+    <rect
+      x={x}
+      y="18"
+      width={width}
+      height="28"
+      rx="6"
+      fill="#101a1f"
+      stroke="#26363e"
+    />
+    <circle cx={x + 12} cy="32" r="3" fill={color} />
+    <text x={x + 20} y="29" fill="#71808a" fontSize="6.5" fontWeight="700" letterSpacing="0.7">
+      {label}
+    </text>
+    <text x={x + 20} y="39" fill="#e6eef1" fontSize="8.5" fontWeight="700">
+      {value}
+    </text>
+  </g>
+);
+
+const ConnectorLabel = ({ x, label, color = "#8ee8df" }) => (
+  <g>
+    <rect x={x - 25} y="174" width="50" height="13" rx="6.5" fill="#0b1115" stroke="#26363e" />
+    <text x={x} y="183" fill={color} fontSize="6.5" fontWeight="700" textAnchor="middle" letterSpacing="0.6">
+      {label}
+    </text>
+  </g>
+);
+
+const RuntimeMetric = ({ x, label, value, color = "#8ee8df" }) => (
+  <g>
+    <rect x={x} y="369" width="98" height="39" rx="6" fill="#0b1418" stroke="#26363e" />
+    <text x={x + 10} y="383" fill="#667781" fontSize="6.5" fontWeight="700" letterSpacing="0.7">
+      {label}
+    </text>
+    <text x={x + 10} y="398" fill={color} fontSize="11" fontWeight="700">
+      {value}
     </text>
   </g>
 );
@@ -104,7 +178,7 @@ const TICKER_TEXT =
 export const TactiVisionPipeline = () => {
   return (
     <div className="space-y-5">
-      <div className="pipeline-canvas overflow-hidden rounded-lg border border-border/70 bg-[#0b1115]">
+      <div className="pipeline-canvas overflow-hidden rounded-xl border border-primary/20 bg-[#0b1115] ring-1 ring-white/[0.03]">
         <svg
           viewBox="0 0 1200 500"
           className="block h-auto w-full"
@@ -120,13 +194,22 @@ export const TactiVisionPipeline = () => {
 
           <defs>
             <linearGradient id="pipeline-card" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#172229" />
-              <stop offset="1" stopColor="#10171c" />
+              <stop offset="0" stopColor="#19262d" />
+              <stop offset="0.55" stopColor="#121d22" />
+              <stop offset="1" stopColor="#0d1519" />
             </linearGradient>
             <linearGradient id="pipeline-accent" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0" stopColor="#20b2a6" />
               <stop offset="1" stopColor="#f5a623" />
             </linearGradient>
+            <radialGradient id="pipeline-teal-halo">
+              <stop offset="0" stopColor="#20b2a6" stopOpacity="0.13" />
+              <stop offset="1" stopColor="#20b2a6" stopOpacity="0" />
+            </radialGradient>
+            <radialGradient id="pipeline-amber-halo">
+              <stop offset="0" stopColor="#f5a623" stopOpacity="0.11" />
+              <stop offset="1" stopColor="#f5a623" stopOpacity="0" />
+            </radialGradient>
             <pattern id="pipeline-grid" width="28" height="28" patternUnits="userSpaceOnUse">
               <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#25323a" strokeWidth="0.6" />
             </pattern>
@@ -136,6 +219,9 @@ export const TactiVisionPipeline = () => {
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
+            </filter>
+            <filter id="pipeline-card-shadow" x="-20%" y="-20%" width="140%" height="150%">
+              <feDropShadow dx="0" dy="7" stdDeviation="8" floodColor="#000000" floodOpacity="0.45" />
             </filter>
             <marker id="pipeline-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="#20b2a6" />
@@ -156,12 +242,21 @@ export const TactiVisionPipeline = () => {
 
           <rect width="1200" height="500" fill="#0b1115" />
           <rect width="1200" height="500" fill="url(#pipeline-grid)" opacity="0.48" />
+          <ellipse cx="370" cy="210" rx="430" ry="255" fill="url(#pipeline-teal-halo)" />
+          <ellipse cx="1030" cy="230" rx="310" ry="230" fill="url(#pipeline-amber-halo)" />
+          <path d="M 42 63 H 1158" stroke="#26363e" strokeWidth="0.8" opacity="0.8" />
 
           {/* Header */}
-          <path d="M 42 48 L 210 48" stroke="url(#pipeline-accent)" strokeWidth="3" />
+          <path d="M 42 51 L 250 51" stroke="url(#pipeline-accent)" strokeWidth="3" />
           <text x="42" y="35" fill="#f0f2f5" fontSize="17" fontWeight="700" letterSpacing="2">
             FRAME-ACCURATE INFERENCE GRAPH
           </text>
+          <text x="42" y="48" fill="#657781" fontSize="7.5" fontWeight="600" letterSpacing="1">
+            ONE BROADCAST FEED · ONE SYNCHRONIZED MATCH STATE
+          </text>
+          <HudPill x={386} label="SOURCE CLOCK" value="59.94 FPS" />
+          <HudPill x={482} label="COMPUTE" value="TENSORRT FP16" color="#3178c6" width={104} />
+          <HudPill x={594} label="DEVICE" value="RTX 4060" color="#f5a623" />
           <g>
             <rect x="806" y="16" width="356" height="32" rx="16" fill="#101a1f" stroke="#26363e" />
             <circle cx="826" cy="32" r="4" fill="#e25567" />
@@ -179,7 +274,7 @@ export const TactiVisionPipeline = () => {
 
           {/* 01 — VIDEO INGEST: screen with pitch scene + sweeping scanline */}
           <g className="pipeline-stage">
-            <rect x="38" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" />
+            <rect x="38" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
             <rect x="38" y="122" width="164" height="4" rx="2" fill="#20b2a6" />
             <rect x="58" y="146" width="124" height="72" rx="4" fill="#0a0f12" stroke="#5d717d" />
             <path d="M 120 150 L 120 214 M 66 182 L 174 182" stroke="#1d3a2f" strokeWidth="1" />
@@ -199,7 +294,7 @@ export const TactiVisionPipeline = () => {
 
           {/* 02 — PERCEPTION: six engine lanes with live GPU activity */}
           <g className="pipeline-stage pipeline-stage-delay-1">
-            <rect x="230" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" />
+            <rect x="230" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
             <rect x="230" y="122" width="164" height="4" rx="2" fill="#20b2a6" />
             <EngineLane y="152" label="PLAYER" values="24;66;38;58;24" dur="2.3s" />
             <EngineLane y="168" label="BALL" values="50;20;64;30;50" dur="2.7s" />
@@ -219,7 +314,7 @@ export const TactiVisionPipeline = () => {
 
           {/* 03 — IDENTITY: tracked players with trails and a locked jersey ID */}
           <g className="pipeline-stage pipeline-stage-delay-2">
-            <rect x="422" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" />
+            <rect x="422" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
             <rect x="422" y="122" width="164" height="4" rx="2" fill="#20b2a6" />
             <path className="pipeline-flow" d="M 438 158 C 462 144, 494 156, 514 150" fill="none" stroke="#3178c6" strokeWidth="1.5" strokeDasharray="5 4" />
             <path className="pipeline-flow" d="M 438 202 C 468 190, 498 206, 532 197" fill="none" stroke="#3178c6" strokeWidth="1.5" strokeDasharray="5 4" />
@@ -237,7 +332,7 @@ export const TactiVisionPipeline = () => {
 
           {/* 04 — PROJECTION: camera view dropping onto the top-down metric pitch */}
           <g className="pipeline-stage pipeline-stage-delay-3">
-            <rect x="614" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" />
+            <rect x="614" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
             <rect x="614" y="122" width="164" height="4" rx="2" fill="#20b2a6" />
             <path d="M 640 146 L 752 146 L 736 184 L 656 184 Z" fill="#0f211c" stroke="#4b8d6d" />
             <circle cx="702" cy="163" r="4" fill="#3178c6" />
@@ -262,7 +357,7 @@ export const TactiVisionPipeline = () => {
 
           {/* 05 — INTELLIGENCE: live event feed from the real clip + xThreat spark */}
           <g className="pipeline-stage pipeline-stage-delay-4">
-            <rect x="806" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" />
+            <rect x="806" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
             <rect x="806" y="122" width="164" height="4" rx="2" fill="#f5a623" />
             <EventRow y="152" tag="PASS" tagFill="#17312f" tagColor="#8ee8df" label="Hakimi → Vitinha" begin="0s" />
             <EventRow y="174" tag="THRU" tagFill="#3a2920" tagColor="#ffc971" label="Vitinha → Neves" begin="2s" />
@@ -275,7 +370,7 @@ export const TactiVisionPipeline = () => {
 
           {/* 06 — PRESENTATION: mini AI match report with real KPI values */}
           <g className="pipeline-stage pipeline-stage-delay-5">
-            <rect x="998" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" />
+            <rect x="998" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
             <rect x="998" y="122" width="164" height="4" rx="2" fill="#f5a623" />
             <rect x="1014" y="146" width="132" height="96" rx="4" fill="#e9edef" />
             <rect x="1014" y="146" width="132" height="14" rx="4" fill="#f7f9fa" />
@@ -306,6 +401,16 @@ export const TactiVisionPipeline = () => {
 
           {/* Inter-stage flows */}
           {[
+            [216, "FRAME", "#8ee8df"],
+            [408, "DETECTIONS", "#8ee8df"],
+            [600, "TRACKS", "#8ee8df"],
+            [792, "METRIC XY", "#ffc971"],
+            [984, "EVENTS", "#ffc971"],
+          ].map(([x, label, color]) => (
+            <ConnectorLabel key={label} x={x} label={label} color={color} />
+          ))}
+
+          {[
             [202, 230],
             [394, 422],
             [586, 614],
@@ -331,19 +436,44 @@ export const TactiVisionPipeline = () => {
 
           {/* GPU orchestration layer */}
           <g>
-            <rect x="230" y="372" width="740" height="52" rx="8" fill="#101a1f" stroke="#26363e" />
-            <rect x="230" y="372" width="5" height="52" rx="2" fill="#20b2a6" />
-            <text x="255" y="393" fill="#dce5e9" fontSize="12" fontWeight="700" letterSpacing="1">GPU ORCHESTRATION LAYER</text>
-            <text x="255" y="410" fill="#71808a" fontSize="10">thread-pool × 4 TRT engines  /  pycuda keypoints on main thread  /  frame-similarity caching  /  one synchronized state</text>
-            <circle cx="940" cy="398" r="6" fill="#20b2a6" className="pipeline-node-pulse" />
-            <text x="925" y="402" fill="#8ee8df" fontSize="9" fontWeight="700" textAnchor="end">RUNNING</text>
+            <rect
+              x="38"
+              y="356"
+              width="1124"
+              height="68"
+              rx="9"
+              fill="#101a1f"
+              stroke="#2b3d45"
+              filter="url(#pipeline-card-shadow)"
+            />
+            <rect x="38" y="356" width="5" height="68" rx="2" fill="#20b2a6" />
+            <text x="60" y="378" fill="#dce5e9" fontSize="12" fontWeight="700" letterSpacing="1">
+              GPU ORCHESTRATION LAYER
+            </text>
+            <text x="60" y="396" fill="#71808a" fontSize="8.5">
+              shared CUDA context · parallel inference · similarity cache · synchronized frame state
+            </text>
+            <text x="60" y="411" fill="#4f626c" fontSize="7.5" fontWeight="600" letterSpacing="0.5">
+              ZERO-COPY HANDOFFS BETWEEN DETECTION, TRACKING AND ANALYTICS
+            </text>
+            <RuntimeMetric x={590} label="THROUGHPUT" value="13 FPS" />
+            <RuntimeMetric x={696} label="GPU MEMORY" value="5.8 GB" color="#70aef0" />
+            <RuntimeMetric x={802} label="ENGINES" value="6 × FP16" color="#ffc971" />
+            <rect x="916" y="369" width="222" height="39" rx="6" fill="#0b1418" stroke="#26363e" />
+            <circle cx="936" cy="388" r="6" fill="#20b2a6" className="pipeline-node-pulse" />
+            <text x="952" y="385" fill="#71808a" fontSize="6.5" fontWeight="700" letterSpacing="0.7">
+              PIPELINE STATE
+            </text>
+            <text x="952" y="398" fill="#8ee8df" fontSize="10" fontWeight="700">
+              RUNNING · SYNCED
+            </text>
           </g>
 
           {[312, 504, 696, 888].map((x, index) => (
             <path
               key={x}
               className="pipeline-runtime-flow"
-              d={`M ${x} 337 L ${x} 372`}
+              d={`M ${x} 337 L ${x} 356`}
               fill="none"
               stroke={index === 3 ? "#f5a623" : "#20b2a6"}
               strokeWidth="1.5"
@@ -375,15 +505,35 @@ export const TactiVisionPipeline = () => {
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {stages.map((stage) => (
-          <div key={stage.number} className="flex min-w-0 items-start gap-3 border-l-2 border-primary/50 py-1 pl-3">
-            <span className="font-mono text-xs font-bold text-primary">{stage.number}</span>
-            <div className="min-w-0">
-              <p className="text-sm font-semibold text-foreground">{stage.title}</p>
-              <p className="text-xs leading-relaxed text-muted-foreground">{stage.detail}</p>
+        {stages.map((stage) => {
+          const tone = stageToneStyles[stage.tone];
+
+          return (
+            <div
+              key={stage.number}
+              className={`group flex min-w-0 items-start gap-3 rounded-lg border bg-surface/20 p-3 transition-all duration-300 hover:-translate-y-0.5 hover:bg-surface/35 ${tone.border}`}
+            >
+              <span
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border font-mono text-[11px] font-bold ${tone.number}`}
+              >
+                {stage.number}
+              </span>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-sm font-semibold text-foreground">{stage.title}</p>
+                  <span
+                    className={`shrink-0 rounded px-1.5 py-0.5 font-mono text-[9px] font-bold tracking-wide ${tone.metric}`}
+                  >
+                    {stage.metric}
+                  </span>
+                </div>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  {stage.detail}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
