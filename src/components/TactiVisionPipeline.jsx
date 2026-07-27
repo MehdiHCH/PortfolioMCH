@@ -63,7 +63,16 @@ const stageToneStyles = {
 
 const StageNumber = ({ x, number }) => (
   <g>
-    <circle cx={x} cy="92" r="23" fill="none" stroke="#20b2a6" strokeWidth="0.8" opacity="0.22" />
+    <circle cx={x} cy="92" r="23" fill="none" stroke="#20b2a6" strokeWidth="0.8" opacity="0.22" strokeDasharray="5 7">
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from={`0 ${x} 92`}
+        to={`360 ${x} 92`}
+        dur="14s"
+        repeatCount="indefinite"
+      />
+    </circle>
     <circle cx={x} cy="92" r="18" fill="#0c171b" stroke="#20b2a6" strokeWidth="1.5" />
     <circle cx={x} cy="92" r="3" fill="#20b2a6" opacity="0.18" className="pipeline-node-pulse" />
     <text
@@ -122,9 +131,9 @@ const RuntimeMetric = ({ x, label, value, color = "#8ee8df" }) => (
   </g>
 );
 
-const FlowPacket = ({ path, begin = "0s", color = "#8ee8df" }) => (
-  <circle className="pipeline-packet" r="5" fill={color}>
-    <animateMotion dur="1.45s" begin={begin} repeatCount="indefinite">
+const FlowPacket = ({ path, begin = "0s", color = "#8ee8df", r = 5, dur = "1.45s", opacity = 1 }) => (
+  <circle className="pipeline-packet" r={r} fill={color} opacity={opacity}>
+    <animateMotion dur={dur} begin={begin} repeatCount="indefinite">
       <mpath href={`#${path}`} />
     </animateMotion>
   </circle>
@@ -234,6 +243,11 @@ export const TactiVisionPipeline = () => {
             <path id="flow-5" d="M 970 195 L 998 195" />
             <path id="projection-drop" d="M 700 168 C 706 186, 708 200, 702 222" />
             <path id="momentum-line" d="M 1024 226 L 1040 224 L 1056 212 L 1072 214 L 1090 208 L 1108 210 L 1136 204" />
+            <path id="xthreat-line" d="M 822 240 L 844 234 L 866 238 L 890 222 L 916 228 L 946 208" />
+            <path id="runtime-1" d="M 312 337 L 312 356" />
+            <path id="runtime-2" d="M 504 337 L 504 356" />
+            <path id="runtime-3" d="M 696 337 L 696 356" />
+            <path id="runtime-4" d="M 888 337 L 888 356" />
 
             <clipPath id="ticker-clip">
               <rect x="168" y="444" width="986" height="34" rx="8" />
@@ -248,6 +262,10 @@ export const TactiVisionPipeline = () => {
 
           {/* Header */}
           <path d="M 42 51 L 250 51" stroke="url(#pipeline-accent)" strokeWidth="3" />
+          <rect y="49.5" width="26" height="3" rx="1.5" fill="#ffffff" className="pipeline-packet">
+            <animate attributeName="x" values="42;224;42" dur="5.2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0;0.75;0;0;0.75;0" dur="5.2s" repeatCount="indefinite" />
+          </rect>
           <text x="42" y="35" fill="#f0f2f5" fontSize="17" fontWeight="700" letterSpacing="2">
             FRAME-ACCURATE INFERENCE GRAPH
           </text>
@@ -285,7 +303,10 @@ export const TactiVisionPipeline = () => {
               <animate attributeName="cx" values="96;140;118;96" dur="4.5s" repeatCount="indefinite" />
               <animate attributeName="cy" values="196;192;178;196" dur="4.5s" repeatCount="indefinite" />
             </circle>
-            <text x="176" y="157" fill="#e25567" fontSize="7.5" fontWeight="700" textAnchor="end">● 00:12</text>
+            <text x="176" y="157" fill="#e25567" fontSize="7.5" fontWeight="700" textAnchor="end">
+              ● 00:12
+              <animate attributeName="opacity" values="1;0.25;1" dur="1.6s" repeatCount="indefinite" />
+            </text>
             <rect x="58" y="146" width="124" height="2.5" fill="#20b2a6" opacity="0.8">
               <animate attributeName="y" values="146;215.5;146" dur="2.8s" repeatCount="indefinite" />
             </rect>
@@ -319,14 +340,26 @@ export const TactiVisionPipeline = () => {
             <path className="pipeline-flow" d="M 438 158 C 462 144, 494 156, 514 150" fill="none" stroke="#3178c6" strokeWidth="1.5" strokeDasharray="5 4" />
             <path className="pipeline-flow" d="M 438 202 C 468 190, 498 206, 532 197" fill="none" stroke="#3178c6" strokeWidth="1.5" strokeDasharray="5 4" />
             <path className="pipeline-flow" d="M 574 226 C 560 234, 546 238, 478 234" fill="none" stroke="#e25567" strokeWidth="1.5" strokeDasharray="5 4" />
-            <circle cx="520" cy="150" r="10" fill="#3178c6" stroke="#0b1115" strokeWidth="1.5" />
-            <text x="520" y="151" fill="#fff" fontSize="9" fontWeight="700" textAnchor="middle" dominantBaseline="middle">17</text>
-            <circle cx="538" cy="197" r="10" fill="#3178c6" stroke="#0b1115" strokeWidth="1.5" />
-            <text x="538" y="198" fill="#fff" fontSize="9" fontWeight="700" textAnchor="middle" dominantBaseline="middle">2</text>
-            <circle cx="470" cy="234" r="9" fill="#e25567" stroke="#0b1115" strokeWidth="1.5" />
-            <text x="470" y="235" fill="#fff" fontSize="8.5" fontWeight="700" textAnchor="middle" dominantBaseline="middle">11</text>
-            <rect x="466" y="160" width="96" height="16" rx="3" fill="#111a20" stroke="#4f616c" />
-            <text x="514" y="169" fill="#f5a623" fontSize="8" fontWeight="700" textAnchor="middle" dominantBaseline="middle">ID 17 · VITINHA ✓</text>
+            <g>
+              <animateTransform attributeName="transform" type="translate" values="0 0; 4 -3; 1 2; 0 0" dur="5s" repeatCount="indefinite" />
+              <circle cx="520" cy="150" r="10" fill="#3178c6" stroke="#0b1115" strokeWidth="1.5" />
+              <text x="520" y="151" fill="#fff" fontSize="9" fontWeight="700" textAnchor="middle" dominantBaseline="middle">17</text>
+            </g>
+            <g>
+              <animateTransform attributeName="transform" type="translate" values="0 0; -3 3; 2 -2; 0 0" dur="6.2s" repeatCount="indefinite" />
+              <circle cx="538" cy="197" r="10" fill="#3178c6" stroke="#0b1115" strokeWidth="1.5" />
+              <text x="538" y="198" fill="#fff" fontSize="9" fontWeight="700" textAnchor="middle" dominantBaseline="middle">2</text>
+            </g>
+            <g>
+              <animateTransform attributeName="transform" type="translate" values="0 0; 3 2; -2 -2; 0 0" dur="5.6s" repeatCount="indefinite" />
+              <circle cx="470" cy="234" r="9" fill="#e25567" stroke="#0b1115" strokeWidth="1.5" />
+              <text x="470" y="235" fill="#fff" fontSize="8.5" fontWeight="700" textAnchor="middle" dominantBaseline="middle">11</text>
+            </g>
+            <g>
+              <animate attributeName="opacity" values="0.75;1;0.75" dur="2.4s" repeatCount="indefinite" />
+              <rect x="466" y="160" width="96" height="16" rx="3" fill="#111a20" stroke="#4f616c" />
+              <text x="514" y="169" fill="#f5a623" fontSize="8" fontWeight="700" textAnchor="middle" dominantBaseline="middle">ID 17 · VITINHA ✓</text>
+            </g>
             <StageCaption cx="504" title="IDENTITY" subtitle="Deep-EIoU · ReID · OCR lock" chip="TEMPORAL CONTINUITY" />
           </g>
 
@@ -351,7 +384,10 @@ export const TactiVisionPipeline = () => {
             <circle cy="224" r="4" fill="#3178c6">
               <animate attributeName="cx" values="702;730;714;702" dur="5s" repeatCount="indefinite" />
             </circle>
-            <circle cx="668" cy="232" r="4" fill="#e25567" />
+            <circle r="4" fill="#e25567">
+              <animate attributeName="cx" values="668;650;660;668" dur="6.4s" repeatCount="indefinite" />
+              <animate attributeName="cy" values="232;236;226;232" dur="6.4s" repeatCount="indefinite" />
+            </circle>
             <StageCaption cx="696" title="PROJECTION" subtitle="Camera → metric pitch" chip="105 × 68 M GRID" />
           </g>
 
@@ -363,7 +399,21 @@ export const TactiVisionPipeline = () => {
             <EventRow y="174" tag="THRU" tagFill="#3a2920" tagColor="#ffc971" label="Vitinha → Neves" begin="2s" />
             <EventRow y="196" tag="INT" tagFill="#38181e" tagColor="#ff8fa0" label="Bayern #11" begin="4s" />
             <text x="822" y="219" fill="#7f909a" fontSize="7.5" fontWeight="700" letterSpacing="1">xTHREAT</text>
-            <path d="M 822 240 L 844 234 L 866 238 L 890 222 L 916 228 L 946 208" fill="none" stroke="#f5a623" strokeWidth="2" />
+            <path d="M 822 240 L 844 234 L 866 238 L 890 222 L 916 228 L 946 208" fill="none" stroke="#f5a623" strokeWidth="2" opacity="0.35" />
+            <path
+              d="M 822 240 L 844 234 L 866 238 L 890 222 L 916 228 L 946 208"
+              fill="none"
+              stroke="#f5a623"
+              strokeWidth="2"
+              strokeDasharray="140"
+            >
+              <animate attributeName="stroke-dashoffset" values="140;0;0" keyTimes="0;0.55;1" dur="4.5s" repeatCount="indefinite" />
+            </path>
+            <circle r="3.5" fill="#f5a623" filter="url(#pipeline-glow)" className="pipeline-packet">
+              <animateMotion dur="4.5s" keyPoints="0;1;1" keyTimes="0;0.55;1" calcMode="linear" repeatCount="indefinite">
+                <mpath href="#xthreat-line" />
+              </animateMotion>
+            </circle>
             <circle cx="946" cy="208" r="4" fill="#f5a623" className="pipeline-node-pulse" filter="url(#pipeline-glow)" />
             <StageCaption cx="888" title="INTELLIGENCE" subtitle="Temporal event engine" chip="15 PASSES · 6 TYPES" chipColor="#ffc971" chipFill="#3a2920" />
           </g>
@@ -395,6 +445,10 @@ export const TactiVisionPipeline = () => {
                 <mpath href="#momentum-line" />
               </animateMotion>
             </circle>
+            <rect x="1014" y="236" width="132" height="3" fill="#dfe6e9" />
+            <rect x="1014" y="236" height="3" fill="#1a7a4f">
+              <animate attributeName="width" values="0;132" dur="6s" repeatCount="indefinite" />
+            </rect>
             <circle cx="1140" cy="152" r="4" fill="#20b2a6" className="pipeline-node-pulse" />
             <StageCaption cx="1080" title="PRESENTATION" subtitle="Dashboard + AI report" chip="LIVE UI + FULL HD MP4" chipColor="#ffc971" chipFill="#3a2920" />
           </g>
@@ -433,6 +487,15 @@ export const TactiVisionPipeline = () => {
           <FlowPacket path="flow-3" begin="0.5s" />
           <FlowPacket path="flow-4" begin="0.75s" color="#f5a623" />
           <FlowPacket path="flow-5" begin="1s" color="#f5a623" />
+          <FlowPacket path="flow-1" begin="0.72s" r={2.5} opacity={0.55} />
+          <FlowPacket path="flow-2" begin="0.97s" r={2.5} opacity={0.55} />
+          <FlowPacket path="flow-3" begin="1.22s" r={2.5} opacity={0.55} />
+          <FlowPacket path="flow-4" begin="1.47s" r={2.5} color="#f5a623" opacity={0.55} />
+          <FlowPacket path="flow-5" begin="1.72s" r={2.5} color="#f5a623" opacity={0.55} />
+          <FlowPacket path="runtime-1" begin="0s" r={2.5} dur="1.1s" opacity={0.8} />
+          <FlowPacket path="runtime-2" begin="0.35s" r={2.5} dur="1.1s" opacity={0.8} />
+          <FlowPacket path="runtime-3" begin="0.7s" r={2.5} dur="1.1s" opacity={0.8} />
+          <FlowPacket path="runtime-4" begin="1.05s" r={2.5} dur="1.1s" color="#f5a623" opacity={0.8} />
 
           {/* GPU orchestration layer */}
           <g>
@@ -467,6 +530,26 @@ export const TactiVisionPipeline = () => {
             <text x="952" y="398" fill="#8ee8df" fontSize="10" fontWeight="700">
               RUNNING · SYNCED
             </text>
+            {[
+              [1082, "0.9s", "10;3;12;6;10"],
+              [1090, "1.2s", "5;13;4;11;5"],
+              [1098, "1.05s", "12;6;9;3;12"],
+              [1106, "1.35s", "7;12;5;10;7"],
+              [1114, "0.95s", "11;4;13;7;11"],
+            ].map(([x, dur, heights]) => (
+              <rect key={x} x={x} width="4" rx="1" fill="#20b2a6" opacity="0.85">
+                <animate attributeName="height" values={heights} dur={dur} repeatCount="indefinite" />
+                <animate
+                  attributeName="y"
+                  values={heights
+                    .split(";")
+                    .map((h) => 401 - Number(h))
+                    .join(";")}
+                  dur={dur}
+                  repeatCount="indefinite"
+                />
+              </rect>
+            ))}
           </g>
 
           {[312, 504, 696, 888].map((x, index) => (
