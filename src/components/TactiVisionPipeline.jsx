@@ -110,14 +110,58 @@ const HudPill = ({ x, label, value, color = "#20b2a6", width = 88 }) => (
   </g>
 );
 
-const ConnectorLabel = ({ x, label, color = "#8ee8df" }) => (
+const ConnectorLabel = ({ x, label, color = "#8ee8df", begin = "0s" }) => (
   <g>
     <rect x={x - 25} y="174" width="50" height="13" rx="6.5" fill="#0b1115" stroke="#26363e" />
+    <rect x={x - 25} y="174" width="50" height="13" rx="6.5" fill="none" stroke={color} strokeWidth="0.9" opacity="0">
+      <animate
+        attributeName="opacity"
+        values="0;0.85;0"
+        keyTimes="0;0.35;0.75"
+        dur="1.45s"
+        begin={begin}
+        repeatCount="indefinite"
+      />
+    </rect>
     <text x={x} y="183" fill={color} fontSize="6.5" fontWeight="700" textAnchor="middle" letterSpacing="0.6">
       {label}
     </text>
   </g>
 );
+
+// Sequential "active stage" highlight that walks the six cards in one loop.
+const STAGE_CYCLE = 7.2;
+
+const StageSpotlight = ({ x, index, color }) => {
+  const center = (index * 1.2 + 0.7) / STAGE_CYCLE;
+  const t1 = Math.max(0, center - 0.075);
+  const t3 = Math.min(1, center + 0.075);
+  const keyTimes = [0, t1, center, t3, 1].map((value) => value.toFixed(4)).join(";");
+
+  return (
+    <g opacity="0">
+      <animate
+        attributeName="opacity"
+        values="0;0;1;0;0"
+        keyTimes={keyTimes}
+        dur={`${STAGE_CYCLE}s`}
+        repeatCount="indefinite"
+      />
+      <rect
+        x={x - 5}
+        y="117"
+        width="174"
+        height="225"
+        rx="11"
+        fill="none"
+        stroke={color}
+        strokeWidth="1.4"
+        opacity="0.65"
+      />
+      <rect x={x} y="122" width="164" height="4" rx="2" fill={color} filter="url(#pipeline-glow)" />
+    </g>
+  );
+};
 
 const RuntimeMetric = ({ x, label, value, color = "#8ee8df" }) => (
   <g>
@@ -178,6 +222,15 @@ const EventRow = ({ y, tag, tagFill, tagColor, label, begin }) => (
       {label}
     </text>
     <animate attributeName="opacity" values="0.25;1;1;0.25" keyTimes="0;0.08;0.55;1" dur="6s" begin={begin} repeatCount="indefinite" />
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="-12 0;0 0;0 0;-12 0"
+      keyTimes="0;0.08;0.55;1"
+      dur="6s"
+      begin={begin}
+      repeatCount="indefinite"
+    />
   </g>
 );
 
@@ -244,6 +297,7 @@ export const TactiVisionPipeline = () => {
             <path id="projection-drop" d="M 700 168 C 706 186, 708 200, 702 222" />
             <path id="momentum-line" d="M 1024 226 L 1040 224 L 1056 212 L 1072 214 L 1090 208 L 1108 210 L 1136 204" />
             <path id="xthreat-line" d="M 822 240 L 844 234 L 866 238 L 890 222 L 916 228 L 946 208" />
+            <path id="stage-rail" d="M 138 92 H 1062" />
             <path id="runtime-1" d="M 312 337 L 312 356" />
             <path id="runtime-2" d="M 504 337 L 504 356" />
             <path id="runtime-3" d="M 696 337 L 696 356" />
@@ -258,6 +312,28 @@ export const TactiVisionPipeline = () => {
           <rect width="1200" height="500" fill="url(#pipeline-grid)" opacity="0.48" />
           <ellipse cx="370" cy="210" rx="430" ry="255" fill="url(#pipeline-teal-halo)" />
           <ellipse cx="1030" cy="230" rx="310" ry="230" fill="url(#pipeline-amber-halo)" />
+          {[
+            [95, 78, "#20b2a6", "22s", "0s", "16 -12"],
+            [340, 108, "#8ee8df", "27s", "3s", "-12 10"],
+            [630, 80, "#20b2a6", "24s", "6s", "10 14"],
+            [905, 104, "#f5a623", "29s", "1.5s", "-14 -8"],
+            [1120, 84, "#20b2a6", "25s", "4.5s", "12 -10"],
+            [210, 430, "#8ee8df", "26s", "2s", "14 8"],
+            [560, 436, "#f5a623", "23s", "5s", "-10 -12"],
+            [1010, 430, "#20b2a6", "28s", "0.8s", "12 10"],
+          ].map(([cx, cy, color, dur, begin, drift]) => (
+            <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.4" fill={color} opacity="0.35">
+              <animateTransform
+                attributeName="transform"
+                type="translate"
+                values={`0 0; ${drift}; 0 0`}
+                dur={dur}
+                begin={begin}
+                repeatCount="indefinite"
+              />
+              <animate attributeName="opacity" values="0.1;0.45;0.1" dur="6s" begin={begin} repeatCount="indefinite" />
+            </circle>
+          ))}
           <path d="M 42 63 H 1158" stroke="#26363e" strokeWidth="0.8" opacity="0.8" />
 
           {/* Header */}
@@ -272,9 +348,9 @@ export const TactiVisionPipeline = () => {
           <text x="42" y="48" fill="#657781" fontSize="7.5" fontWeight="600" letterSpacing="1">
             ONE BROADCAST FEED · ONE SYNCHRONIZED MATCH STATE
           </text>
-          <HudPill x={386} label="SOURCE CLOCK" value="59.94 FPS" />
-          <HudPill x={482} label="COMPUTE" value="TENSORRT FP16" color="#3178c6" width={104} />
-          <HudPill x={594} label="DEVICE" value="RTX 4060" color="#f5a623" />
+          <HudPill x={430} label="SOURCE CLOCK" value="59.94 FPS" />
+          <HudPill x={526} label="COMPUTE" value="TENSORRT FP16" color="#3178c6" width={104} />
+          <HudPill x={638} label="DEVICE" value="RTX 4060" color="#f5a623" />
           <g>
             <rect x="806" y="16" width="356" height="32" rx="16" fill="#101a1f" stroke="#26363e" />
             <circle cx="826" cy="32" r="4" fill="#e25567" />
@@ -286,9 +362,20 @@ export const TactiVisionPipeline = () => {
             <text x="1136" y="36" fill="#ffc971" fontSize="8.5" fontWeight="700">LIVE</text>
           </g>
 
+          <path d="M 138 92 H 1062" stroke="#20404a" strokeWidth="1" strokeDasharray="2 6" opacity="0.65" />
           {[120, 312, 504, 696, 888, 1080].map((x, index) => (
             <StageNumber key={x} x={x} number={stages[index].number} />
           ))}
+          <circle r="3.5" fill="#8ee8df" filter="url(#pipeline-glow)" className="pipeline-packet">
+            <animateMotion dur="7s" repeatCount="indefinite">
+              <mpath href="#stage-rail" />
+            </animateMotion>
+          </circle>
+          <circle r="2.5" fill="#f5a623" opacity="0.8" className="pipeline-packet">
+            <animateMotion dur="7s" begin="3.5s" repeatCount="indefinite">
+              <mpath href="#stage-rail" />
+            </animateMotion>
+          </circle>
 
           {/* 01 — VIDEO INGEST: screen with pitch scene + sweeping scanline */}
           <g className="pipeline-stage">
@@ -299,6 +386,16 @@ export const TactiVisionPipeline = () => {
             <circle cx="120" cy="182" r="10" fill="none" stroke="#1d3a2f" strokeWidth="1" />
             <rect x="80" y="168" width="9" height="15" rx="1.5" fill="#e25567" />
             <rect x="134" y="184" width="9" height="15" rx="1.5" fill="#3178c6" />
+            <g stroke="#e25567" fill="none" strokeWidth="0.7">
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.82;1" dur="3.4s" repeatCount="indefinite" />
+              <rect x="77" y="165" width="15" height="21" strokeDasharray="3 2" />
+              <path d="M 77 165 h 4 M 77 165 v 4 M 92 186 h -4 M 92 186 v -4" strokeWidth="1.1" strokeDasharray="none" />
+            </g>
+            <g stroke="#3178c6" fill="none" strokeWidth="0.7">
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.82;1" dur="3.4s" begin="1.3s" repeatCount="indefinite" />
+              <rect x="131" y="181" width="15" height="21" strokeDasharray="3 2" />
+              <path d="M 131 181 h 4 M 131 181 v 4 M 146 202 h -4 M 146 202 v -4" strokeWidth="1.1" strokeDasharray="none" />
+            </g>
             <circle r="3" fill="#f5a623" filter="url(#pipeline-glow)">
               <animate attributeName="cx" values="96;140;118;96" dur="4.5s" repeatCount="indefinite" />
               <animate attributeName="cy" values="196;192;178;196" dur="4.5s" repeatCount="indefinite" />
@@ -310,6 +407,19 @@ export const TactiVisionPipeline = () => {
             <rect x="58" y="146" width="124" height="2.5" fill="#20b2a6" opacity="0.8">
               <animate attributeName="y" values="146;215.5;146" dur="2.8s" repeatCount="indefinite" />
             </rect>
+            {["F·137", "F·138", "F·139"].map((frame, index) => (
+              <text key={frame} x="64" y="212" fill="#8ee8df" fontSize="7" fontWeight="700" fontFamily="monospace">
+                {frame}
+                <animate
+                  attributeName="opacity"
+                  values={index === 0 ? "1;0;0" : index === 1 ? "0;1;0" : "0;0;1"}
+                  keyTimes="0;0.333;0.667"
+                  calcMode="discrete"
+                  dur="2.1s"
+                  repeatCount="indefinite"
+                />
+              </text>
+            ))}
             <StageCaption cx="120" title="VIDEO INGEST" subtitle="Tactical camera frames" chip="FULL HD · SOURCE CLOCK" />
           </g>
 
@@ -337,6 +447,23 @@ export const TactiVisionPipeline = () => {
           <g className="pipeline-stage pipeline-stage-delay-2">
             <rect x="422" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
             <rect x="422" y="122" width="164" height="4" rx="2" fill="#20b2a6" />
+            <g>
+              <circle cx="504" cy="192" r="54" fill="none" stroke="#20b2a6" strokeWidth="0.8" opacity="0.14" />
+              <circle cx="504" cy="192" r="34" fill="none" stroke="#20b2a6" strokeWidth="0.6" opacity="0.1" />
+              <g>
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 504 192"
+                  to="360 504 192"
+                  dur="4.5s"
+                  repeatCount="indefinite"
+                />
+                <line x1="504" y1="192" x2="556" y2="192" stroke="#20b2a6" strokeWidth="1.5" opacity="0.4" />
+                <line x1="504" y1="192" x2="551" y2="177" stroke="#20b2a6" strokeWidth="1" opacity="0.2" />
+                <line x1="504" y1="192" x2="547" y2="164" stroke="#20b2a6" strokeWidth="0.8" opacity="0.09" />
+              </g>
+            </g>
             <path className="pipeline-flow" d="M 438 158 C 462 144, 494 156, 514 150" fill="none" stroke="#3178c6" strokeWidth="1.5" strokeDasharray="5 4" />
             <path className="pipeline-flow" d="M 438 202 C 468 190, 498 206, 532 197" fill="none" stroke="#3178c6" strokeWidth="1.5" strokeDasharray="5 4" />
             <path className="pipeline-flow" d="M 574 226 C 560 234, 546 238, 478 234" fill="none" stroke="#e25567" strokeWidth="1.5" strokeDasharray="5 4" />
@@ -381,6 +508,14 @@ export const TactiVisionPipeline = () => {
             <circle cx="696" cy="227" r="7" fill="none" stroke="#2f5d43" strokeWidth="1" />
             <rect x="634" y="216" width="12" height="22" fill="none" stroke="#2f5d43" strokeWidth="1" />
             <rect x="746" y="216" width="12" height="22" fill="none" stroke="#2f5d43" strokeWidth="1" />
+            <circle cx="716" cy="224" r="3" fill="none" stroke="#3178c6" strokeWidth="1">
+              <animate attributeName="r" values="3;12" dur="2.2s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0.55;0" dur="2.2s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="660" cy="231" r="3" fill="none" stroke="#e25567" strokeWidth="1">
+              <animate attributeName="r" values="3;11" dur="2.6s" begin="0.9s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0.5;0" dur="2.6s" begin="0.9s" repeatCount="indefinite" />
+            </circle>
             <circle cy="224" r="4" fill="#3178c6">
               <animate attributeName="cx" values="702;730;714;702" dur="5s" repeatCount="indefinite" />
             </circle>
@@ -449,19 +584,33 @@ export const TactiVisionPipeline = () => {
             <rect x="1014" y="236" height="3" fill="#1a7a4f">
               <animate attributeName="width" values="0;132" dur="6s" repeatCount="indefinite" />
             </rect>
+            <rect y="235" width="3" height="5" rx="1" fill="#1a7a4f">
+              <animate attributeName="x" values="1013;1145" dur="6s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="1;1;0.4;1" dur="0.8s" repeatCount="indefinite" />
+            </rect>
             <circle cx="1140" cy="152" r="4" fill="#20b2a6" className="pipeline-node-pulse" />
             <StageCaption cx="1080" title="PRESENTATION" subtitle="Dashboard + AI report" chip="LIVE UI + FULL HD MP4" chipColor="#ffc971" chipFill="#3a2920" />
           </g>
 
+          {/* Sequential stage activation */}
+          {[38, 230, 422, 614, 806, 998].map((x, index) => (
+            <StageSpotlight
+              key={`spot-${x}`}
+              x={x}
+              index={index}
+              color={index >= 4 ? "#f5a623" : "#20b2a6"}
+            />
+          ))}
+
           {/* Inter-stage flows */}
           {[
-            [216, "FRAME", "#8ee8df"],
-            [408, "DETECTIONS", "#8ee8df"],
-            [600, "TRACKS", "#8ee8df"],
-            [792, "METRIC XY", "#ffc971"],
-            [984, "EVENTS", "#ffc971"],
-          ].map(([x, label, color]) => (
-            <ConnectorLabel key={label} x={x} label={label} color={color} />
+            [216, "FRAME", "#8ee8df", "0s"],
+            [408, "DETECTIONS", "#8ee8df", "0.25s"],
+            [600, "TRACKS", "#8ee8df", "0.5s"],
+            [792, "METRIC XY", "#ffc971", "0.75s"],
+            [984, "EVENTS", "#ffc971", "1s"],
+          ].map(([x, label, color, begin]) => (
+            <ConnectorLabel key={label} x={x} label={label} color={color} begin={begin} />
           ))}
 
           {[
