@@ -15,6 +15,9 @@ export const tactiVisionProject = {
   role: "Founder & Lead Engineer",
   overview: {
     architectureImage: "assets/img/projects/architecture/tactivision_architecture.svg",
+    architectureDesign: true,
+    architectureDescription:
+      "Five layers take every broadcast frame from raw pixels to delivered analytics: one video feed enters a shared-CUDA-context perception layer running six TensorRT engines in parallel, their outputs are fused into identity, metric space, and events, and a single synchronized match state powers every surface the platform ships.",
     animatedPipeline: {
       title: "How TactiVision Works",
       description:

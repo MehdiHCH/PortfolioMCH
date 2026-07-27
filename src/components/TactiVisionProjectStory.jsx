@@ -13,6 +13,7 @@ import {
   Users,
   Workflow,
 } from "lucide-react";
+import { TactiVisionArchitecture } from "@/components/TactiVisionArchitecture";
 import { TactiVisionPipeline } from "@/components/TactiVisionPipeline";
 
 const assetUrl = (path) => `${import.meta.env.BASE_URL}${path}`;
@@ -260,6 +261,22 @@ export const TactiVisionProjectStory = ({ project }) => {
         {overview.animatedPipeline && (
           <div className="mt-8">
             <TactiVisionPipeline />
+          </div>
+        )}
+
+        {overview.architectureDesign && (
+          <div className="mt-12">
+            <div className="mb-6 grid gap-3 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-12">
+              <p className="pt-1 text-xs font-bold uppercase tracking-[0.22em] text-primary">
+                Production layers
+              </p>
+              {overview.architectureDescription && (
+                <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                  {overview.architectureDescription}
+                </p>
+              )}
+            </div>
+            <TactiVisionArchitecture />
           </div>
         )}
 
