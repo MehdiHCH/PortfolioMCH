@@ -7,7 +7,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { Button } from "@/components/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 const CONTACT_EMAIL = "mehdihicham736@gmail.com";
@@ -45,6 +45,24 @@ export const Contact = () => {
     type: null,
     message: "",
   });
+
+  useEffect(() => {
+    const handleServiceSelection = (event) => {
+      const message = event.detail?.message;
+
+      if (message) {
+        setFormData((current) => ({ ...current, message }));
+      }
+    };
+
+    window.addEventListener("portfolio:select-service", handleServiceSelection);
+
+    return () =>
+      window.removeEventListener(
+        "portfolio:select-service",
+        handleServiceSelection
+      );
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { Navbar } from "@/layout/Navbar";
 import { Hero } from "@/sections/Hero";
 import { About } from "@/sections/About";
+import { Services } from "@/sections/Services";
 import { Projects } from "@/sections/Projects";
 import { Experience } from "@/sections/Experience";
 import { Testimonials } from "@/sections/Testimonials";
@@ -17,6 +18,7 @@ function HomePage() {
     <main>
       <Hero />
       <About />
+      <Services />
       <Projects />
       <Experience />
       <Testimonials />

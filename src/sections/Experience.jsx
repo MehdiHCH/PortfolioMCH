@@ -20,7 +20,10 @@ const experiences = [
     organization: "TactiVision",
     organizationDetails:
       "Independent Product — Real-time Football Analytics Platform",
+    organizationLogo: "assets/img/companies/tactivision-logo.png",
     organizationColor: "text-emerald-400",
+    organizationLogoClass: "border-lime-400/50",
+    organizationLogoSizeClass: "h-16 w-28 sm:w-36",
     description:
       "Built and deployed an end-to-end CV pipeline running 7 TensorRT engines in parallel via CUDA streams on a single RTX 4060: player/GK/referee detection, ball detection, pitch keypoint homography, 17-point pose estimation, field segmentation, jersey OCR, and OSNet re-identification. Trained on 140,000+ annotated images across 7 competitions, reaching 93.9–98.2% precision and ~96% accuracy on unseen footage. Live match-centre dashboard generates possession, xThreat, pass networks, pitch control, and pressing intensity from a single broadcast feed — no stadium infrastructure required.",
     technologies: ["TensorRT", "ONNX", "CUDA Streams", "Ultralytics YOLO", "ByteTrack", "OSNet", "OpenCV", "PyTorch"],
@@ -168,7 +171,9 @@ export const Experience = () => {
                         <img
                           src={`${import.meta.env.BASE_URL}${exp.organizationLogo}`}
                           alt={`${exp.organization} logo`}
-                          className={`h-16 w-16 shrink-0 rounded-lg border bg-black/30 object-contain p-1 ${exp.organizationLogoClass}`}
+                          className={`${
+                            exp.organizationLogoSizeClass || "h-16 w-16"
+                          } shrink-0 rounded-lg border bg-black/30 object-contain p-1 ${exp.organizationLogoClass}`}
                         />
                       )}
                       <div className={idx % 2 === 0 ? "md:text-right" : ""}>

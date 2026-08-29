@@ -151,14 +151,25 @@ const ModuleExplorer = ({ modules }) => {
 };
 
 const VisualEvidence = ({ visualizations }) => (
-  <div className="mt-8 grid gap-5 lg:grid-cols-2">
+  <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-6">
     {visualizations.map((item) => (
-      <figure key={item.image} className="overflow-hidden rounded-lg border border-border/70 bg-surface/20">
+      <figure
+        key={item.image}
+        className={`overflow-hidden rounded-lg border border-border/70 bg-surface/20 ${
+          item.layout === "portrait"
+            ? "xl:col-span-2"
+            : "md:col-span-2 xl:col-span-3"
+        }`}
+      >
         <img
           src={assetUrl(item.image)}
           alt={item.title}
           loading="lazy"
-          className="aspect-video w-full bg-white object-contain"
+          className={`w-full object-contain ${
+            item.layout === "portrait"
+              ? "aspect-[210/297] bg-white"
+              : "h-auto bg-[#040806]"
+          }`}
         />
         <figcaption className="border-t border-border/60 p-5">
           <p className="text-base font-bold text-foreground">{item.title}</p>

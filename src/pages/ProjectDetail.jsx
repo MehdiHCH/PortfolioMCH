@@ -371,7 +371,13 @@ export const ProjectDetail = () => {
             {project.visualizations && project.visualizations.length > 0 && (
               <section className="space-y-4">
                 <h2 className="text-3xl font-bold mb-4">Visualizations</h2>
-                <div className="grid gap-6">
+                <div
+                  className={`grid gap-6 ${
+                    project.visualizationsLayout === "grid"
+                      ? "md:grid-cols-2"
+                      : ""
+                  }`}
+                >
                   {project.visualizations.map((viz, idx) => (
                     <div
                       key={idx}
@@ -380,10 +386,16 @@ export const ProjectDetail = () => {
                       <img
                         src={`${import.meta.env.BASE_URL}${viz.image}`}
                         alt={viz.title}
-                        className="w-full h-auto"
+                        loading="lazy"
+                        className="w-full h-auto bg-black object-contain"
                       />
-                      {(viz.title || viz.description) && (
+                      {(viz.match || viz.title || viz.description) && (
                         <div className="p-4 space-y-1">
+                          {viz.match && (
+                            <p className="text-xs font-bold uppercase tracking-wider text-primary">
+                              {viz.match}
+                            </p>
+                          )}
                           {viz.title && (
                             <h3 className="text-lg font-semibold">
                               {viz.title}

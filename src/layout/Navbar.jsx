@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const navLinks = [
   { href: "#about", label: "About" },
+  { href: "#services", label: "Services" },
   { href: "#projects", label: "Projects" },
   { href: "/demos", label: "Demos" },
   { href: "#experience", label: "Experience" },
@@ -70,7 +71,7 @@ export const Navbar = () => {
         </Link>
 
         {/* Center - Nav Links + Theme Toggle */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-1">
           <div className="glass rounded-full px-2 py-1 flex items-center gap-1">
             {navLinks.map((link, index) => (
               <button
@@ -95,7 +96,7 @@ export const Navbar = () => {
         </div>
 
         {/* Right - CTA Button */}
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Button 
             size="sm"
             onClick={() => {
@@ -121,7 +122,7 @@ export const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-foreground cursor-pointer ml-auto"
+          className="lg:hidden p-2 text-foreground cursor-pointer ml-auto"
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -130,7 +131,7 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden glass-strong animate-fade-in">
+        <div className="lg:hidden glass-strong animate-fade-in">
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
             {navLinks.map((link, index) => (
               <button
