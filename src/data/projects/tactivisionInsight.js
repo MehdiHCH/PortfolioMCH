@@ -226,7 +226,7 @@ export const tactiVisionInsightProject = {
     {
       id: 1,
       title: "TactiVision Insight Broadcast Intelligence",
-      video: "assets/videos/tactivision-insight-demo.mp4",
+      video: "assets/videos/tactivision-insight-demo.mp4?v=20260829",
       description:
         "An end-to-end output combining tracked team structure, passing relationships, tactical overlays, and decision-ready football intelligence.",
       category: "Explainable Sports AI",
