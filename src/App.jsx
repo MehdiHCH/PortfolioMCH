@@ -12,6 +12,7 @@ import { Footer } from "./layout/Footer";
 import { ProjectDetail } from "@/pages/ProjectDetail";
 import { Demos } from "@/pages/Demos";
 import { FutsalAnalysisDemos } from "@/pages/FutsalAnalysisDemos";
+import ConstellationGrid from "@/components/ui/constellation-grid";
 
 function HomePage() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/projects/:slug" element={<ProjectDetail />} />
             <Route path="/demos" element={<Demos />} />
+            <Route path="/constellation" element={<ConstellationGrid />} />
             <Route
               path="/projects/1-futsal-analysis-sportscore/demos"
               element={<FutsalAnalysisDemos />}
