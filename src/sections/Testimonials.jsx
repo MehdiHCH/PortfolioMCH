@@ -121,6 +121,7 @@ export const Testimonials = () => {
               <button
                 className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
                 onClick={previous}
+                aria-label="Show previous testimonial"
               >
                 <ChevronLeft />
               </button>
@@ -128,7 +129,10 @@ export const Testimonials = () => {
               <div className="flex gap-2">
                 {testimonials.map((_, idx) => (
                   <button
+                    key={testimonials[idx].author}
                     onClick={() => setActiveIdx(idx)}
+                    aria-label={`Show testimonial ${idx + 1}`}
+                    aria-pressed={idx === activeIdx}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       idx === activeIdx
                         ? "w-8 bg-primary"
@@ -140,6 +144,7 @@ export const Testimonials = () => {
 
               <button
                 onClick={next}
+                aria-label="Show next testimonial"
                 className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
               >
                 <ChevronRight />

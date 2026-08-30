@@ -5,6 +5,7 @@ export const tactiVisionProject = {
   description:
     "An end-to-end GPU computer-vision platform that turns single-camera football video into tracked players, a metric pitch projection, 60+ validated tactical KPIs, and a broadcast-style live analytics dashboard — all running on a single consumer GPU.",
   image: "assets/img/projects/tactivision-cover.webp",
+  cardVideo: "assets/videos/tactivision-card-preview.mp4",
   tags: ["YOLO", "TensorRT", "Multi-Object Tracking", "Football Analytics"],
   link: "/projects/tactivision-football-analytics",
   github: null,

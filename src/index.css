@@ -1,30 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  /* Violet / indigo. Neutrals carry a slight violet bias so the ground reads
-     as chosen rather than generic grey. */
-  --color-background: #08080f;
-  --color-foreground: #eef0f6;
+  /* Signal red on charcoal/burgundy, adapted from the selected portfolio
+     direction. The neutrals stay warm so the red feels intentional. */
+  --color-background: #08090b;
+  --color-foreground: #f5f1f2;
 
-  --color-card: #12121f;
+  --color-card: #130d10;
 
-  /* #8b5cf6 is only 3.9:1 as text on this ground, so the token is nudged
-     lighter (5.2:1) and buttons take a dark foreground instead of white. */
-  --color-primary: #9b7ef9;
-  --color-primary-foreground: #0a0616;
+  --color-primary: #e11d36;
+  --color-primary-foreground: #fff7f8;
 
-  --color-secondary: #191927;
-  --color-secondary-foreground: #b6a2fc;
+  --color-secondary: #201216;
+  --color-secondary-foreground: #ff6674;
 
-  --color-muted: #23233a;
-  --color-muted-foreground: #9095b0;
+  --color-muted: #26171b;
+  --color-muted-foreground: #a79ca0;
 
-  --color-border: #24243a;
+  --color-border: #3a2027;
 
   --radius: 0.75rem;
 
-  --color-highlight: #22d3ee;
-  --color-surface: #12121f;
+  --color-highlight: #ff4b57;
+  --color-surface: #160f12;
 }
 
 @layer base {
@@ -38,6 +36,18 @@
 
   body {
     background-color: var(--color-background);
+    background-image:
+      radial-gradient(
+        circle at 88% 8%,
+        color-mix(in srgb, var(--color-primary) 16%, transparent),
+        transparent 28rem
+      ),
+      linear-gradient(
+        180deg,
+        var(--color-background) 0%,
+        color-mix(in srgb, var(--color-background) 94%, var(--color-primary)) 52%,
+        var(--color-background) 100%
+      );
     color: var(--color-foreground);
     font-family: "Inter", sans-serif;
   }
@@ -69,6 +79,19 @@
     box-shadow: 0 0 20px
         color-mix(in srgb, var(--color-primary) 20%, transparent),
       inset 0 0 20px color-mix(in srgb, var(--color-primary) 5%, transparent);
+  }
+
+  .hero-atmosphere {
+    background:
+      radial-gradient(circle at 78% 74%, rgb(225 29 54 / 24%), transparent 28rem),
+      linear-gradient(115deg, rgb(8 9 11 / 98%) 0%, rgb(11 8 10 / 88%) 48%, rgb(55 8 18 / 32%) 100%);
+  }
+
+  .portrait-halo {
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 7%),
+      0 0 34px rgb(225 29 54 / 32%),
+      0 28px 80px rgb(90 5 23 / 34%);
   }
 }
 
@@ -175,9 +198,9 @@
   }
 
   .animated-border:hover {
-    background-color: color-mix(in srgb, #a78bfa 15%, transparent);
+    background-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
     backdrop-filter: blur(16px);
-    box-shadow: 0 0 20px color-mix(in srgb, #a78bfa 20%, transparent);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 20%, transparent);
   }
 
   .timeline-glow {
@@ -284,7 +307,8 @@
 /* The hero background is decorative motion — honour a reduced-motion request
    by falling back to the poster still underneath it. */
 @media (prefers-reduced-motion: reduce) {
-  .hero-video {
+  .hero-video,
+  .project-card-video {
     display: none;
   }
 }

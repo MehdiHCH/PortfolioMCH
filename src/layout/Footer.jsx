@@ -1,40 +1,47 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
-import { FaInstagram, FaYoutube } from "react-icons/fa";
+import {
+  FaGithub,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const socialLinks = [
   {
-    icon: Github,
+    icon: FaGithub,
     href: "https://github.com/MehdiHCH",
     label: "GitHub",
-    color: "border-slate-400/40 bg-slate-700 text-white hover:bg-slate-600",
+    brandClass:
+      "border-slate-400/70 bg-slate-700 text-white hover:border-slate-300 hover:bg-slate-600",
   },
   {
-    icon: Linkedin,
+    icon: FaLinkedinIn,
     href: "https://www.linkedin.com/in/elmehdihicham",
     label: "LinkedIn",
-    color: "border-[#0A66C2] bg-[#0A66C2] text-white hover:bg-[#0958a8]",
+    brandClass:
+      "border-[#2a7fc7] bg-[#0a66c2] text-white hover:border-[#5ba0dc] hover:bg-[#0757a8]",
   },
   {
-    icon: Twitter,
+    icon: FaXTwitter,
     href: "https://x.com/Mehdi_Hch_____",
-    label: "Twitter / X",
-    color: "border-slate-500 bg-black text-white hover:bg-slate-900",
+    label: "X",
+    brandClass:
+      "border-white/30 bg-black text-white hover:border-white/60 hover:bg-zinc-900",
   },
   {
     icon: FaYoutube,
     href: "https://www.youtube.com/@ElMehdi_Vision",
     label: "YouTube",
-    color: "border-[#FF0000] bg-[#FF0000] text-white hover:bg-[#d90000]",
-    brandIcon: true,
+    brandClass:
+      "border-[#ff3333] bg-[#ff0000] text-white hover:border-[#ff6666] hover:bg-[#e60000]",
   },
   {
     icon: FaInstagram,
     href: "https://www.instagram.com/elmehdi_ia_vision/",
     label: "Instagram",
-    color:
-      "border-[#E1306C] bg-gradient-to-tr from-[#833AB4] via-[#E1306C] to-[#FCAF45] text-white hover:brightness-110",
-    brandIcon: true,
+    brandClass:
+      "border-pink-400/60 text-white [background:linear-gradient(135deg,#833AB4_0%,#E1306C_55%,#F77737_100%)] hover:brightness-110",
   },
 ];
 
@@ -113,7 +120,7 @@ export const Footer = () => {
           </nav>
 
           {/* Social Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
@@ -122,12 +129,9 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={social.label}
-                className={`border p-2.5 rounded-full shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md ${social.color}`}
+                className={`flex h-11 w-11 items-center justify-center rounded-full border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${social.brandClass}`}
               >
-                <social.icon
-                  className="h-5 w-5"
-                  strokeWidth={social.brandIcon ? undefined : 2.2}
-                />
+                <social.icon className="h-5 w-5" aria-hidden="true" />
               </a>
             ))}
           </div>

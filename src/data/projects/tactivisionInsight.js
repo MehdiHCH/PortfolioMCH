@@ -5,6 +5,7 @@ export const tactiVisionInsightProject = {
   description:
     "An explainable football-intelligence engine that transforms TactiVision Core tracking, pitch coordinates, and match events into evidence-backed tactical recommendations, receiver scores, passing-lane risk, defensive-line analysis, and a synchronized analyst workspace.",
   image: "assets/img/projects/tactivision-insight/cover.webp",
+  cardVideo: "assets/videos/tactivision-insight-card-preview.mp4",
   tags: ["Explainable AI", "Tactical Intelligence", "Football Analytics", "React"],
   link: "/projects/tactivision-insight",
   github: null,

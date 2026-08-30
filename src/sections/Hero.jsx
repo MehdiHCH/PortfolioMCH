@@ -1,15 +1,13 @@
 import { Button } from "@/components/Button";
 import { Suspense, lazy, useEffect, useState } from "react";
+import { CalendarDays, ChevronDown, FileText } from "lucide-react";
 import {
-  ArrowRight,
-  ChevronDown,
-  Github,
-  Linkedin,
-  Twitter,
-  Download,
-} from "lucide-react";
-import { FaInstagram, FaYoutube } from "react-icons/fa";
-import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
+  FaGithub,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 // separate chunk: only fetched once we know WebGPU is available
 const HeroDepthScene = lazy(() => import("@/components/HeroDepthScene"));
@@ -40,15 +38,68 @@ const skills = [
   "Git",
 ];
 
-const greenDots = Array.from({ length: 30 }, (_, index) => ({
+const accentDots = Array.from({ length: 30 }, (_, index) => ({
   left: `${(index * 37 + 11) % 100}%`,
   top: `${(index * 53 + 7) % 100}%`,
   duration: 15 + ((index * 7) % 20),
   delay: (index * 3) % 5,
 }));
 
+const socialLinks = [
+  {
+    icon: FaGithub,
+    href: "https://github.com/MehdiHCH",
+    label: "GitHub",
+    brandClass:
+      "border-slate-400/70 bg-slate-700 text-white hover:border-slate-300 hover:bg-slate-600",
+  },
+  {
+    icon: FaLinkedinIn,
+    href: "https://www.linkedin.com/in/elmehdihicham",
+    label: "LinkedIn",
+    brandClass:
+      "border-[#2a7fc7] bg-[#0a66c2] text-white hover:border-[#5ba0dc] hover:bg-[#0757a8]",
+  },
+  {
+    icon: FaXTwitter,
+    href: "https://x.com/Mehdi_Hch_____",
+    label: "X",
+    brandClass:
+      "border-white/30 bg-black text-white hover:border-white/60 hover:bg-zinc-900",
+  },
+  {
+    icon: FaYoutube,
+    href: "https://www.youtube.com/@ElMehdi_Vision",
+    label: "YouTube",
+    brandClass:
+      "border-[#ff3333] bg-[#ff0000] text-white hover:border-[#ff6666] hover:bg-[#e60000]",
+  },
+  {
+    icon: FaInstagram,
+    href: "https://www.instagram.com/elmehdi_ia_vision/",
+    label: "Instagram",
+    brandClass:
+      "border-pink-400/60 text-white [background:linear-gradient(135deg,#833AB4_0%,#E1306C_55%,#F77737_100%)] hover:brightness-110",
+  },
+];
+
 export const Hero = () => {
   const [depthReady, setDepthReady] = useState(false);
+
+  const bookAdvisoryCall = () => {
+    window.dispatchEvent(
+      new CustomEvent("portfolio:select-service", {
+        detail: {
+          message:
+            "Hi El Mehdi, I'm interested in your AI & Computer Vision Advisory service at €50/hour. I'd like to discuss the scope and level of involvement...",
+        },
+      }),
+    );
+
+    document
+      .getElementById("contact")
+      ?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -69,7 +120,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden">
       {/* Background: the tracker's own output.
           Where WebGPU exists we render the frame with its depth map so the
           tracking labels parallax against the pitch; everywhere else the
@@ -108,19 +159,20 @@ export const Hero = () => {
           </video>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/80 to-background" />
+        <div className="hero-atmosphere absolute inset-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/55 to-background" />
         {/* keeps the headline column readable over the busy tracking overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent lg:to-background/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/65 to-transparent lg:to-background/5" />
       </div>
 
-      {/* Green Dots */}
+      {/* Signal-red tracking particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {greenDots.map((dot, i) => (
+        {accentDots.map((dot, i) => (
           <div
             key={i}
             className="absolute w-1.5 h-1.5 rounded-full opacity-60"
             style={{
-              backgroundColor: "#8b5cf6",
+              backgroundColor: "var(--color-primary)",
               left: dot.left,
               top: dot.top,
               animation: `slow-drift ${dot.duration}s ease-in-out infinite`,
@@ -131,10 +183,10 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 mx-auto w-full max-w-[1500px] px-6 pb-24 pt-32 sm:px-8">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] xl:gap-20">
           {/* Left Column - Text Content */}
-          <div className="space-y-8">
+          <div className="space-y-7">
             <div className="animate-fade-in">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
@@ -144,7 +196,7 @@ export const Hero = () => {
 
             {/* Headline */}
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
+              <h1 className="animate-fade-in text-5xl font-bold leading-[1.08] animation-delay-100 md:text-6xl xl:text-[5rem]">
                 Designing intelligent
                 <br />
                 <span className="text-primary glow-text">vision systems</span>
@@ -163,12 +215,12 @@ export const Hero = () => {
                   href="https://www.linkedin.com/company/sport-score/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mx-1 inline-flex items-center gap-1.5 whitespace-nowrap align-middle text-[1.16em] font-bold text-primary transition-colors hover:text-primary/80"
+                  className="mx-1 inline-flex items-center gap-1.5 whitespace-nowrap align-middle text-[1.16em] font-bold text-emerald-400 transition-colors hover:text-emerald-300"
                 >
                   <img
                     src={`${import.meta.env.BASE_URL}assets/img/companies/sportscore-logo.png`}
                     alt=""
-                    className="h-7 w-7 rounded-md border border-primary/40 bg-black object-contain p-0.5"
+                    className="h-7 w-7 rounded-md border border-emerald-400/50 bg-black object-contain p-0.5"
                   />
                   SportScore
                 </a>
@@ -192,124 +244,57 @@ export const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
+              <a
+                href={`${import.meta.env.BASE_URL}CV.pdf`}
+                download="EL_MEHDI_HICHAM_CV.pdf"
+                aria-label="Download EL MEHDI HICHAM resume"
+                className="flex min-w-60 items-center justify-center gap-2 rounded-full border border-primary px-8 py-4 text-lg font-medium text-foreground transition-all duration-300 hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                <FileText className="h-5 w-5" />
+                Resume
+              </a>
               <Button
                 size="lg"
-                onClick={() => {
-                  const contactSection = document.getElementById("contact");
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+                onClick={bookAdvisoryCall}
+                className="min-w-72 transition-transform duration-300 hover:-translate-y-0.5"
               >
-                Contact Me <ArrowRight className="w-5 h-5" />
+                <CalendarDays className="h-5 w-5" />
+                Book Advisor
               </Button>
-              <AnimatedBorderButton
-                onClick={() => {
-                  const link = document.createElement("a");
-                  link.href = `${import.meta.env.BASE_URL}CV.pdf`;
-                  link.download = "EL_MEHDI_HICHAM_CV.pdf";
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
-              >
-                <Download className="w-5 h-5" />
-                Download CV
-              </AnimatedBorderButton>
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
-              <span className="text-sm text-muted-foreground">Follow me: </span>
-              {[
-                {
-                  icon: Github,
-                  href: "https://github.com/MehdiHCH",
-                  label: "GitHub",
-                  color:
-                    "border-slate-400/40 bg-slate-700 text-white hover:bg-slate-600",
-                },
-                {
-                  icon: Linkedin,
-                  href: "https://www.linkedin.com/in/elmehdihicham",
-                  label: "LinkedIn",
-                  color:
-                    "border-[#0A66C2] bg-[#0A66C2] text-white hover:bg-[#0958a8]",
-                },
-                {
-                  icon: Twitter,
-                  href: "https://x.com/Mehdi_Hch_____",
-                  label: "Twitter / X",
-                  color: "border-slate-500 bg-black text-white hover:bg-slate-900",
-                },
-                {
-                  icon: FaYoutube,
-                  href: "https://www.youtube.com/@ElMehdi_Vision",
-                  label: "YouTube",
-                  color:
-                    "border-[#FF0000] bg-[#FF0000] text-white hover:bg-[#d90000]",
-                  brandIcon: true,
-                },
-                {
-                  icon: FaInstagram,
-                  href: "https://www.instagram.com/elmehdi_ia_vision/",
-                  label: "Instagram",
-                  color:
-                    "border-[#E1306C] bg-gradient-to-tr from-[#833AB4] via-[#E1306C] to-[#FCAF45] text-white hover:brightness-110",
-                  brandIcon: true,
-                },
-              ].map((social, idx) => (
+            <nav
+              aria-label="Social media"
+              className="flex flex-wrap items-center gap-2.5 pt-1 animate-fade-in animation-delay-400"
+            >
+              {socialLinks.map((social) => (
                 <a
-                  key={idx}
+                  key={social.label}
                   href={social.href}
                   aria-label={social.label}
                   title={social.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`rounded-full border p-2.5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${social.color}`}
+                  className={`group flex h-11 w-11 items-center justify-center rounded-full border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${social.brandClass}`}
                 >
-                  <social.icon
-                    className="h-5 w-5"
-                    strokeWidth={social.brandIcon ? undefined : 2.2}
-                  />
+                  <social.icon className="h-5 w-5" aria-hidden="true" />
+                  <span className="sr-only">{social.label}</span>
                 </a>
               ))}
-            </div>
+            </nav>
           </div>
 
           {/* Right Column - Profile Image */}
-          <div className="relative animate-fade-in animation-delay-300">
-            <div className="relative max-w-md mx-auto">
-              <div
-                className="absolute inset-0 
-                rounded-3xl bg-gradient-to-br 
-                from-primary/30 via-transparent 
-                to-primary/10 blur-2xl animate-pulse"
-              />
-              <div className="relative glass rounded-3xl p-2 glow-border">
+            <div className="relative animate-fade-in animation-delay-300">
+            <div className="relative mx-auto max-w-[39rem]">
+              <div className="absolute -inset-8 rounded-full bg-primary/15 blur-3xl" />
+              <div className="portrait-halo relative aspect-square rounded-full border border-primary/90 bg-surface/35 p-2.5">
                 <img
                   src={`${import.meta.env.BASE_URL}me.webp`}
                   alt="EL MEHDI HICHAM"
-                  className="w-full aspect-[4/5] object-cover rounded-2xl"
+                  className="h-full w-full rounded-full object-cover"
                 />
-
-                {/* Floating Badge - Availability */}
-                <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-sm font-medium">
-                      Available for work
-                    </span>
-                  </div>
-                </div>
-
-                {/* Stats Badge - Experience */}
-                <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animation-delay-500">
-                  <div className="text-2xl font-bold text-primary"> </div>
-                  <div className="text-xs text-muted-foreground">
-                  
-                  </div>
-                </div>
               </div>
             </div>
           </div>

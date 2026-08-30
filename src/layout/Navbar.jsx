@@ -60,7 +60,7 @@ export const Navbar = () => {
         isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
       }  z-50`}
     >
-      <nav className="container mx-auto px-6 flex items-center justify-between">
+      <nav className="mx-auto flex w-full max-w-[1500px] items-center justify-between px-6 sm:px-8">
         {/* Left - Logo */}
         <Link
           to="/"
@@ -84,7 +84,7 @@ export const Navbar = () => {
                     handleNavigation(link.href);
                   }
                 }}
-                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-surface transition-colors text-left"
+                className="px-4 py-2 text-[0.95rem] text-muted-foreground hover:text-foreground rounded-full hover:bg-surface transition-colors text-left"
               >
                 {link.label}
               </button>
@@ -98,7 +98,7 @@ export const Navbar = () => {
         {/* Right - CTA Button */}
         <div className="hidden lg:block">
           <Button 
-            size="sm"
+            size="default"
             onClick={() => {
               if (location.pathname !== "/") {
                 navigate("/");
@@ -124,6 +124,9 @@ export const Navbar = () => {
         <button
           className="lg:hidden p-2 text-foreground cursor-pointer ml-auto"
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -131,7 +134,7 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden glass-strong animate-fade-in">
+        <div id="mobile-navigation" className="lg:hidden glass-strong animate-fade-in">
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
             {navLinks.map((link, index) => (
               <button

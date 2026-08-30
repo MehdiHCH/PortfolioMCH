@@ -19,31 +19,31 @@ export const ThemeProvider = ({ children }) => {
     htmlElement.setAttribute("data-theme", newTheme);
 
     if (newTheme === "light") {
-      htmlElement.style.setProperty("--color-background", "#f5f5f5");
-      htmlElement.style.setProperty("--color-foreground", "#000000");
+      htmlElement.style.setProperty("--color-background", "#fff7f8");
+      htmlElement.style.setProperty("--color-foreground", "#180a0e");
       htmlElement.style.setProperty("--color-card", "#ffffff");
-      htmlElement.style.setProperty("--color-primary", "#8b5cf6");
+      htmlElement.style.setProperty("--color-primary", "#c8102e");
       htmlElement.style.setProperty("--color-primary-foreground", "#ffffff");
-      htmlElement.style.setProperty("--color-secondary", "#f0f0f0");
-      htmlElement.style.setProperty("--color-secondary-foreground", "#111111");
-      htmlElement.style.setProperty("--color-muted", "#e5e5e5");
-      htmlElement.style.setProperty("--color-muted-foreground", "#333333");
-      htmlElement.style.setProperty("--color-border", "#d0d0d0");
-      htmlElement.style.setProperty("--color-highlight", "#22d3ee");
-      htmlElement.style.setProperty("--color-surface", "#f9f9f9");
+      htmlElement.style.setProperty("--color-secondary", "#f8e8eb");
+      htmlElement.style.setProperty("--color-secondary-foreground", "#a60e29");
+      htmlElement.style.setProperty("--color-muted", "#f1dfe3");
+      htmlElement.style.setProperty("--color-muted-foreground", "#65545a");
+      htmlElement.style.setProperty("--color-border", "#dfc6cc");
+      htmlElement.style.setProperty("--color-highlight", "#e11d36");
+      htmlElement.style.setProperty("--color-surface", "#fffafa");
     } else {
-      htmlElement.style.setProperty("--color-background", "#0f1418");
-      htmlElement.style.setProperty("--color-foreground", "#f0f2f5");
-      htmlElement.style.setProperty("--color-card", "#141a1f");
-      htmlElement.style.setProperty("--color-primary", "#8b5cf6");
-      htmlElement.style.setProperty("--color-primary-foreground", "#ffffff");
-      htmlElement.style.setProperty("--color-secondary", "#1f2830");
-      htmlElement.style.setProperty("--color-secondary-foreground", "#8b5cf6");
-      htmlElement.style.setProperty("--color-muted", "#252e37");
-      htmlElement.style.setProperty("--color-muted-foreground", "#7a8491");
-      htmlElement.style.setProperty("--color-border", "#242b32");
-      htmlElement.style.setProperty("--color-highlight", "#22d3ee");
-      htmlElement.style.setProperty("--color-surface", "#1a2329");
+      htmlElement.style.setProperty("--color-background", "#08090b");
+      htmlElement.style.setProperty("--color-foreground", "#f5f1f2");
+      htmlElement.style.setProperty("--color-card", "#130d10");
+      htmlElement.style.setProperty("--color-primary", "#e11d36");
+      htmlElement.style.setProperty("--color-primary-foreground", "#fff7f8");
+      htmlElement.style.setProperty("--color-secondary", "#201216");
+      htmlElement.style.setProperty("--color-secondary-foreground", "#ff6674");
+      htmlElement.style.setProperty("--color-muted", "#26171b");
+      htmlElement.style.setProperty("--color-muted-foreground", "#a79ca0");
+      htmlElement.style.setProperty("--color-border", "#3a2027");
+      htmlElement.style.setProperty("--color-highlight", "#ff4b57");
+      htmlElement.style.setProperty("--color-surface", "#160f12");
     }
   };
 

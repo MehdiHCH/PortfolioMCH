@@ -36,8 +36,8 @@ const experiences = [
     organizationDetails: "Football Analytics · Paris, France (Remote)",
     organizationLogo: "assets/img/companies/sportscore-logo.png",
     organizationUrl: "https://www.linkedin.com/company/sport-score/",
-    organizationColor: "text-primary hover:text-primary/80",
-    organizationLogoClass: "border-primary/50",
+    organizationColor: "text-emerald-400 hover:text-emerald-300",
+    organizationLogoClass: "border-emerald-400/50",
     description:
       "Built an automatic frame classification module (YOLOv11m-cls) achieving 99.95% accuracy, and implemented complex action detection: pass classification, shots, dribbles, interceptions, goals. Optimized the vision pipeline end-to-end — 50% latency reduction via 5 parallel CUDA streams and TensorRT FP16 across 7 models, reaching 13 FPS (+117%). Delivered automated performance analytics and AI-powered microservices integrated into production, and mentored 4 interns.",
     technologies: ["Python", "PyTorch", "TensorFlow", "OpenCV", "CUDA", "TensorRT", "Docker", "FastAPI"],
