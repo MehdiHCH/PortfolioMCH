@@ -22,27 +22,27 @@ export const ThemeProvider = ({ children }) => {
       htmlElement.style.setProperty("--color-background", "#f5f5f5");
       htmlElement.style.setProperty("--color-foreground", "#000000");
       htmlElement.style.setProperty("--color-card", "#ffffff");
-      htmlElement.style.setProperty("--color-primary", "#20b2a6");
+      htmlElement.style.setProperty("--color-primary", "#8b5cf6");
       htmlElement.style.setProperty("--color-primary-foreground", "#ffffff");
       htmlElement.style.setProperty("--color-secondary", "#f0f0f0");
       htmlElement.style.setProperty("--color-secondary-foreground", "#111111");
       htmlElement.style.setProperty("--color-muted", "#e5e5e5");
       htmlElement.style.setProperty("--color-muted-foreground", "#333333");
       htmlElement.style.setProperty("--color-border", "#d0d0d0");
-      htmlElement.style.setProperty("--color-highlight", "#f5a623");
+      htmlElement.style.setProperty("--color-highlight", "#22d3ee");
       htmlElement.style.setProperty("--color-surface", "#f9f9f9");
     } else {
       htmlElement.style.setProperty("--color-background", "#0f1418");
       htmlElement.style.setProperty("--color-foreground", "#f0f2f5");
       htmlElement.style.setProperty("--color-card", "#141a1f");
-      htmlElement.style.setProperty("--color-primary", "#20b2a6");
+      htmlElement.style.setProperty("--color-primary", "#8b5cf6");
       htmlElement.style.setProperty("--color-primary-foreground", "#ffffff");
       htmlElement.style.setProperty("--color-secondary", "#1f2830");
-      htmlElement.style.setProperty("--color-secondary-foreground", "#20b2a6");
+      htmlElement.style.setProperty("--color-secondary-foreground", "#8b5cf6");
       htmlElement.style.setProperty("--color-muted", "#252e37");
       htmlElement.style.setProperty("--color-muted-foreground", "#7a8491");
       htmlElement.style.setProperty("--color-border", "#242b32");
-      htmlElement.style.setProperty("--color-highlight", "#f5a623");
+      htmlElement.style.setProperty("--color-highlight", "#22d3ee");
       htmlElement.style.setProperty("--color-surface", "#1a2329");
     }
   };

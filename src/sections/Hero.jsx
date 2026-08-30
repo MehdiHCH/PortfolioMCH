@@ -1,4 +1,5 @@
 import { Button } from "@/components/Button";
+import { Suspense, lazy, useEffect, useState } from "react";
 import {
   ArrowRight,
   ChevronDown,
@@ -9,6 +10,9 @@ import {
 } from "lucide-react";
 import { FaInstagram, FaYoutube } from "react-icons/fa";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
+
+// separate chunk: only fetched once we know WebGPU is available
+const HeroDepthScene = lazy(() => import("@/components/HeroDepthScene"));
 
 const skills = [
   "Python",
@@ -44,9 +48,33 @@ const greenDots = Array.from({ length: 30 }, (_, index) => ({
 }));
 
 export const Hero = () => {
+  const [depthReady, setDepthReady] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Desktop only: a phone with WebGPU would still pay 1.5MB and burn battery
+    // running the shader, and the looping clip reads just as well at that size.
+    if (window.innerWidth < 1024) return;
+    if (!navigator.gpu) return;
+    let cancelled = false;
+    navigator.gpu
+      .requestAdapter()
+      .then((adapter) => {
+        if (adapter && !cancelled) setDepthReady(true);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Bg — real tracker output: the fastest way to show what I build */}
+      {/* Background: the tracker's own output.
+          Where WebGPU exists we render the frame with its depth map so the
+          tracking labels parallax against the pitch; everywhere else the
+          looping clip plays instead. three.js only downloads in the first
+          case, so nobody pays for a renderer they cannot run. */}
       <div className="absolute inset-0">
         <img
           src={`${import.meta.env.BASE_URL}hero-loop-poster.webp`}
@@ -54,22 +82,32 @@ export const Hero = () => {
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover opacity-30"
         />
-        <video
-          className="hero-video absolute inset-0 w-full h-full object-cover opacity-30"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={`${import.meta.env.BASE_URL}hero-loop-poster.webp`}
-          aria-hidden="true"
-          tabIndex={-1}
-        >
-          <source
-            src={`${import.meta.env.BASE_URL}hero-loop.mp4`}
-            type="video/mp4"
-          />
-        </video>
+
+        {depthReady ? (
+          <div className="absolute inset-0 opacity-40">
+            <Suspense fallback={null}>
+              <HeroDepthScene />
+            </Suspense>
+          </div>
+        ) : (
+          <video
+            className="hero-video absolute inset-0 w-full h-full object-cover opacity-30"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={`${import.meta.env.BASE_URL}hero-loop-poster.webp`}
+            aria-hidden="true"
+            tabIndex={-1}
+          >
+            <source
+              src={`${import.meta.env.BASE_URL}hero-loop.mp4`}
+              type="video/mp4"
+            />
+          </video>
+        )}
+
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/80 to-background" />
         {/* keeps the headline column readable over the busy tracking overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent lg:to-background/10" />
@@ -82,7 +120,7 @@ export const Hero = () => {
             key={i}
             className="absolute w-1.5 h-1.5 rounded-full opacity-60"
             style={{
-              backgroundColor: "#20B2A6",
+              backgroundColor: "#8b5cf6",
               left: dot.left,
               top: dot.top,
               animation: `slow-drift ${dot.duration}s ease-in-out infinite`,

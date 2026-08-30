@@ -1,26 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0f1418;
-  --color-foreground: #f0f2f5;
+  /* Violet / indigo. Neutrals carry a slight violet bias so the ground reads
+     as chosen rather than generic grey. */
+  --color-background: #08080f;
+  --color-foreground: #eef0f6;
 
-  --color-card: #141a1f;
+  --color-card: #12121f;
 
-  --color-primary: #20b2a6;
-  --color-primary-foreground: #ffffff;
+  /* #8b5cf6 is only 3.9:1 as text on this ground, so the token is nudged
+     lighter (5.2:1) and buttons take a dark foreground instead of white. */
+  --color-primary: #9b7ef9;
+  --color-primary-foreground: #0a0616;
 
-  --color-secondary: #1f2830;
-  --color-secondary-foreground: #20b2a6;
+  --color-secondary: #191927;
+  --color-secondary-foreground: #b6a2fc;
 
-  --color-muted: #252e37;
-  --color-muted-foreground: #7a8491;
+  --color-muted: #23233a;
+  --color-muted-foreground: #9095b0;
 
-  --color-border: #242b32;
+  --color-border: #24243a;
 
   --radius: 0.75rem;
 
-  --color-highlight: #f5a623;
-  --color-surface: #1a2329;
+  --color-highlight: #22d3ee;
+  --color-surface: #12121f;
 }
 
 @layer base {
@@ -171,9 +175,9 @@
   }
 
   .animated-border:hover {
-    background-color: color-mix(in srgb, #26c4b8 15%, transparent);
+    background-color: color-mix(in srgb, #a78bfa 15%, transparent);
     backdrop-filter: blur(16px);
-    box-shadow: 0 0 20px color-mix(in srgb, #26c4b8 20%, transparent);
+    box-shadow: 0 0 20px color-mix(in srgb, #a78bfa 20%, transparent);
   }
 
   .timeline-glow {

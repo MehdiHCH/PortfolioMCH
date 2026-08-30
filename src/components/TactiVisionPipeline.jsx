@@ -4,14 +4,14 @@ const stages = [
     title: "Video Ingest",
     detail: "Full HD tactical-camera frames on the source clock",
     metric: "59.94 FPS",
-    tone: "teal",
+    tone: "violet",
   },
   {
     number: "02",
     title: "Perception",
     detail: "6 TensorRT engines in parallel under one CUDA context",
     metric: "FP16 TRT",
-    tone: "teal",
+    tone: "violet",
   },
   {
     number: "03",
@@ -32,19 +32,19 @@ const stages = [
     title: "Intelligence",
     detail: "Temporal events — passes, shots, goals, PPDA",
     metric: "LIVE EVENTS",
-    tone: "amber",
+    tone: "cyan",
   },
   {
     number: "06",
     title: "Presentation",
     detail: "Live dashboard + AI match-report video",
     metric: "1080P MP4",
-    tone: "amber",
+    tone: "cyan",
   },
 ];
 
 const stageToneStyles = {
-  teal: {
+  violet: {
     border: "border-primary/35 hover:border-primary/65",
     number: "border-primary/40 bg-primary/10 text-primary",
     metric: "bg-primary/10 text-primary",
@@ -54,16 +54,16 @@ const stageToneStyles = {
     number: "border-blue-400/40 bg-blue-400/10 text-blue-300",
     metric: "bg-blue-400/10 text-blue-300",
   },
-  amber: {
-    border: "border-amber-400/30 hover:border-amber-400/60",
-    number: "border-amber-400/40 bg-amber-400/10 text-amber-300",
-    metric: "bg-amber-400/10 text-amber-300",
+  cyan: {
+    border: "border-cyan-400/30 hover:border-cyan-400/60",
+    number: "border-cyan-400/40 bg-cyan-400/10 text-cyan-300",
+    metric: "bg-cyan-400/10 text-cyan-300",
   },
 };
 
 const StageNumber = ({ x, number }) => (
   <g>
-    <circle cx={x} cy="92" r="23" fill="none" stroke="#20b2a6" strokeWidth="0.8" opacity="0.22" strokeDasharray="5 7">
+    <circle cx={x} cy="92" r="23" fill="none" stroke="#8b5cf6" strokeWidth="0.8" opacity="0.22" strokeDasharray="5 7">
       <animateTransform
         attributeName="transform"
         type="rotate"
@@ -73,12 +73,12 @@ const StageNumber = ({ x, number }) => (
         repeatCount="indefinite"
       />
     </circle>
-    <circle cx={x} cy="92" r="18" fill="#0c171b" stroke="#20b2a6" strokeWidth="1.5" />
-    <circle cx={x} cy="92" r="3" fill="#20b2a6" opacity="0.18" className="pipeline-node-pulse" />
+    <circle cx={x} cy="92" r="18" fill="#0c171b" stroke="#8b5cf6" strokeWidth="1.5" />
+    <circle cx={x} cy="92" r="3" fill="#8b5cf6" opacity="0.18" className="pipeline-node-pulse" />
     <text
       x={x}
       y="93"
-      fill="#8ee8df"
+      fill="#c9baff"
       fontSize="11"
       fontWeight="700"
       textAnchor="middle"
@@ -89,7 +89,7 @@ const StageNumber = ({ x, number }) => (
   </g>
 );
 
-const HudPill = ({ x, label, value, color = "#20b2a6", width = 88 }) => (
+const HudPill = ({ x, label, value, color = "#8b5cf6", width = 88 }) => (
   <g>
     <rect
       x={x}
@@ -110,7 +110,7 @@ const HudPill = ({ x, label, value, color = "#20b2a6", width = 88 }) => (
   </g>
 );
 
-const ConnectorLabel = ({ x, label, color = "#8ee8df", begin = "0s" }) => (
+const ConnectorLabel = ({ x, label, color = "#c9baff", begin = "0s" }) => (
   <g>
     <rect x={x - 25} y="174" width="50" height="13" rx="6.5" fill="#0b1115" stroke="#26363e" />
     <rect x={x - 25} y="174" width="50" height="13" rx="6.5" fill="none" stroke={color} strokeWidth="0.9" opacity="0">
@@ -163,7 +163,7 @@ const StageSpotlight = ({ x, index, color }) => {
   );
 };
 
-const RuntimeMetric = ({ x, label, value, color = "#8ee8df" }) => (
+const RuntimeMetric = ({ x, label, value, color = "#c9baff" }) => (
   <g>
     <rect x={x} y="369" width="98" height="39" rx="6" fill="#0b1418" stroke="#26363e" />
     <text x={x + 10} y="383" fill="#667781" fontSize="6.5" fontWeight="700" letterSpacing="0.7">
@@ -175,7 +175,7 @@ const RuntimeMetric = ({ x, label, value, color = "#8ee8df" }) => (
   </g>
 );
 
-const FlowPacket = ({ path, begin = "0s", color = "#8ee8df", r = 5, dur = "1.45s", opacity = 1 }) => (
+const FlowPacket = ({ path, begin = "0s", color = "#c9baff", r = 5, dur = "1.45s", opacity = 1 }) => (
   <circle className="pipeline-packet" r={r} fill={color} opacity={opacity}>
     <animateMotion dur={dur} begin={begin} repeatCount="indefinite">
       <mpath href={`#${path}`} />
@@ -183,7 +183,7 @@ const FlowPacket = ({ path, begin = "0s", color = "#8ee8df", r = 5, dur = "1.45s
   </circle>
 );
 
-const StageCaption = ({ cx, title, subtitle, chip, chipColor = "#8ee8df", chipFill = "#17312f" }) => (
+const StageCaption = ({ cx, title, subtitle, chip, chipColor = "#c9baff", chipFill = "#221a3a" }) => (
   <g>
     <text x={cx} y="266" fill="#f0f2f5" fontSize="15" fontWeight="700" textAnchor="middle">
       {title}
@@ -199,7 +199,7 @@ const StageCaption = ({ cx, title, subtitle, chip, chipColor = "#8ee8df", chipFi
 );
 
 // Profiler lane for the perception stage: engine name, live activity bar, kernel time.
-const EngineLane = ({ y, label, values, dur, ms, color = "#20b2a6", textColor = "#9de9e2" }) => (
+const EngineLane = ({ y, label, values, dur, ms, color = "#8b5cf6", textColor = "#ddd4ff" }) => (
   <g>
     <text x="244" y={y + 1} fill={textColor} fontSize="7" fontWeight="700" dominantBaseline="middle">
       {label}
@@ -273,16 +273,16 @@ export const TactiVisionPipeline = () => {
               <stop offset="1" stopColor="#0d1519" />
             </linearGradient>
             <linearGradient id="pipeline-accent" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stopColor="#20b2a6" />
-              <stop offset="1" stopColor="#f5a623" />
+              <stop offset="0" stopColor="#8b5cf6" />
+              <stop offset="1" stopColor="#22d3ee" />
             </linearGradient>
             <radialGradient id="pipeline-teal-halo">
-              <stop offset="0" stopColor="#20b2a6" stopOpacity="0.13" />
-              <stop offset="1" stopColor="#20b2a6" stopOpacity="0" />
+              <stop offset="0" stopColor="#8b5cf6" stopOpacity="0.13" />
+              <stop offset="1" stopColor="#8b5cf6" stopOpacity="0" />
             </radialGradient>
             <radialGradient id="pipeline-amber-halo">
-              <stop offset="0" stopColor="#f5a623" stopOpacity="0.11" />
-              <stop offset="1" stopColor="#f5a623" stopOpacity="0" />
+              <stop offset="0" stopColor="#22d3ee" stopOpacity="0.11" />
+              <stop offset="1" stopColor="#22d3ee" stopOpacity="0" />
             </radialGradient>
             <pattern id="pipeline-grid" width="28" height="28" patternUnits="userSpaceOnUse">
               <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#25323a" strokeWidth="0.6" />
@@ -298,7 +298,7 @@ export const TactiVisionPipeline = () => {
               <feDropShadow dx="0" dy="7" stdDeviation="8" floodColor="#000000" floodOpacity="0.45" />
             </filter>
             <marker id="pipeline-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#20b2a6" />
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b5cf6" />
             </marker>
 
             <path id="flow-1" d="M 202 195 L 230 195" />
@@ -325,14 +325,14 @@ export const TactiVisionPipeline = () => {
           <ellipse cx="370" cy="210" rx="430" ry="255" fill="url(#pipeline-teal-halo)" />
           <ellipse cx="1030" cy="230" rx="310" ry="230" fill="url(#pipeline-amber-halo)" />
           {[
-            [95, 78, "#20b2a6", "22s", "0s", "16 -12"],
-            [340, 108, "#8ee8df", "27s", "3s", "-12 10"],
-            [630, 80, "#20b2a6", "24s", "6s", "10 14"],
-            [905, 104, "#f5a623", "29s", "1.5s", "-14 -8"],
-            [1120, 84, "#20b2a6", "25s", "4.5s", "12 -10"],
-            [210, 430, "#8ee8df", "26s", "2s", "14 8"],
-            [560, 436, "#f5a623", "23s", "5s", "-10 -12"],
-            [1010, 430, "#20b2a6", "28s", "0.8s", "12 10"],
+            [95, 78, "#8b5cf6", "22s", "0s", "16 -12"],
+            [340, 108, "#c9baff", "27s", "3s", "-12 10"],
+            [630, 80, "#8b5cf6", "24s", "6s", "10 14"],
+            [905, 104, "#22d3ee", "29s", "1.5s", "-14 -8"],
+            [1120, 84, "#8b5cf6", "25s", "4.5s", "12 -10"],
+            [210, 430, "#c9baff", "26s", "2s", "14 8"],
+            [560, 436, "#22d3ee", "23s", "5s", "-10 -12"],
+            [1010, 430, "#8b5cf6", "28s", "0.8s", "12 10"],
           ].map(([cx, cy, color, dur, begin, drift]) => (
             <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.4" fill={color} opacity="0.35">
               <animateTransform
@@ -362,7 +362,7 @@ export const TactiVisionPipeline = () => {
           </text>
           <HudPill x={430} label="SOURCE CLOCK" value="59.94 FPS" />
           <HudPill x={526} label="COMPUTE" value="TENSORRT FP16" color="#3178c6" width={104} />
-          <HudPill x={638} label="DEVICE" value="RTX 4060" color="#f5a623" />
+          <HudPill x={638} label="DEVICE" value="RTX 4060" color="#22d3ee" />
           <g>
             <rect x="806" y="16" width="356" height="32" rx="16" fill="#101a1f" stroke="#26363e" />
             <circle cx="826" cy="32" r="4" fill="#e25567" />
@@ -370,8 +370,8 @@ export const TactiVisionPipeline = () => {
             <text x="938" y="36" fill="#f0f2f5" fontSize="10" fontWeight="700" textAnchor="middle">0 – 0</text>
             <circle cx="962" cy="32" r="4" fill="#3178c6" />
             <text x="972" y="36" fill="#c7d2d8" fontSize="9" fontWeight="600">PARIS SAINT-GERMAIN</text>
-            <circle cx="1126" cy="32" r="4.5" fill="#f5a623" className="pipeline-node-pulse" />
-            <text x="1136" y="36" fill="#ffc971" fontSize="8.5" fontWeight="700">LIVE</text>
+            <circle cx="1126" cy="32" r="4.5" fill="#22d3ee" className="pipeline-node-pulse" />
+            <text x="1136" y="36" fill="#a5f3fc" fontSize="8.5" fontWeight="700">LIVE</text>
           </g>
 
           <path d="M 138 92 H 1062" stroke="#20404a" strokeWidth="1" strokeDasharray="2 6" opacity="0.65" />
@@ -382,7 +382,7 @@ export const TactiVisionPipeline = () => {
           {/* 01 — VIDEO INGEST: screen with pitch scene + sweeping scanline */}
           <g className="pipeline-stage">
             <rect x="38" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
-            <rect x="38" y="122" width="164" height="4" rx="2" fill="#20b2a6" />
+            <rect x="38" y="122" width="164" height="4" rx="2" fill="#8b5cf6" />
             <rect x="58" y="146" width="124" height="72" rx="4" fill="#0a0f12" stroke="#5d717d" />
             <path d="M 120 150 L 120 214 M 66 182 L 174 182" stroke="#1d3a2f" strokeWidth="1" />
             <circle cx="120" cy="182" r="10" fill="none" stroke="#1d3a2f" strokeWidth="1" />
@@ -398,7 +398,7 @@ export const TactiVisionPipeline = () => {
               <rect x="131" y="181" width="15" height="21" strokeDasharray="3 2" />
               <path d="M 131 181 h 4 M 131 181 v 4 M 146 202 h -4 M 146 202 v -4" strokeWidth="1.1" strokeDasharray="none" />
             </g>
-            <circle r="3" fill="#f5a623" filter="url(#pipeline-glow)">
+            <circle r="3" fill="#22d3ee" filter="url(#pipeline-glow)">
               <animate attributeName="cx" values="96;140;118;96" dur="4.5s" repeatCount="indefinite" />
               <animate attributeName="cy" values="196;192;178;196" dur="4.5s" repeatCount="indefinite" />
             </circle>
@@ -406,11 +406,11 @@ export const TactiVisionPipeline = () => {
               ● 00:12
               <animate attributeName="opacity" values="1;0.25;1" dur="1.6s" repeatCount="indefinite" />
             </text>
-            <rect x="58" y="146" width="124" height="2.5" fill="#20b2a6" opacity="0.8">
+            <rect x="58" y="146" width="124" height="2.5" fill="#8b5cf6" opacity="0.8">
               <animate attributeName="y" values="146;215.5;146" dur="2.8s" repeatCount="indefinite" />
             </rect>
             {["F·137", "F·138", "F·139"].map((frame, index) => (
-              <text key={frame} x="64" y="212" fill="#8ee8df" fontSize="7" fontWeight="700" fontFamily="monospace">
+              <text key={frame} x="64" y="212" fill="#c9baff" fontSize="7" fontWeight="700" fontFamily="monospace">
                 {frame}
                 <animate
                   attributeName="opacity"
@@ -428,7 +428,7 @@ export const TactiVisionPipeline = () => {
           {/* 02 — PERCEPTION: six engine lanes with live GPU activity */}
           <g className="pipeline-stage pipeline-stage-delay-1">
             <rect x="230" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
-            <rect x="230" y="122" width="164" height="4" rx="2" fill="#20b2a6" />
+            <rect x="230" y="122" width="164" height="4" rx="2" fill="#8b5cf6" />
             <EngineLane y="152" label="PLAYER" values="18;50;29;44;18" dur="2.3s" ms="8.4ms" />
             <EngineLane y="168" label="BALL" values="38;15;49;23;38" dur="2.7s" ms="9.6ms" />
             <EngineLane y="184" label="POSE" values="26;43;20;46;26" dur="2.1s" ms="5.2ms" />
@@ -440,19 +440,19 @@ export const TactiVisionPipeline = () => {
               values="5;5;50;5;5"
               dur="3.2s"
               ms="3.4ms"
-              color="#f5a623"
-              textColor="#ffc971"
+              color="#22d3ee"
+              textColor="#a5f3fc"
             />
-            <StageCaption cx="312" title="PERCEPTION" subtitle="6 TensorRT engines in parallel" chip="SHARED CUDA CONTEXT" chipColor="#ffc971" chipFill="#3a2920" />
+            <StageCaption cx="312" title="PERCEPTION" subtitle="6 TensorRT engines in parallel" chip="SHARED CUDA CONTEXT" chipColor="#a5f3fc" chipFill="#0f3540" />
           </g>
 
           {/* 03 — IDENTITY: tracked players with trails and a locked jersey ID */}
           <g className="pipeline-stage pipeline-stage-delay-2">
             <rect x="422" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
-            <rect x="422" y="122" width="164" height="4" rx="2" fill="#20b2a6" />
+            <rect x="422" y="122" width="164" height="4" rx="2" fill="#8b5cf6" />
             <g>
-              <circle cx="504" cy="192" r="54" fill="none" stroke="#20b2a6" strokeWidth="0.8" opacity="0.14" />
-              <circle cx="504" cy="192" r="34" fill="none" stroke="#20b2a6" strokeWidth="0.6" opacity="0.1" />
+              <circle cx="504" cy="192" r="54" fill="none" stroke="#8b5cf6" strokeWidth="0.8" opacity="0.14" />
+              <circle cx="504" cy="192" r="34" fill="none" stroke="#8b5cf6" strokeWidth="0.6" opacity="0.1" />
               <g>
                 <animateTransform
                   attributeName="transform"
@@ -462,9 +462,9 @@ export const TactiVisionPipeline = () => {
                   dur="4.5s"
                   repeatCount="indefinite"
                 />
-                <line x1="504" y1="192" x2="556" y2="192" stroke="#20b2a6" strokeWidth="1.5" opacity="0.4" />
-                <line x1="504" y1="192" x2="551" y2="177" stroke="#20b2a6" strokeWidth="1" opacity="0.2" />
-                <line x1="504" y1="192" x2="547" y2="164" stroke="#20b2a6" strokeWidth="0.8" opacity="0.09" />
+                <line x1="504" y1="192" x2="556" y2="192" stroke="#8b5cf6" strokeWidth="1.5" opacity="0.4" />
+                <line x1="504" y1="192" x2="551" y2="177" stroke="#8b5cf6" strokeWidth="1" opacity="0.2" />
+                <line x1="504" y1="192" x2="547" y2="164" stroke="#8b5cf6" strokeWidth="0.8" opacity="0.09" />
               </g>
             </g>
             <path className="pipeline-flow" d="M 438 158 C 462 144, 494 156, 514 150" fill="none" stroke="#3178c6" strokeWidth="1.5" strokeDasharray="5 4" />
@@ -488,7 +488,7 @@ export const TactiVisionPipeline = () => {
             <g>
               <animate attributeName="opacity" values="0.75;1;0.75" dur="2.4s" repeatCount="indefinite" />
               <rect x="466" y="160" width="96" height="16" rx="3" fill="#111a20" stroke="#4f616c" />
-              <text x="514" y="169" fill="#f5a623" fontSize="8" fontWeight="700" textAnchor="middle" dominantBaseline="middle">ID 17 · VITINHA ✓</text>
+              <text x="514" y="169" fill="#22d3ee" fontSize="8" fontWeight="700" textAnchor="middle" dominantBaseline="middle">ID 17 · VITINHA ✓</text>
             </g>
             <StageCaption cx="504" title="IDENTITY" subtitle="Deep-EIoU · ReID · OCR lock" chip="TEMPORAL CONTINUITY" />
           </g>
@@ -496,12 +496,12 @@ export const TactiVisionPipeline = () => {
           {/* 04 — PROJECTION: camera view dropping onto the top-down metric pitch */}
           <g className="pipeline-stage pipeline-stage-delay-3">
             <rect x="614" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
-            <rect x="614" y="122" width="164" height="4" rx="2" fill="#20b2a6" />
+            <rect x="614" y="122" width="164" height="4" rx="2" fill="#8b5cf6" />
             <path d="M 640 146 L 752 146 L 736 184 L 656 184 Z" fill="#0f211c" stroke="#4b8d6d" />
             <circle cx="702" cy="163" r="4" fill="#3178c6" />
             <circle cx="668" cy="172" r="4" fill="#e25567" />
-            <path className="pipeline-runtime-flow" d="M 700 168 C 706 186, 708 200, 702 222" fill="none" stroke="#20b2a6" strokeWidth="1.2" strokeDasharray="3 4" />
-            <circle className="pipeline-packet" r="3" fill="#8ee8df">
+            <path className="pipeline-runtime-flow" d="M 700 168 C 706 186, 708 200, 702 222" fill="none" stroke="#8b5cf6" strokeWidth="1.2" strokeDasharray="3 4" />
+            <circle className="pipeline-packet" r="3" fill="#c9baff">
               <animateMotion dur="1.8s" repeatCount="indefinite">
                 <mpath href="#projection-drop" />
               </animateMotion>
@@ -532,34 +532,34 @@ export const TactiVisionPipeline = () => {
           {/* 05 — INTELLIGENCE: live event feed from the real clip + xThreat spark */}
           <g className="pipeline-stage pipeline-stage-delay-4">
             <rect x="806" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
-            <rect x="806" y="122" width="164" height="4" rx="2" fill="#f5a623" />
-            <EventRow y="152" tag="PASS" tagFill="#17312f" tagColor="#8ee8df" label="Hakimi → Vitinha" begin="0s" />
-            <EventRow y="174" tag="THRU" tagFill="#3a2920" tagColor="#ffc971" label="Vitinha → Neves" begin="2s" />
+            <rect x="806" y="122" width="164" height="4" rx="2" fill="#22d3ee" />
+            <EventRow y="152" tag="PASS" tagFill="#221a3a" tagColor="#c9baff" label="Hakimi → Vitinha" begin="0s" />
+            <EventRow y="174" tag="THRU" tagFill="#0f3540" tagColor="#a5f3fc" label="Vitinha → Neves" begin="2s" />
             <EventRow y="196" tag="INT" tagFill="#38181e" tagColor="#ff8fa0" label="Bayern #11" begin="4s" />
             <text x="822" y="219" fill="#7f909a" fontSize="7.5" fontWeight="700" letterSpacing="1">xTHREAT</text>
-            <path d="M 822 240 L 844 234 L 866 238 L 890 222 L 916 228 L 946 208" fill="none" stroke="#f5a623" strokeWidth="2" opacity="0.35" />
+            <path d="M 822 240 L 844 234 L 866 238 L 890 222 L 916 228 L 946 208" fill="none" stroke="#22d3ee" strokeWidth="2" opacity="0.35" />
             <path
               d="M 822 240 L 844 234 L 866 238 L 890 222 L 916 228 L 946 208"
               fill="none"
-              stroke="#f5a623"
+              stroke="#22d3ee"
               strokeWidth="2"
               strokeDasharray="140"
             >
               <animate attributeName="stroke-dashoffset" values="140;0;0" keyTimes="0;0.55;1" dur="4.5s" repeatCount="indefinite" />
             </path>
-            <circle r="3.5" fill="#f5a623" filter="url(#pipeline-glow)" className="pipeline-packet">
+            <circle r="3.5" fill="#22d3ee" filter="url(#pipeline-glow)" className="pipeline-packet">
               <animateMotion dur="4.5s" keyPoints="0;1;1" keyTimes="0;0.55;1" calcMode="linear" repeatCount="indefinite">
                 <mpath href="#xthreat-line" />
               </animateMotion>
             </circle>
-            <circle cx="946" cy="208" r="4" fill="#f5a623" className="pipeline-node-pulse" filter="url(#pipeline-glow)" />
-            <StageCaption cx="888" title="INTELLIGENCE" subtitle="Temporal event engine" chip="15 PASSES · 6 TYPES" chipColor="#ffc971" chipFill="#3a2920" />
+            <circle cx="946" cy="208" r="4" fill="#22d3ee" className="pipeline-node-pulse" filter="url(#pipeline-glow)" />
+            <StageCaption cx="888" title="INTELLIGENCE" subtitle="Temporal event engine" chip="15 PASSES · 6 TYPES" chipColor="#a5f3fc" chipFill="#0f3540" />
           </g>
 
           {/* 06 — PRESENTATION: mini AI match report with real KPI values */}
           <g className="pipeline-stage pipeline-stage-delay-5">
             <rect x="998" y="122" width="164" height="215" rx="8" fill="url(#pipeline-card)" stroke="#2c3b43" filter="url(#pipeline-card-shadow)" />
-            <rect x="998" y="122" width="164" height="4" rx="2" fill="#f5a623" />
+            <rect x="998" y="122" width="164" height="4" rx="2" fill="#22d3ee" />
             <rect x="1014" y="146" width="132" height="96" rx="4" fill="#e9edef" />
             <rect x="1014" y="146" width="132" height="14" rx="4" fill="#f7f9fa" />
             <text x="1020" y="156" fill="#1a7a4f" fontSize="6.5" fontWeight="700" letterSpacing="0.5">TACTIVISION</text>
@@ -591,8 +591,8 @@ export const TactiVisionPipeline = () => {
               <animate attributeName="x" values="1013;1145" dur="6s" repeatCount="indefinite" />
               <animate attributeName="opacity" values="1;1;0.4;1" dur="0.8s" repeatCount="indefinite" />
             </rect>
-            <circle cx="1140" cy="152" r="4" fill="#20b2a6" className="pipeline-node-pulse" />
-            <StageCaption cx="1080" title="PRESENTATION" subtitle="Dashboard + AI report" chip="LIVE UI + FULL HD MP4" chipColor="#ffc971" chipFill="#3a2920" />
+            <circle cx="1140" cy="152" r="4" fill="#8b5cf6" className="pipeline-node-pulse" />
+            <StageCaption cx="1080" title="PRESENTATION" subtitle="Dashboard + AI report" chip="LIVE UI + FULL HD MP4" chipColor="#a5f3fc" chipFill="#0f3540" />
           </g>
 
           {/* Sequential stage activation */}
@@ -601,17 +601,17 @@ export const TactiVisionPipeline = () => {
               key={`spot-${x}`}
               x={x}
               index={index}
-              color={index >= 4 ? "#f5a623" : "#20b2a6"}
+              color={index >= 4 ? "#22d3ee" : "#8b5cf6"}
             />
           ))}
 
           {/* Inter-stage flows */}
           {[
-            [216, "FRAME", "#8ee8df", "0s"],
-            [408, "DETECTIONS", "#8ee8df", "0.25s"],
-            [600, "TRACKS", "#8ee8df", "0.5s"],
-            [792, "METRIC XY", "#ffc971", "0.75s"],
-            [984, "EVENTS", "#ffc971", "1s"],
+            [216, "FRAME", "#c9baff", "0s"],
+            [408, "DETECTIONS", "#c9baff", "0.25s"],
+            [600, "TRACKS", "#c9baff", "0.5s"],
+            [792, "METRIC XY", "#a5f3fc", "0.75s"],
+            [984, "EVENTS", "#a5f3fc", "1s"],
           ].map(([x, label, color, begin]) => (
             <ConnectorLabel key={label} x={x} label={label} color={color} begin={begin} />
           ))}
@@ -628,7 +628,7 @@ export const TactiVisionPipeline = () => {
               className="pipeline-flow"
               d={`M ${x1} 195 L ${x2} 195`}
               fill="none"
-              stroke="#20b2a6"
+              stroke="#8b5cf6"
               strokeWidth="2"
               markerEnd="url(#pipeline-arrow)"
             />
@@ -637,17 +637,17 @@ export const TactiVisionPipeline = () => {
           <FlowPacket path="flow-1" />
           <FlowPacket path="flow-2" begin="0.25s" />
           <FlowPacket path="flow-3" begin="0.5s" />
-          <FlowPacket path="flow-4" begin="0.75s" color="#f5a623" />
-          <FlowPacket path="flow-5" begin="1s" color="#f5a623" />
+          <FlowPacket path="flow-4" begin="0.75s" color="#22d3ee" />
+          <FlowPacket path="flow-5" begin="1s" color="#22d3ee" />
           <FlowPacket path="flow-1" begin="0.72s" r={2.5} opacity={0.55} />
           <FlowPacket path="flow-2" begin="0.97s" r={2.5} opacity={0.55} />
           <FlowPacket path="flow-3" begin="1.22s" r={2.5} opacity={0.55} />
-          <FlowPacket path="flow-4" begin="1.47s" r={2.5} color="#f5a623" opacity={0.55} />
-          <FlowPacket path="flow-5" begin="1.72s" r={2.5} color="#f5a623" opacity={0.55} />
+          <FlowPacket path="flow-4" begin="1.47s" r={2.5} color="#22d3ee" opacity={0.55} />
+          <FlowPacket path="flow-5" begin="1.72s" r={2.5} color="#22d3ee" opacity={0.55} />
           <FlowPacket path="runtime-1" begin="0s" r={2.5} dur="1.1s" opacity={0.8} />
           <FlowPacket path="runtime-2" begin="0.35s" r={2.5} dur="1.1s" opacity={0.8} />
           <FlowPacket path="runtime-3" begin="0.7s" r={2.5} dur="1.1s" opacity={0.8} />
-          <FlowPacket path="runtime-4" begin="1.05s" r={2.5} dur="1.1s" color="#f5a623" opacity={0.8} />
+          <FlowPacket path="runtime-4" begin="1.05s" r={2.5} dur="1.1s" color="#22d3ee" opacity={0.8} />
 
           {/* GPU orchestration layer */}
           <g>
@@ -661,7 +661,7 @@ export const TactiVisionPipeline = () => {
               stroke="#2b3d45"
               filter="url(#pipeline-card-shadow)"
             />
-            <rect x="38" y="356" width="5" height="68" rx="2" fill="#20b2a6" />
+            <rect x="38" y="356" width="5" height="68" rx="2" fill="#8b5cf6" />
             <text x="60" y="378" fill="#dce5e9" fontSize="12" fontWeight="700" letterSpacing="1">
               GPU ORCHESTRATION LAYER
             </text>
@@ -673,13 +673,13 @@ export const TactiVisionPipeline = () => {
             </text>
             <RuntimeMetric x={590} label="THROUGHPUT" value="13 FPS" />
             <RuntimeMetric x={696} label="GPU MEMORY" value="5.8 GB" color="#70aef0" />
-            <RuntimeMetric x={802} label="ENGINES" value="6 × FP16" color="#ffc971" />
+            <RuntimeMetric x={802} label="ENGINES" value="6 × FP16" color="#a5f3fc" />
             <rect x="916" y="369" width="222" height="39" rx="6" fill="#0b1418" stroke="#26363e" />
-            <circle cx="936" cy="388" r="6" fill="#20b2a6" className="pipeline-node-pulse" />
+            <circle cx="936" cy="388" r="6" fill="#8b5cf6" className="pipeline-node-pulse" />
             <text x="952" y="385" fill="#71808a" fontSize="6.5" fontWeight="700" letterSpacing="0.7">
               PIPELINE STATE
             </text>
-            <text x="952" y="398" fill="#8ee8df" fontSize="10" fontWeight="700">
+            <text x="952" y="398" fill="#c9baff" fontSize="10" fontWeight="700">
               RUNNING · SYNCED
             </text>
             {[
@@ -689,7 +689,7 @@ export const TactiVisionPipeline = () => {
               [1106, "1.35s", "7;12;5;10;7"],
               [1114, "0.95s", "11;4;13;7;11"],
             ].map(([x, dur, heights]) => (
-              <rect key={x} x={x} width="4" rx="1" fill="#20b2a6" opacity="0.85">
+              <rect key={x} x={x} width="4" rx="1" fill="#8b5cf6" opacity="0.85">
                 <animate attributeName="height" values={heights} dur={dur} repeatCount="indefinite" />
                 <animate
                   attributeName="y"
@@ -710,7 +710,7 @@ export const TactiVisionPipeline = () => {
               className="pipeline-runtime-flow"
               d={`M ${x} 337 L ${x} 356`}
               fill="none"
-              stroke={index === 3 ? "#f5a623" : "#20b2a6"}
+              stroke={index === 3 ? "#22d3ee" : "#8b5cf6"}
               strokeWidth="1.5"
               strokeDasharray="4 5"
             />
@@ -719,7 +719,7 @@ export const TactiVisionPipeline = () => {
           {/* Live match-state ticker fed by the processed clip */}
           <g>
             <rect x="38" y="444" width="1124" height="34" rx="8" fill="#101a1f" stroke="#26363e" />
-            <rect x="38" y="444" width="5" height="34" rx="2" fill="#f5a623" />
+            <rect x="38" y="444" width="5" height="34" rx="2" fill="#22d3ee" />
             <text x="58" y="465" fill="#dce5e9" fontSize="10" fontWeight="700" letterSpacing="1">MATCH STATE BUS</text>
             <path d="M 190 452 V 470" stroke="#2b3d45" strokeWidth="1" />
             <g clipPath="url(#ticker-clip)">
@@ -732,8 +732,8 @@ export const TactiVisionPipeline = () => {
                   dur="33s"
                   repeatCount="indefinite"
                 />
-                <text x="222" y="465" fill="#8ee8df" fontSize="10" letterSpacing="1">{TICKER_TEXT}</text>
-                <text x="1382" y="465" fill="#8ee8df" fontSize="10" letterSpacing="1">{TICKER_TEXT}</text>
+                <text x="222" y="465" fill="#c9baff" fontSize="10" letterSpacing="1">{TICKER_TEXT}</text>
+                <text x="1382" y="465" fill="#c9baff" fontSize="10" letterSpacing="1">{TICKER_TEXT}</text>
               </g>
             </g>
           </g>
