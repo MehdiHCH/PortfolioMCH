@@ -276,3 +276,11 @@
     }
   }
 }
+
+/* The hero background is decorative motion — honour a reduced-motion request
+   by falling back to the poster still underneath it. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
+}

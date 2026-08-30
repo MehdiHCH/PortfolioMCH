@@ -4,7 +4,7 @@ export const tactiVisionProject = {
   title: "TactiVision - AI Football Analytics Platform",
   description:
     "An end-to-end GPU computer-vision platform that turns single-camera football video into tracked players, a metric pitch projection, 60+ validated tactical KPIs, and a broadcast-style live analytics dashboard — all running on a single consumer GPU.",
-  image: "assets/img/projects/tactivision-cover.png",
+  image: "assets/img/projects/tactivision-cover.webp",
   tags: ["YOLO", "TensorRT", "Multi-Object Tracking", "Football Analytics"],
   link: "/projects/tactivision-football-analytics",
   github: null,
@@ -43,7 +43,7 @@ export const tactiVisionProject = {
         title: "Multi-Class Match Detection",
         subtitle: "140K+ images across 7 competitions | 93.9-98.2% precision",
         video: "assets/videos/tactivision/tactivision-step-1.mp4",
-        poster: "assets/img/projects/tactivision/tactivision-step-1.jpg",
+        poster: "assets/img/projects/tactivision/tactivision-step-1.webp",
         description:
           "Step 1 establishes the detection layer for every frame. The trained YOLO stack detects players from both teams, goalkeepers, the ball, referees, staff and non-playing objects before passing those observations to the tracking and pose stage.",
         outcomes: [
@@ -63,7 +63,7 @@ export const tactiVisionProject = {
         title: "Pose, Tracking and Metric Projection",
         subtitle: "17-point pose, homography, positions and spatial context",
         video: "assets/videos/tactivision/tactivision-step-2.mp4",
-        poster: "assets/img/projects/tactivision/tactivision-step-2.jpg",
+        poster: "assets/img/projects/tactivision/tactivision-step-2.webp",
         description:
           "Persistent tracks preserve player identity while the pose model estimates a complete 17-point skeleton for every visible player. Pitch keypoints then estimate homography and project each tracked foot point onto a 105 x 68 m pitch, turning image-space movement into real positions, distances, speeds, zones and team structure.",
         outcomes: [
@@ -84,7 +84,7 @@ export const tactiVisionProject = {
         title: "Pass Intelligence and Team Activity",
         subtitle: "Morocco vs Haiti, generated from tracked trajectories",
         video: "assets/videos/tactivision/tactivision-step-3-tracking.mp4",
-        poster: "assets/img/projects/tactivision/tactivision-step-3.jpg",
+        poster: "assets/img/projects/tactivision/tactivision-step-3.webp",
         description:
           "The tracking stream is converted into structured match evidence. Possession changes and player trajectories validate pass events, while the projected positions accumulate into team pass maps and activity heatmaps for immediate tactical review.",
         outcomes: [
@@ -100,7 +100,7 @@ export const tactiVisionProject = {
           {
             title: "Morocco pass map",
             description: "Detected passing routes projected onto the metric pitch.",
-            image: "assets/img/projects/tactivision/passmap-morocco.png",
+            image: "assets/img/projects/tactivision/passmap-morocco.webp",
           },
           {
             title: "Haiti pass map",
@@ -110,12 +110,12 @@ export const tactiVisionProject = {
           {
             title: "Morocco activity heatmap",
             description: "Accumulated on-ball and player activity across pitch zones.",
-            image: "assets/img/projects/tactivision/heatmap-morocco.png",
+            image: "assets/img/projects/tactivision/heatmap-morocco.webp",
           },
           {
             title: "Haiti activity heatmap",
             description: "Spatial concentration and occupied corridors over the clip.",
-            image: "assets/img/projects/tactivision/heatmap-haiti.png",
+            image: "assets/img/projects/tactivision/heatmap-haiti.webp",
           },
         ],
       },
@@ -246,35 +246,35 @@ export const tactiVisionProject = {
       title: "Sequence & Match Analysis",
       description:
         "Executive overview of the Tunisia vs Netherlands sample with score, possession, territory, threat, recent passes, and the detected event timeline.",
-      image: "assets/img/projects/tactivision/outputs/report-summary.png",
+      image: "assets/img/projects/tactivision/outputs/report-summary.webp",
       layout: "portrait",
     },
     {
       title: "Passing Connectivity",
       description:
         "Automatically generated passing structure with player involvement, average positions, attack zones, progressive passes, and pressure statistics.",
-      image: "assets/img/projects/tactivision/outputs/report-passing.png",
+      image: "assets/img/projects/tactivision/outputs/report-passing.webp",
       layout: "portrait",
     },
     {
       title: "Match Dynamics",
       description:
         "Time-window analysis of possession, territory, passes, expected threat, dangerous entries, shots, progressive passes, and sequence control.",
-      image: "assets/img/projects/tactivision/outputs/report-dynamics.png",
+      image: "assets/img/projects/tactivision/outputs/report-dynamics.webp",
       layout: "portrait",
     },
     {
       title: "Passes by Type",
       description:
         "Metric-pitch pass output separating basic, progressive, box-entry, assist, pressure, and failed actions for the Netherlands sequence.",
-      image: "assets/img/projects/tactivision/outputs/passmap.png",
+      image: "assets/img/projects/tactivision/outputs/passmap.webp",
       layout: "landscape",
     },
     {
       title: "Team Activity Heatmap",
       description:
         "Spatial activity density derived from projected tracking positions, showing the dominant zones occupied during the analysed sequence.",
-      image: "assets/img/projects/tactivision/outputs/heatmap.png",
+      image: "assets/img/projects/tactivision/outputs/heatmap.webp",
       layout: "landscape",
     },
   ],

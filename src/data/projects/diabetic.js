@@ -4,7 +4,7 @@ export const diabeticProject = {
   title: "Diabetic Retinopathy Detection with EfficientNet",
   description:
     "Automated deep learning system for early detection and classification of diabetic retinopathy from retinal images. Leverages transfer learning with EfficientNetB0 to classify images into 5 severity stages, enabling objective, scalable screening accessible in areas with limited ophthalmology expertise.",
-  image: "assets/img/projects/retinopathy_detection.jpg",
+  image: "assets/img/projects/retinopathy_detection.webp",
   tags: ["EfficientNet", "Medical AI", "Deep Learning", "Healthcare"],
   link: "/projects/5-diabetic",
   github: "https://github.com/MehdiHCH/Diabetic-Retinopathy-Detection",
@@ -129,7 +129,7 @@ export const diabeticProject = {
     {
       title: "Diabetic Retinopathy Detection System",
       description: "Automated EfficientNetB0 classification for 5-stage disease detection",
-      image: "assets/img/projects/retinopathy_detection.jpg",
+      image: "assets/img/projects/retinopathy_detection.webp",
     },
   ],
   challenges: {

@@ -4,7 +4,7 @@ export const rosProject = {
   title: "RoboRangers - Autonomous Vehicle with Deep Reinforcement Learning",
   description:
     "Autonomous navigation system combining ROS2 distributed robotics framework, Gazebo physics simulation, and deep reinforcement learning (TD3 algorithm). The system learns intelligent driving policies through trial-and-error, enabling safe autonomous navigation in dynamic environments with multi-modal sensor fusion.",
-  image: "assets/img/projects/robo/roborangers.jpg",
+  image: "assets/img/projects/robo/roborangers.webp",
   tags: ["ROS2", "Gazebo", "TD3 RL", "Autonomous Driving", "Robotics"],
   link: "/projects/4-ros",
   github: "https://github.com/MEHDI57-NRG/RoboRangers",
@@ -109,17 +109,17 @@ export const rosProject = {
     {
       title: "Velodyne LIDAR Sensor Integration",
       description: "360° LIDAR point cloud processing for obstacle detection (720 rays per scan)",
-      image: "assets/img/projects/robo/LiDAR.png",
+      image: "assets/img/projects/robo/LiDAR.webp",
     },
     {
       title: "Camera Perception Module",
       description: "RGB camera for sign recognition and visual obstacle detection",
-      image: "assets/img/projects/robo/Camera.png",
+      image: "assets/img/projects/robo/Camera.webp",
     },
     {
       title: "TD3 Algorithm Architecture",
       description: "Twin Delayed DDPG reinforcement learning for continuous control",
-      image: "assets/img/projects/robo/TD3.png",
+      image: "assets/img/projects/robo/TD3.webp",
     },
   ],
   challenges: {

@@ -46,14 +46,33 @@ const greenDots = Array.from({ length: 30 }, (_, index) => ({
 export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Bg */}
+      {/* Bg — real tracker output: the fastest way to show what I build */}
       <div className="absolute inset-0">
         <img
-          src={`${import.meta.env.BASE_URL}hero-bg.jpg`}
-          alt="Hero image"
-          className="w-full h-full object-cover opacity-40"
+          src={`${import.meta.env.BASE_URL}hero-loop-poster.webp`}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
         />
+        <video
+          className="hero-video absolute inset-0 w-full h-full object-cover opacity-30"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={`${import.meta.env.BASE_URL}hero-loop-poster.webp`}
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          <source
+            src={`${import.meta.env.BASE_URL}hero-loop.mp4`}
+            type="video/mp4"
+          />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/80 to-background" />
+        {/* keeps the headline column readable over the busy tracking overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent lg:to-background/10" />
       </div>
 
       {/* Green Dots */}
@@ -231,7 +250,7 @@ export const Hero = () => {
               />
               <div className="relative glass rounded-3xl p-2 glow-border">
                 <img
-                  src={`${import.meta.env.BASE_URL}me.png`}
+                  src={`${import.meta.env.BASE_URL}me.webp`}
                   alt="EL MEHDI HICHAM"
                   className="w-full aspect-[4/5] object-cover rounded-2xl"
                 />

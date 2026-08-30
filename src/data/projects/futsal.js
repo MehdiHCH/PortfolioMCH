@@ -4,7 +4,7 @@ export const futsalProject = {
   title: "Automated Futsal Video Analysis for Performance Reporting",
   description:
     "Developed an end-to-end computer vision pipeline that automatically analyzes futsal matches through multi-stage processing: frame classification, player detection, multi-object tracking, and action recognition. The system extracts tactical insights from broadcast video in real-time, reducing manual annotation time by 80%.",
-  image: "assets/img/projects/futsal-analysis-cover.png",
+  image: "assets/img/projects/futsal-analysis-cover.webp",
   tags: ["YOLOv11", "DeepSORT", "Computer Vision", "Sports Analytics"],
   link: "/projects/1-futsal-analysis-sportscore",
   github: "https://github.com/MehdiHCH",
@@ -13,7 +13,7 @@ export const futsalProject = {
   location: "Paris, France - Remote",
   role: "R&D Intern — Applied AI & Computer Vision",
   overview: {
-    architectureImage: "assets/img/projects/architecture/futsal_architecture.png",
+    architectureImage: "assets/img/projects/architecture/futsal_architecture.webp",
     keyContributions: [
       "Engineered a multi-stream CUDA pipeline with 5 parallel inference streams, achieving 13 FPS throughput — a 117% speedup over the sequential baseline.",
       "Designed two YOLOv11 variants: a classification model (YOLOv11m-cls) for frame filtering at 99.95% accuracy across 67,801 frames, and a detection model (YOLOv11x) for ball localization at 90.1% precision.",
@@ -109,7 +109,7 @@ export const futsalProject = {
     {
       title: "Real-time Analysis Dashboard",
       description: "Complete system running on FIFA Futsal World Cup match with synchronized multi-window visualization",
-      image: "assets/img/projects/MVP.png",
+      image: "assets/img/projects/MVP.webp",
     },
   ],
   team: ["Hicham El Mehdi"],

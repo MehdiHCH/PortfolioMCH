@@ -4,7 +4,7 @@ export const tactiVisionInsightProject = {
   title: "TactiVision Insight - Explainable Tactical Intelligence",
   description:
     "An explainable football-intelligence engine that transforms TactiVision Core tracking, pitch coordinates, and match events into evidence-backed tactical recommendations, receiver scores, passing-lane risk, defensive-line analysis, and a synchronized analyst workspace.",
-  image: "assets/img/projects/tactivision-insight/cover.jpg",
+  image: "assets/img/projects/tactivision-insight/cover.webp",
   tags: ["Explainable AI", "Tactical Intelligence", "Football Analytics", "React"],
   link: "/projects/tactivision-insight",
   github: null,
@@ -138,7 +138,7 @@ export const tactiVisionInsightProject = {
       description:
         "Attacking-phase output with possession, final-third presence, open lanes, option value, and team-shape metrics.",
       image:
-        "assets/img/projects/tactivision-insight/video-stills/netherlands-tunisia-attack.png",
+        "assets/img/projects/tactivision-insight/video-stills/netherlands-tunisia-attack.webp",
     },
     {
       title: "Defensive Intelligence",
@@ -146,7 +146,7 @@ export const tactiVisionInsightProject = {
       description:
         "Defensive organization view exposing the active structure and contextual defensive indicators.",
       image:
-        "assets/img/projects/tactivision-insight/video-stills/netherlands-tunisia-defence.png",
+        "assets/img/projects/tactivision-insight/video-stills/netherlands-tunisia-defence.webp",
     },
     {
       title: "Passing Intelligence",
@@ -154,7 +154,7 @@ export const tactiVisionInsightProject = {
       description:
         "Passing-phase analysis showing synchronized structure and decision-support KPIs from the clip.",
       image:
-        "assets/img/projects/tactivision-insight/video-stills/netherlands-tunisia-passes.png",
+        "assets/img/projects/tactivision-insight/video-stills/netherlands-tunisia-passes.webp",
     },
     {
       title: "Pressing Intelligence",
@@ -162,7 +162,7 @@ export const tactiVisionInsightProject = {
       description:
         "Live pressing output with pressers, pressing frames, players under pressure, and defensive-line height.",
       image:
-        "assets/img/projects/tactivision-insight/video-stills/netherlands-tunisia-pressing.png",
+        "assets/img/projects/tactivision-insight/video-stills/netherlands-tunisia-pressing.webp",
     },
     {
       title: "Space Intelligence",
@@ -170,7 +170,7 @@ export const tactiVisionInsightProject = {
       description:
         "Spatial output measuring free space, overloads, team area, spacing, and width in real time.",
       image:
-        "assets/img/projects/tactivision-insight/video-stills/netherlands-tunisia-spaces.png",
+        "assets/img/projects/tactivision-insight/video-stills/netherlands-tunisia-spaces.webp",
     },
     {
       title: "Attack Intelligence",
@@ -178,7 +178,7 @@ export const tactiVisionInsightProject = {
       description:
         "Attacking-phase output with live option and team-shape indicators over the broadcast sequence.",
       image:
-        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-attack.png",
+        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-attack.webp",
     },
     {
       title: "Annotated Goal Sequence",
@@ -186,7 +186,7 @@ export const tactiVisionInsightProject = {
       description:
         "Representative frame from the fully annotated PSG goal sequence used for tactical review.",
       image:
-        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-annotated-goal.png",
+        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-annotated-goal.webp",
     },
     {
       title: "Defensive Intelligence",
@@ -194,7 +194,7 @@ export const tactiVisionInsightProject = {
       description:
         "Defensive organization and phase context generated from the tracked PSG and Bayern structure.",
       image:
-        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-defence.png",
+        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-defence.webp",
     },
     {
       title: "Passing Intelligence",
@@ -202,7 +202,7 @@ export const tactiVisionInsightProject = {
       description:
         "Passing-phase decision support with synchronized team structure and live tactical indicators.",
       image:
-        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-passes.png",
+        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-passes.webp",
     },
     {
       title: "Pressing Intelligence",
@@ -210,7 +210,7 @@ export const tactiVisionInsightProject = {
       description:
         "Pressing intensity, active pressers, pressure exposure, and defensive-line position in one output.",
       image:
-        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-pressing.png",
+        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-pressing.webp",
     },
     {
       title: "Space Intelligence",
@@ -218,7 +218,7 @@ export const tactiVisionInsightProject = {
       description:
         "Live free-space, overload, team-shape, spacing, and width measurements from the match sequence.",
       image:
-        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-spaces.png",
+        "assets/img/projects/tactivision-insight/video-stills/psg-bayern-spaces.webp",
     },
   ],
   team: ["Hicham El Mehdi"],

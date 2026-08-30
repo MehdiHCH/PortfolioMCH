@@ -48,7 +48,7 @@ const experiences = [
     role: "Machine Learning Intern — Research & Experimental Evaluation",
     organization: "SETIME Lab",
     organizationDetails: "Ibn Tofail University · Kenitra, Morocco",
-    organizationLogo: "assets/img/companies/ibn-tofail-university-logo.png",
+    organizationLogo: "assets/img/companies/ibn-tofail-university-logo.webp",
     organizationUrl:
       "https://www.linkedin.com/school/ibntofailuniversity-itu/",
     organizationColor: "text-blue-400 hover:text-blue-300",
@@ -63,7 +63,7 @@ const experiences = [
     role: "Master's Degree in Artificial Intelligence",
     organization: "Ibn Tofail University",
     organizationDetails: "Kenitra, Morocco",
-    organizationLogo: "assets/img/companies/ibn-tofail-university-logo.png",
+    organizationLogo: "assets/img/companies/ibn-tofail-university-logo.webp",
     organizationUrl:
       "https://www.linkedin.com/school/ibntofailuniversity-itu/",
     organizationColor: "text-blue-400 hover:text-blue-300",
@@ -78,7 +78,7 @@ const experiences = [
     role: "Bachelor's Degree in Physics (Theoretical & Mathematical)",
     organization: "Ibn Tofail University",
     organizationDetails: "Kenitra, Morocco",
-    organizationLogo: "assets/img/companies/ibn-tofail-university-logo.png",
+    organizationLogo: "assets/img/companies/ibn-tofail-university-logo.webp",
     organizationUrl:
       "https://www.linkedin.com/school/ibntofailuniversity-itu/",
     organizationColor: "text-blue-400 hover:text-blue-300",
