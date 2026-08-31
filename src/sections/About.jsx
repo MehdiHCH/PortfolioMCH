@@ -1,4 +1,4 @@
-import { Brain, Lightbulb, Zap, Users } from "lucide-react";
+import { Brain, Crosshair, Gauge, Zap } from "lucide-react";
 
 const highlights = [
   {
@@ -8,21 +8,22 @@ const highlights = [
       "Building intelligent systems for real-time object detection, tracking, and scene understanding.",
   },
   {
+    icon: Crosshair,
+    title: "Geometric Vision",
+    description:
+      "Camera calibration, homography, and image-to-pitch coordinate mapping from a single uncalibrated camera.",
+  },
+  {
     icon: Zap,
     title: "Performance Optimization",
     description:
       "Optimizing ML pipelines with TensorRT, CUDA, and asynchronous processing for real-time inference.",
   },
   {
-    icon: Users,
-    title: "Team Leadership",
-    description: "Supervising interns and mentoring teams in AI/ML projects and research.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation in Sports AI",
+    icon: Gauge,
+    title: "Measurement Reliability",
     description:
-      "Pioneering AI solutions for sports analytics and automated performance analysis.",
+      "Reporting coverage, missed detections, and confidence alongside every tactical metric.",
   },
 ];
 
@@ -65,18 +66,18 @@ export const About = () => {
                 computer vision pipelines.
               </p>
               <p>
-                Beyond code, I'm driven by mentoring others — including
-                supervising 4 interns at SportScore — contributing to research,
-                and exploring emerging technologies in generative AI and
-                reinforcement learning.
+                Every output is designed to expose its own limits: coverage,
+                missed detections, and confidence are reported alongside
+                tactical metrics so analysts can judge whether a number is
+                trustworthy.
               </p>
             </div>
 
             <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
               <p className="text-lg font-medium italic text-foreground">
-                "My mission is to design and deploy intelligent vision-based systems 
-                that combine AI research, video analytics, and sports performance optimization — 
-                pushing the boundaries of what's possible with AI."
+                “Vision systems that report what they measured, what they
+                missed, and how confident they are — because a number without
+                its coverage isn't analysis.”
               </p>
             </div>
           </div>
