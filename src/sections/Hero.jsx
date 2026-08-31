@@ -86,12 +86,12 @@ const socialLinks = [
 export const Hero = () => {
   const [depthReady, setDepthReady] = useState(false);
 
-  const bookAdvisoryCall = () => {
+  const bookCall = () => {
     window.dispatchEvent(
       new CustomEvent("portfolio:select-service", {
         detail: {
           message:
-            "Hi El Mehdi, I'm interested in your AI & Computer Vision Advisory service at €50/hour. I'd like to discuss the scope and level of involvement...",
+            "Hi El Mehdi, I'd like to schedule a call to discuss a full-time opportunity or potential collaboration.",
         },
       }),
     );
@@ -197,21 +197,16 @@ export const Hero = () => {
             {/* Headline */}
             <div className="space-y-4">
               <h1 className="animate-fade-in text-5xl font-bold leading-[1.08] animation-delay-100 md:text-6xl xl:text-[5rem]">
-                Designing intelligent
+                Real-time computer vision
                 <br />
-                <span className="text-primary glow-text">vision systems</span>
-                <br />
-                <span className="font-serif italic font-normal text-foreground">
-                  for real-world impact.
-                </span>
+                <span className="text-primary glow-text">for sports video.</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
                 Hi, I'm EL MEHDI HICHAM — a Computer Vision Engineer
                 specialized in real-time sports analytics and multi-object
                 tracking. Builder of TactiVision, an independent R&amp;D project
-                that turns broadcast video into structured tactical data using
-                TensorRT, CUDA Streams, homography, pose estimation, OCR, and
-                re-identification. Previously contributed to AI systems at{" "}
+                that turns broadcast video into structured tactical data.
+                Previously contributed to AI systems at{" "}
                 <a
                   href="https://www.linkedin.com/company/sport-score/"
                   target="_blank"
@@ -250,18 +245,18 @@ export const Hero = () => {
                 href={`${import.meta.env.BASE_URL}CV.pdf?v=20260831`}
                 download="EL_MEHDI_HICHAM_CV.pdf"
                 aria-label="Download EL MEHDI HICHAM resume"
-                className="flex min-w-60 items-center justify-center gap-2 rounded-full border border-primary px-8 py-4 text-lg font-medium text-foreground transition-all duration-300 hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className="flex min-w-72 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-8 py-4 text-lg font-medium text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 <FileText className="h-5 w-5" />
                 Resume
               </a>
               <Button
                 size="lg"
-                onClick={bookAdvisoryCall}
-                className="min-w-72 transition-transform duration-300 hover:-translate-y-0.5"
+                onClick={bookCall}
+                className="min-w-60 border border-primary bg-transparent text-foreground shadow-none transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/15"
               >
                 <CalendarDays className="h-5 w-5" />
-                Book Advisor
+                Book a call
               </Button>
             </div>
 
@@ -288,8 +283,17 @@ export const Hero = () => {
           </div>
 
           {/* Right Column - Profile Image */}
-            <div className="relative animate-fade-in animation-delay-300">
+          <div className="relative animate-fade-in animation-delay-300">
             <div className="relative mx-auto max-w-[39rem]">
+              <div className="absolute -top-14 left-0 right-0 z-20 flex justify-center px-2 sm:-top-10">
+                <div className="animate-float inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-primary/80 bg-background/90 px-4 py-3 text-center text-xs font-bold text-foreground shadow-[0_0_30px_rgba(225,29,72,0.4)] backdrop-blur-xl sm:px-6 sm:text-sm">
+                  <span className="relative flex h-3 w-3 shrink-0">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+                    <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
+                  </span>
+                  Open to full-time roles and freelance · Available now · Open to relocation
+                </div>
+              </div>
               <div className="absolute -inset-8 rounded-full bg-primary/15 blur-3xl" />
               <div className="portrait-halo relative aspect-square rounded-full border border-primary/90 bg-surface/35 p-2.5">
                 <img
