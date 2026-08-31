@@ -50,11 +50,10 @@ export const About = () => {
             <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
               <p>
                 I'm a Computer Vision Engineer specialized in real-time sports
-                analytics and multi-object tracking. As Founder and Lead Engineer
-                of TactiVision, I build an end-to-end football intelligence
-                platform that leverages TensorRT, CUDA streams, homography, pose
-                estimation, OCR, and re-identification to transform broadcast
-                video into tactical insights.
+                analytics and multi-object tracking. I build TactiVision, an
+                independent R&amp;D project that turns broadcast video into
+                structured tactical data using TensorRT, CUDA Streams,
+                homography, pose estimation, OCR, and re-identification.
               </p>
               <p>
                 I work extensively with object detection (YOLOv8/11),

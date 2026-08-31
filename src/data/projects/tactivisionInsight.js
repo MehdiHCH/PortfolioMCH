@@ -12,7 +12,7 @@ export const tactiVisionInsightProject = {
   company: "Independent Product Project",
   period: "August 15, 2026 — Present",
   location: "Morocco",
-  role: "Founder & Lead Engineer",
+  role: "Computer Vision Engineer",
   overview: {
     keyContributions: [
       "Designed a bridge that consumes TactiVision Core tracking CSV and event JSON exports without rerunning GPU inference.",

@@ -15,17 +15,17 @@ const experiences = [
     current: false,
   },
   {
-    period: "2025 — Present",
-    role: "Founder & Lead Engineer — TactiVision",
+    period: "January 2026 — Present",
+    role: "Independent R&D Project",
     organization: "TactiVision",
     organizationDetails:
-      "Independent Product — Real-time Football Analytics Platform",
+      "Football Video Analysis Pipeline · Morocco",
     organizationLogo: "assets/img/companies/tactivision-logo.png",
     organizationColor: "text-emerald-400",
     organizationLogoClass: "border-lime-400/50",
     organizationLogoSizeClass: "h-16 w-28 sm:w-36",
     description:
-      "Built and deployed an end-to-end CV pipeline running 7 TensorRT engines in parallel via CUDA streams on a single RTX 4060: player/GK/referee detection, ball detection, pitch keypoint homography, 17-point pose estimation, field segmentation, jersey OCR, and OSNet re-identification. Trained on 140,000+ annotated images across 7 competitions, reaching 93.9–98.2% precision and ~96% accuracy on unseen footage. Live match-centre dashboard generates possession, xThreat, pass networks, pitch control, and pressing intensity from a single broadcast feed — no stadium infrastructure required.",
+      "Built and deployed an end-to-end CV pipeline running 7 TensorRT engines in parallel via CUDA Streams on a single RTX 4060: player/GK/referee detection, ball detection, pitch-keypoint homography, 17-point pose estimation, field segmentation, jersey OCR, and OSNet re-identification. Added a dedicated goalkeeper model for real-world position, speed, skeleton pose, and spatial goal coverage. Trained on 140,000+ images across 7 competitions, reaching 93.9–98.2% detection precision on unseen matches. The match-centre dashboard generates possession, territory, xThreat, pass networks, heatmaps, pitch control, and pressing intensity from a single broadcast feed, with measured coverage and confidence for every output.",
     technologies: ["TensorRT", "ONNX", "CUDA Streams", "Ultralytics YOLO", "ByteTrack", "OSNet", "OpenCV", "PyTorch"],
     current: true,
   },

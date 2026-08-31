@@ -208,9 +208,10 @@ export const Hero = () => {
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
                 Hi, I'm EL MEHDI HICHAM — a Computer Vision Engineer
                 specialized in real-time sports analytics and multi-object
-                tracking. Founder and Lead Engineer of TactiVision, an
-                end-to-end football intelligence platform that turns broadcast
-                video into tactical insights. Previously at{" "}
+                tracking. Builder of TactiVision, an independent R&amp;D project
+                that turns broadcast video into structured tactical data using
+                TensorRT, CUDA Streams, homography, pose estimation, OCR, and
+                re-identification. Previously contributed to AI systems at{" "}
                 <a
                   href="https://www.linkedin.com/company/sport-score/"
                   target="_blank"
@@ -238,7 +239,8 @@ export const Hero = () => {
                   />
                   Priori Sports
                 </a>
-                {", "}building production-ready vision pipelines.
+                {", "}with a strong focus on scalable, production-ready
+                computer vision pipelines.
               </p>
             </div>
 

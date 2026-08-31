@@ -10,10 +10,10 @@ export const tactiVisionProject = {
   link: "/projects/tactivision-football-analytics",
   github: null,
   youtubePlaylist: "https://www.youtube.com/playlist?list=PLG19EQjOBrQQ",
-  company: "Independent Product Project",
-  period: "2025 — Present",
+  company: "Independent R&D Project",
+  period: "January 2026 — Present",
   location: "Morocco",
-  role: "Founder & Lead Engineer",
+  role: "Computer Vision Engineer",
   overview: {
     architectureImage: "assets/img/projects/architecture/tactivision_architecture.svg",
     animatedPipeline: {

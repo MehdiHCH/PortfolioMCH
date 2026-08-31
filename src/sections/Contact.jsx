@@ -28,7 +28,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Kenitra, Morocco",
+    value: "Morocco — Open to relocation & remote",
     href: "#",
   },
 ];
