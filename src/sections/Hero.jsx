@@ -188,19 +188,15 @@ export const Hero = () => {
           {/* Left Column - Text Content */}
           <div className="space-y-7">
             <div className="animate-fade-in">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Computer Vision Engineer • AI Engineer • Sports Analytics
+              <span className="inline-flex max-w-full flex-col items-start gap-1.5 rounded-3xl border border-primary/70 bg-background/90 px-5 py-3 text-sm font-bold text-foreground shadow-[0_0_26px_rgba(225,29,72,0.28)] backdrop-blur-xl sm:flex-row sm:items-center sm:gap-2.5 sm:rounded-full sm:text-base">
+                <span className="inline-flex items-center gap-2.5 whitespace-nowrap">
+                  <span className="h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_14px_rgba(225,29,72,0.95)] animate-pulse" />
+                  Computer Vision Engineer
+                </span>
+                <span className="whitespace-nowrap text-xs text-primary sm:text-base">
+                  • AI Engineer • Sports Analytics
+                </span>
               </span>
-              <div className="mt-3">
-                <div className="animate-float inline-flex max-w-full items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/80 bg-background/90 px-3 py-2.5 text-[0.625rem] font-bold tracking-[-0.02em] text-foreground shadow-[0_0_30px_rgba(225,29,72,0.35)] backdrop-blur-xl sm:gap-2 sm:px-5 sm:text-sm sm:tracking-normal">
-                  <span className="relative flex h-3 w-3 shrink-0">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-                    <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
-                  </span>
-                  Available now · Full-time or freelance · Open to relocation
-                </div>
-              </div>
             </div>
 
             {/* Headline */}
@@ -301,6 +297,15 @@ export const Hero = () => {
                   alt="EL MEHDI HICHAM"
                   className="h-full w-full rounded-full object-cover"
                 />
+              </div>
+              <div className="mt-6 flex justify-center">
+                <div className="animate-float inline-flex max-w-full items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/80 bg-background/90 px-3 py-2.5 text-[0.625rem] font-bold tracking-[-0.02em] text-foreground shadow-[0_0_30px_rgba(225,29,72,0.35)] backdrop-blur-xl sm:gap-2 sm:px-5 sm:text-sm sm:tracking-normal">
+                  <span className="relative flex h-3 w-3 shrink-0">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+                    <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
+                  </span>
+                  Available now · Full-time or freelance · Open to relocation
+                </div>
               </div>
             </div>
           </div>
