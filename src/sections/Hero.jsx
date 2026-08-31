@@ -192,6 +192,15 @@ export const Hero = () => {
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 Computer Vision Engineer • AI Engineer • Sports Analytics
               </span>
+              <div className="mt-3">
+                <div className="animate-float inline-flex max-w-full items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/80 bg-background/90 px-3 py-2.5 text-[0.625rem] font-bold tracking-[-0.02em] text-foreground shadow-[0_0_30px_rgba(225,29,72,0.35)] backdrop-blur-xl sm:gap-2 sm:px-5 sm:text-sm sm:tracking-normal">
+                  <span className="relative flex h-3 w-3 shrink-0">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+                    <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
+                  </span>
+                  Available now · Full-time or freelance · Open to relocation
+                </div>
+              </div>
             </div>
 
             {/* Headline */}
@@ -285,15 +294,6 @@ export const Hero = () => {
           {/* Right Column - Profile Image */}
           <div className="relative animate-fade-in animation-delay-300">
             <div className="relative mx-auto max-w-[39rem]">
-              <div className="absolute -top-14 left-0 right-0 z-20 flex justify-center px-2 sm:-top-10">
-                <div className="animate-float inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-primary/80 bg-background/90 px-4 py-3 text-center text-xs font-bold text-foreground shadow-[0_0_30px_rgba(225,29,72,0.4)] backdrop-blur-xl sm:px-6 sm:text-sm">
-                  <span className="relative flex h-3 w-3 shrink-0">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-                    <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
-                  </span>
-                  Open to full-time roles and freelance · Available now · Open to relocation
-                </div>
-              </div>
               <div className="absolute -inset-8 rounded-full bg-primary/15 blur-3xl" />
               <div className="portrait-halo relative aspect-square rounded-full border border-primary/90 bg-surface/35 p-2.5">
                 <img
