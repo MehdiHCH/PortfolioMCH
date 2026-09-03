@@ -1,5 +1,6 @@
 export const tactiVisionInsightProject = {
   id: 7,
+  isPublished: false,
   slug: "tactivision-insight",
   title: "TactiVision Insight - Explainable Tactical Intelligence",
   description:

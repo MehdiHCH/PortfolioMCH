@@ -6,7 +6,7 @@ import { azulProject } from "./azul";
 import { rosProject } from "./ros";
 import { diabeticProject } from "./diabetic";
 
-export const projectsData = [
+const allProjects = [
   tactiVisionProject,
   tactiVisionInsightProject,
   futsalProject,
@@ -15,6 +15,12 @@ export const projectsData = [
   rosProject,
   diabeticProject,
 ];
+
+// Keep unpublished work in the codebase so it can be restored with one flag,
+// while excluding it from cards, demos, and direct project routes.
+export const projectsData = allProjects.filter(
+  (project) => project.isPublished !== false,
+);
 
 export const getProjectBySlug = (slug) => {
   return projectsData.find((p) => p.slug === slug);
