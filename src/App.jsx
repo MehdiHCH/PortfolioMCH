@@ -1,4 +1,10 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { useLayoutEffect } from "react";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { Navbar } from "@/layout/Navbar";
 import { Hero } from "@/sections/Hero";
@@ -13,6 +19,16 @@ import { ProjectDetail } from "@/pages/ProjectDetail";
 import { Demos } from "@/pages/Demos";
 import { FutsalAnalysisDemos } from "@/pages/FutsalAnalysisDemos";
 import ConstellationGrid from "@/components/ui/constellation-grid";
+
+function RouteScrollReset() {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function HomePage() {
   return (
@@ -33,6 +49,7 @@ function App() {
     <ThemeProvider>
       <Router>
         <div className="min-h-screen overflow-x-hidden">
+          <RouteScrollReset />
           <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />
