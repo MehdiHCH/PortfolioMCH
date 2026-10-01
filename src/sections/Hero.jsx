@@ -247,7 +247,7 @@ export const Hero = () => {
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
               <a
-                href={`${import.meta.env.BASE_URL}CV.pdf?v=20260831`}
+                href={`${import.meta.env.BASE_URL}CV.pdf?v=20261001`}
                 download="EL_MEHDI_HICHAM_CV.pdf"
                 aria-label="Download EL MEHDI HICHAM resume"
                 className="flex min-w-72 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-8 py-4 text-lg font-medium text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"

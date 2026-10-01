@@ -1,5 +1,35 @@
 const experiences = [
   {
+    period: "Jul 2026 — Sep 2026 · 3 mos",
+    role: "Computer Vision Engineer & Sports AI Consultant",
+    organization: "SolveXI, TechnologyOne & Multiple Global Clients",
+    organizationDetails: "Freelance · Australia & New Zealand · Croatia · Remote",
+    organizationColor: "text-primary hover:text-secondary-foreground",
+    organizationLogoClass: "border-primary/40",
+    description:
+      "Selected international Computer Vision & Sports AI engagements across Australia, New Zealand, and Croatia:",
+    descriptionItems: [
+      "SolveXI / Goran Mandic — Integrated SkillCorner tracking, events, and phase-of-play data into a tactical analysis pipeline, producing coach-readable insights on team shape, width/depth, possession structure, passing options, pressing behaviour, and cross-match patterns.",
+      "TechnologyOne / Eugene Luong — Evaluated football footage quality, detection/tracking feasibility, and camera calibration requirements; provided technical guidance on Computer Vision architecture, model adaptation, VEO-camera workflows, and reliable homography/pitch-mapping.",
+      "Technical Advisory Engagements — Supported clients with Computer Vision system design, feasibility assessment, model selection, deployment strategy, and development planning.",
+      "Worked across player/ball detection and tracking, homography, pitch-coordinate reconstruction, tactical analytics, model adaptation, and performance benchmarking.",
+      "Scoped technical projects into clear milestones, deliverables, implementation phases, and technical recommendations.",
+    ],
+    technologies: [
+      "Computer Vision",
+      "Sports Analytics",
+      "SkillCorner",
+      "Homography",
+      "Sports AI",
+    ],
+    media: [
+      "assets/img/projects/tactivision-insight/skillcorner/consulting-dashboard.png",
+      "assets/img/projects/tactivision-insight/video-stills/psg-bayern-pressing.webp",
+      "assets/img/projects/tactivision-insight/skillcorner/consulting-report.png",
+    ],
+    current: false,
+  },
+  {
     period: "May 2026 — June 2026",
     role: "Computer Vision Engineer (Contract)",
     organization: "Priori Sports, Inc.",
@@ -198,9 +228,32 @@ export const Experience = () => {
                         </p>
                       </div>
                     </div>
-                    <p className="text-sm text-muted-foreground mt-4">
+                    <p className="mt-4 text-justify text-sm text-muted-foreground">
                       {exp.description}
                     </p>
+                    {exp.descriptionItems?.length > 0 && (
+                      <ul className="mt-3 space-y-3 text-justify text-sm leading-relaxed text-muted-foreground">
+                        {exp.descriptionItems.map((item, itemIdx) => (
+                          <li key={itemIdx} className="relative pl-4">
+                            <span className="absolute left-0 top-[0.55em] h-1.5 w-1.5 rounded-full bg-primary/80" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {exp.media?.length > 0 && (
+                      <div className="mt-5 grid grid-cols-3 gap-2">
+                        {exp.media.map((mediaPath, mediaIdx) => (
+                          <img
+                            key={mediaPath}
+                            src={`${import.meta.env.BASE_URL}${mediaPath}`}
+                            alt={`${exp.organization} work sample ${mediaIdx + 1}`}
+                            loading="lazy"
+                            className="aspect-[16/10] w-full rounded-md border border-border/70 bg-background object-cover"
+                          />
+                        ))}
+                      </div>
+                    )}
                     <div
                       className={`flex flex-wrap gap-2 mt-4 ${
                         idx % 2 === 0 ? "md:justify-end" : ""

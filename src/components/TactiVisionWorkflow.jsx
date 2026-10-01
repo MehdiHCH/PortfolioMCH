@@ -17,8 +17,8 @@ const iconByKind = {
 const assetUrl = (path) => `${import.meta.env.BASE_URL}${path}`;
 
 const StepMedia = ({ step }) => (
-  <div className="relative overflow-hidden rounded-lg border border-border/70 bg-black shadow-2xl shadow-black/20">
-    <div className="absolute left-0 top-0 z-10 flex w-full items-center justify-between border-b border-white/10 bg-black/65 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80 backdrop-blur-sm">
+  <div className="relative overflow-hidden rounded-lg border border-border/70 bg-background shadow-2xl shadow-primary/10">
+    <div className="absolute left-0 top-0 z-10 flex w-full items-center justify-between border-b border-border/70 bg-background/90 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/80 backdrop-blur-sm">
       <span>Live pipeline output</span>
       <span className="flex items-center gap-2 text-emerald-300">
         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
@@ -99,7 +99,7 @@ const EvidenceGrid = ({ visualizations }) => (
           src={assetUrl(item.image)}
           alt={item.title}
           loading="lazy"
-          className="aspect-[16/10] w-full bg-white object-contain"
+          className="aspect-[16/10] w-full bg-surface object-contain"
         />
         <figcaption className="border-t border-border/60 px-4 py-3">
           <p className="text-sm font-bold text-foreground">{item.title}</p>

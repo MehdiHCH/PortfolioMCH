@@ -167,8 +167,8 @@ const VisualEvidence = ({ visualizations }) => (
           loading="lazy"
           className={`w-full object-contain ${
             item.layout === "portrait"
-              ? "aspect-[210/297] bg-white"
-              : "h-auto bg-[#040806]"
+              ? "aspect-[210/297] bg-surface"
+              : "h-auto bg-background"
           }`}
         />
         <figcaption className="border-t border-border/60 p-5">
@@ -193,7 +193,7 @@ const ProjectDemo = ({ demos, poster }) => {
         title="Watch the full pipeline operate as one product."
         description="The end-to-end demo combines detection, identity, pitch projection, event extraction, and the synchronized analytics dashboard in one continuous output."
       />
-      <div className="mt-8 overflow-hidden rounded-lg border border-border/70 bg-black">
+      <div className="mt-8 overflow-hidden rounded-lg border border-border/70 bg-background">
         <video
           controls
           playsInline

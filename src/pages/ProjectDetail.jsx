@@ -387,7 +387,7 @@ export const ProjectDetail = () => {
                         src={`${import.meta.env.BASE_URL}${viz.image}`}
                         alt={viz.title}
                         loading="lazy"
-                        className="w-full h-auto bg-black object-contain"
+                        className="w-full h-auto bg-background object-contain"
                       />
                       {(viz.match || viz.title || viz.description) && (
                         <div className="p-4 space-y-1">

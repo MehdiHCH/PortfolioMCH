@@ -1,19 +1,24 @@
 export const tactiVisionInsightProject = {
   id: 7,
-  isPublished: false,
   slug: "tactivision-insight",
   title: "TactiVision Insight - Explainable Tactical Intelligence",
   description:
-    "An explainable football-intelligence engine that transforms TactiVision Core tracking, pitch coordinates, and match events into evidence-backed tactical recommendations, receiver scores, passing-lane risk, defensive-line analysis, and a synchronized analyst workspace.",
-  image: "assets/img/projects/tactivision-insight/cover.webp",
-  cardVideo: "assets/videos/tactivision-insight-card-preview.mp4",
-  tags: ["Explainable AI", "Tactical Intelligence", "Football Analytics", "React"],
+    "An explainable football-intelligence engine that turns tracking and SkillCorner match feeds into evidence-backed tactical recommendations, cross-match benchmarks, full-period tactical-map videos, and client-ready analyst reports.",
+  image: "assets/img/projects/tactivision-insight/project-start.png",
+  cardVideo: "assets/videos/tactivision-insight-broadcast-cover.mp4",
+  tags: [
+    "Explainable AI",
+    "Tactical Intelligence",
+    "SkillCorner Integration",
+    "Cross-Match Analysis",
+  ],
   link: "/projects/tactivision-insight",
   github: null,
-  company: "Independent Product Project",
+  company: "Independent Product Project · Goran delivery",
+  client: "Goran",
   period: "August 15, 2026 — Present",
-  location: "Morocco",
-  role: "Computer Vision Engineer",
+  location: "Morocco · Remote delivery",
+  role: "Computer Vision Engineer & Product Builder",
   overview: {
     keyContributions: [
       "Designed a bridge that consumes TactiVision Core tracking CSV and event JSON exports without rerunning GPU inference.",
@@ -22,6 +27,8 @@ export const tactiVisionInsightProject = {
       "Created a nine-factor receiver model combining space, lane openness, progression, pressure, orientation, numerical advantage, centrality, future space, and interception risk.",
       "Delivered an explainability contract in which every recommendation includes evidence, sub-scores, confidence, and interpretation limits.",
       "Built a React and TypeScript analyst workspace synchronized with video, a metric tactical map, and a clickable insight timeline over REST and WebSocket APIs.",
+      "Integrated SkillCorner full-period feeds into a 10 Hz canonical state with period-aware imports, team identity, and clock-preserving tactical-map exports.",
+      "Delivered Goran's latest multi-match pack: four matches, eight complete halves, cross-match benchmarks, and premium match-report outputs.",
     ],
   },
   problemStatement: {
@@ -47,6 +54,9 @@ export const tactiVisionInsightProject = {
     "Converted sustained tactical conditions into clickable timeline events with minimum-duration and cooldown controls",
     "Centralized all tactical thresholds and scoring weights in a configurable YAML policy layer",
     "Validated geometry, scoring, hysteresis, direction inference, and the complete state pipeline with synthetic and end-to-end tests",
+    "Added SkillCorner multi-match benchmarking across 4 matches and 8 complete half reports",
+    "Fixed tactical-map rendering so exported videos preserve the full period clock, including stoppage time",
+    "Generated a client-ready Goran report pack with synchronized video, KPIs, insight signals, and cross-match comparisons",
   ],
   techStack: [
     "Python",
@@ -61,6 +71,8 @@ export const tactiVisionInsightProject = {
     "NumPy",
     "PyYAML",
     "Pytest",
+    "SkillCorner Data",
+    "PDF Match Reports",
   ],
   modules: [
     {
@@ -123,6 +135,19 @@ export const tactiVisionInsightProject = {
         timeline: "Video seeking",
       },
     },
+    {
+      name: "SkillCorner Match Intelligence",
+      description:
+        "Imports full-period SkillCorner tracking into the same canonical InsightState contract and compares completed halves across a match collection.",
+      details:
+        "The latest delivery processed four matches and eight halves at 10 Hz, preserving the period clock while producing team benchmarks, insight signals, tactical-map videos, and premium report pages.",
+      metrics: {
+        matches: "4",
+        periods: "8",
+        tracking: "10 Hz",
+        outputs: "MP4 + PDF",
+      },
+    },
   ],
   results: {
     receiverFactors: "9",
@@ -131,6 +156,10 @@ export const tactiVisionInsightProject = {
     passingLaneStates: "3",
     delivery: "REST + WS",
     validation: "Synthetic + E2E",
+    matchesProcessed: "4",
+    completePeriods: "8",
+    latestVideo: "51:14",
+    benchmarkSignals: "2,485",
   },
   visualizationsLayout: "grid",
   visualizations: [
@@ -222,13 +251,45 @@ export const tactiVisionInsightProject = {
       image:
         "assets/img/projects/tactivision-insight/video-stills/psg-bayern-spaces.webp",
     },
+    {
+      title: "Latest Tactical Map Export",
+      match: "Goran delivery · Melbourne Victory vs Auckland FC — P2",
+      description:
+        "The latest full-period SkillCorner tactical-map export, with 19,627 frames analysed at 10 Hz and synchronized defensive-line, free-player, and passing-opportunity signals.",
+      image:
+        "assets/img/projects/tactivision-insight/skillcorner/melbourne-victory-auckland-p2-report.png",
+    },
+    {
+      title: "Cross-Match Benchmark",
+      match: "Goran delivery · 4 matches / 8 complete halves",
+      description:
+        "Collection-level comparison of possession, pressing, final-third share, progression, best option value, and explainable insight signals across the latest SkillCorner outputs.",
+      image:
+        "assets/img/projects/tactivision-insight/skillcorner/cross-match-benchmark.png",
+    },
+    {
+      title: "Latest Match Report",
+      match: "Goran delivery · Western United vs Auckland FC — P2",
+      description:
+        "A second client-ready report output from the same multi-match workflow, showing period-level phases and evidence-backed tactical events.",
+      image:
+        "assets/img/projects/tactivision-insight/skillcorner/western-united-auckland-p2-report.png",
+    },
   ],
   team: ["Hicham El Mehdi"],
   demos: [
     {
+      id: 2,
+      title: "SkillCorner Multi-Match Tactical Map",
+      video: "assets/videos/tactivision-insight-skillcorner-preview.mp4",
+      description:
+        "Latest Goran delivery preview from the Melbourne Victory vs Auckland FC period: full-clock tactical-map rendering with synchronized insight signals.",
+      category: "Goran Delivery",
+    },
+    {
       id: 1,
       title: "TactiVision Insight Broadcast Intelligence",
-      video: "assets/videos/tactivision-insight-demo.mp4?v=20260829",
+      video: "assets/videos/tactivision-insight-broadcast-intelligence.mp4",
       description:
         "An end-to-end output combining tracked team structure, passing relationships, tactical overlays, and decision-ready football intelligence.",
       category: "Explainable Sports AI",
