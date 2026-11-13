@@ -17,15 +17,19 @@ const skills = [
   "C/C++",
   "PyTorch",
   "TensorFlow",
-  "YOLOv8/11",
+  "YOLO11 / YOLO26",
   "ByteTrack",
   "DeepSORT",
+  "OC-SORT",
   "OSNet ReID",
   "OpenCV",
   "Pose Estimation",
   "Segmentation",
   "Homography",
   "Camera Calibration",
+  "3D Geometry",
+  "SkillCorner Data",
+  "Veo Workflows",
   "CUDA Streams",
   "TensorRT",
   "ONNX",
@@ -91,7 +95,7 @@ export const Hero = () => {
       new CustomEvent("portfolio:select-service", {
         detail: {
           message:
-            "Hi El Mehdi, I'd like to schedule a call to discuss a full-time opportunity or potential collaboration.",
+            "Hi El Mehdi, I'd like to discuss a technical collaboration in computer vision or sports AI.",
         },
       }),
     );
@@ -304,7 +308,7 @@ export const Hero = () => {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
                     <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
                   </span>
-                  Available now · Full-time or freelance · Open to relocation
+                  Open to collaborations · Sports AI & Computer Vision
                 </div>
               </div>
             </div>

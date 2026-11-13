@@ -52,18 +52,25 @@ export const About = () => {
               <p>
                 I'm a Computer Vision Engineer specialized in real-time sports
                 analytics and multi-object tracking. I build TactiVision, an
-                independent R&amp;D project that turns broadcast video into
+                independent R&amp;D project exploring how tactical and broadcast video become
                 structured tactical data using TensorRT, CUDA Streams,
                 homography, pose estimation, OCR, and re-identification.
               </p>
               <p>
-                I work extensively with object detection (YOLOv8/11),
-                multi-object tracking (ByteTrack, DeepSORT, OSNet ReID), pose
+                I work extensively with object detection (YOLO11/YOLO26),
+                multi-object tracking (ByteTrack, OC-SORT, DeepSORT, OSNet ReID), pose
                 estimation, and temporal action recognition — deployed as
                 TensorRT FP16 engines for real-time inference. Previously, I
-                contributed to production AI systems at SportScore and Priori
-                Sports, with a strong focus on scalable, production-ready
-                computer vision pipelines.
+                contributed to football video analytics at SportScore and calibrated
+                spatial tracking at Priori Sports. My international consulting
+                work also includes SkillCorner tracking-data analysis,
+                Veo-camera workflows, and technical advisory.
+              </p>
+              <p>
+                I currently work on 3D football officiating and spatial analysis,
+                combining player and ball tracking, camera calibration, and
+                geometric vision. I hold a Master's in Artificial Intelligence
+                and Virtual Reality from Ibn Tofail University.
               </p>
               <p>
                 Every output is designed to expose its own limits: coverage,
