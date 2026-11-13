@@ -18,7 +18,8 @@ export const CountryFlags = ({ countries = [] }) => (
         width="24"
         height="18"
         loading="lazy"
-        className="inline-block h-[18px] w-6 rounded-sm object-cover"
+        className="inline-block rounded-sm"
+        style={{ width: "24px", height: "18px", objectFit: "cover" }}
       />
     ))}
   </span>
